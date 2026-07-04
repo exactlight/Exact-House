@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+/*
+ * Exact House design tokens.
+ * Change brand colors here and the whole site follows.
+ */
+:root {
+  --background: #ffffff;
+  --foreground: #1a2333;
+
+  /* Brand: trustworthy deep navy */
+  --brand-50: #f0f5fa;
+  --brand-100: #dce8f3;
+  --brand-500: #2d5f8a;
+  --brand-600: #1f4a70;
+  --brand-700: #17395a;
+  --brand-800: #122c46;
+  --brand-900: #0d2033;
+
+  /* Accent: action green for CTAs */
+  --accent-400: #34c467;
+  --accent-500: #1fa855;
+  --accent-600: #178a45;
+  --accent-700: #126e38;
+
+  /* Highlight: warm gold for badges / emphasis */
+  --gold-400: #e9b949;
+  --gold-500: #d9a32e;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand-50: var(--brand-50);
+  --color-brand-100: var(--brand-100);
+  --color-brand-500: var(--brand-500);
+  --color-brand-600: var(--brand-600);
+  --color-brand-700: var(--brand-700);
+  --color-brand-800: var(--brand-800);
+  --color-brand-900: var(--brand-900);
+  --color-accent-400: var(--accent-400);
+  --color-accent-500: var(--accent-500);
+  --color-accent-600: var(--accent-600);
+  --color-accent-700: var(--accent-700);
+  --color-gold-400: var(--gold-400);
+  --color-gold-500: var(--gold-500);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
