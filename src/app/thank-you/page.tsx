@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { site } from "@/lib/site";
+import LeadConversionEvent from "@/components/LeadConversionEvent";
 
 export const metadata: Metadata = {
   title: "Thank You",
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
 export default function ThankYouPage() {
   return (
     <section className="bg-brand-50 px-4 py-20">
+      <LeadConversionEvent />
       <div className="mx-auto max-w-2xl rounded-[20px] bg-white p-10 text-center shadow-[0_10px_40px_rgba(0,0,0,0.1)] sm:p-14">
         <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-accent-500">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-12 w-12 fill-white" aria-hidden>

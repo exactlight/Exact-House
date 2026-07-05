@@ -108,3 +108,41 @@ body {
 .anim-in-right {
   animation: slideInRight 0.8s ease-out 0.4s both;
 }
+
+/* Blog article typography (rendered markdown) */
+.prose-eh {
+  color: #444;
+  line-height: 1.75;
+}
+.prose-eh h2 {
+  font-family: var(--font-bebas);
+  letter-spacing: 1px;
+  font-size: 1.9rem;
+  color: var(--brand-800);
+  margin: 2.2rem 0 0.8rem;
+}
+.prose-eh p {
+  margin-bottom: 1.1rem;
+}
+.prose-eh ul,
+.prose-eh ol {
+  margin: 0 0 1.1rem 1.4rem;
+}
+.prose-eh li {
+  margin-bottom: 0.45rem;
+}
+.prose-eh a {
+  color: var(--accent-600);
+  font-weight: 600;
+}
+.prose-eh strong {
+  color: var(--brand-800);
+}
+.prose-eh hr {
+  border: 0;
+  border-top: 1px solid var(--brand-100);
+  margin: 2rem 0;
+}
+.prose-eh em {
+  color: #666;
+}
