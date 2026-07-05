@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="We buy Wisconsin homes for cash. Any condition, no repairs, no commissions. Get a fair cash offer in 24 hours. Call 920-397-2922.">
+    <meta name="keywords" content="sell my house fast Wisconsin, cash home buyer Wisconsin, we buy houses Wisconsin, sell house as-is Wisconsin, quick home sale Madison, sell inherited house Wisconsin">
+    <meta property="og:title" content="Forward Wisconsin Home Buyers | Cash Offers in 24 Hours">
+    <meta property="og:description" content="We buy Wisconsin homes in any condition. No repairs, no commissions, close on your timeline.">
+    <meta property="og:url" content="https://www.forwardhomebuyer.com">
+    <meta name="theme-color" content="#1B4965">
+    <title>Forward Wisconsin Home Buyers | Sell Your House Fast for Cash</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="top-bar">Need to sell fast? Get a <a href="#offer">no-obligation cash offer</a> in 24 hours.</div>
+<header>
+    <div class="header-logo"><a href='/'><img src="logo.png" alt="Forward Wisconsin Home Buyers"></a></div>
+    <nav class="header-nav">
+        <a href='/'>Home</a>
+        <div class="nav-dropdown-wrap">
+            <a href='/#situations'>Situations</a>
+            <div class="nav-dropdown">
+                <a href='/inherited-property'>Inherited Property</a>
+                <a href='/divorce'>Going Through Divorce</a>
+                <a href='/foreclosure'>Facing Foreclosure</a>
+                <a href='/behind-on-payments'>Behind on Payments</a>
+                <a href='/needs-repairs'>Needs Repairs</a>
+                <a href='/tired-landlord'>Tired Landlord</a>
+                <a href='/vacant-property'>Vacant Property</a>
+                <a href='/tax-liens'>Tax Liens</a>
+                <a href='/relocating'>Relocating</a>
+            </div>
+        </div>
+        <div class="nav-dropdown-wrap">
+            <a href="#">Cities We Serve</a>
+            <div class="nav-dropdown wide">
+                <a href='/madison'>Madison</a>
+                <a href='/middleton'>Middleton</a>
+                <a href='/sun-prairie'>Sun Prairie</a>
+                <a href='/fitchburg'>Fitchburg</a>
+                <a href='/verona'>Verona</a>
+                <a href='/waunakee'>Waunakee</a>
+                <a href='/stoughton'>Stoughton</a>
+                <a href='/oregon'>Oregon</a>
+                <a href='/deforest'>DeForest</a>
+                <a href='/waukesha'>Waukesha</a>
+                <a href='/brookfield'>Brookfield</a>
+                <a href='/new-berlin'>New Berlin</a>
+                <a href='/muskego'>Muskego</a>
+                <a href='/oconomowoc'>Oconomowoc</a>
+                <a href='/menomonee-falls'>Menomonee Falls</a>
+                <a href='/pewaukee'>Pewaukee</a>
+                <a href='/sussex'>Sussex</a>
+                <a href='/milwaukee'>Milwaukee</a>
+                <a href='/racine'>Racine</a>
+                <a href='/janesville'>Janesville</a>
+                <a href='/beloit'>Beloit</a>
+                <a href='/fort-atkinson'>Fort Atkinson</a>
+                <a href='/watertown'>Watertown</a>
+                <a href='/whitewater'>Whitewater</a>
+                <a href='/elkhorn'>Elkhorn</a>
+                <a href='/beaver-dam'>Beaver Dam</a>
+                <a href='/waupun'>Waupun</a>
+            </div>
+        </div>
+        <a href="#offer">Get Offer</a>
+    </nav>
+    <button class="mobile-menu-btn" onclick="document.querySelector('.header-nav').classList.toggle('mobile-open')">☰</button>
+    <div class="header-phone">
+        <span class="header-phone-label">Call or Text Anytime</span>
+        <a href="tel:9203972922" class="header-phone-number">920-397-2922</a>
+    </div>
+</header>
+<section class="hero" id="offer">
+    <div class="hero-inner">
+        <div class="hero-text">
+            <h1>Get a <span class="highlight">Fair Cash Offer</span> on Your Wisconsin Home in 24 Hours</h1>
+            <p class="subtitle">No repairs. No showings. No commissions. No hassle. We buy homes in any condition and close on your timeline.</p>
+            <div class="hero-badges">
+                <div class="hero-badge"><span class="icon">&#10003;</span> No Fees or Commissions</div>
+                <div class="hero-badge"><span class="icon">&#10003;</span> Close in as Little as 3 Days</div>
+                <div class="hero-badge"><span class="icon">&#10003;</span> Any Condition, Any Situation</div>
+            </div>
+            <div class="hero-cta-group">
+                <a href="tel:9203972922" class="btn btn-primary btn-phone-hero">&#128222; Call Now: 920-397-2922</a>
+                <a href="sms:9203972922?body=Hi%20Ken%2C%20I%27d%20like%20a%20cash%20offer%20on%20my%20property." class="btn btn-secondary">&#128172; Text Us</a>
+            </div>
+        </div>
+        <div class="hero-form-wrapper">
+            <div class="hero-form-card">
+                <h2>Get Your Free Cash Offer</h2>
+                <p class="form-sub">No obligation. No pressure. Just a fair offer.</p>
+                <form id="captureForm" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="address">Property Address *</label>
+                        <input type="text" id="address" name="address" placeholder="123 Main St, Madison, WI" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><label for="name">Your Name *</label><input type="text" id="name" name="name" placeholder="Your name" required></div>
+                        <div class="form-group"><label for="phone">Phone *</label><input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" required></div>
+                    </div>
+                    <div class="form-group"><label for="email">Email (optional)</label><input type="email" id="email" name="email" placeholder="you@email.com"></div>
+                    <button type="submit" class="btn btn-primary form-submit" id="submitBtn">Get My Cash Offer &#8594;</button>
+                    <p class="form-trust"><span class="lock">&#128274;</span> Your info is 100% confidential. We will never share your information.</p>
+                </form>
+                <div class="form-success" id="formSuccess">
+                    <div class="check">&#9989;</div>
+                    <h3>We Got Your Info!</h3>
+                    <p>Ken will personally reach out within 24 hours with your cash offer. Need to talk sooner?</p>
+                    <a href="tel:9203972922" class="form-call-btn" style="margin-top:12px">&#128222; Call Ken: 920-397-2922</a>
+                    <a href="sms:9203972922?body=Hi%20Ken%2C%20I%20just%20submitted%20my%20info%20on%20your%20website%20and%20would%20like%20to%20discuss%20my%20property." class="form-call-btn" style="margin-top:8px; background: var(--green-600);">&#128172; Text Ken: 920-397-2922</a>
+                    <a id="successEmailLink" href="#" class="form-call-btn" style="margin-top:8px; background: var(--gray-700);" target="_blank">&#9993; Email Ken</a>
+                </div>
+                <div class="form-or">or</div>
+                <a href="tel:9203972922" class="form-call-btn">&#128222; Call Ken Directly: 920-397-2922</a>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="trust-bar">
+    <div class="trust-bar-inner">
+        <div class="trust-item"><div class="trust-number">100+</div><div class="trust-label">Homes Purchased</div></div>
+        <div class="trust-item"><div class="trust-number">24hr</div><div class="trust-label">Offer Turnaround</div></div>
+        <div class="trust-item"><div class="trust-number">$0</div><div class="trust-label">Fees & Commissions</div></div>
+        <div class="trust-item"><div class="trust-number">3</div><div class="trust-label">Days to Close</div></div>
+    </div>
+</div>
+<section id="how-it-works">
+    <div class="section-inner">
+        <div class="section-heading"><h2>How It Works</h2><p>Three simple steps. No stress. No surprises.</p></div>
+        <div class="steps">
+            <div class="step"><div class="step-number">1</div><h3>Tell Us About Your Property</h3><p>Fill out the form above or give us a call. Tell us about your home — condition doesn't matter. We buy houses as-is.</p><span class="step-time">Takes 2 minutes</span></div>
+            <div class="step"><div class="step-number">2</div><h3>Get Your Cash Offer</h3><p>We'll evaluate your property and present a fair, no-obligation cash offer within 24 hours. No games, no lowballing.</p><span class="step-time">Within 24 hours</span></div>
+            <div class="step"><div class="step-number">3</div><h3>Close & Get Paid</h3><p>Accept the offer and pick your closing date. We handle all the paperwork and pay all closing costs. Walk away with cash.</p><span class="step-time">As fast as 3 days</span></div>
+        </div>
+    </div>
+</section>
+<section class="section-alt">
+    <div class="section-inner">
+        <div class="section-heading"><h2>We Buy Houses in Any Situation</h2><p>No matter what life has thrown your way, we can help.</p></div>
+        <div class="situations-grid">
+            <a class='situation' href='/inherited-property'><div class="icon">&#127968;</div><h3>Inherited Property</h3></a>
+            <a class='situation' href='/divorce'><div class="icon">&#128148;</div><h3>Divorce</h3></a>
+            <a class='situation' href='/behind-on-payments'><div class="icon">&#128176;</div><h3>Behind on Payments</h3></a>
+            <a class='situation' href='/needs-repairs'><div class="icon">&#128295;</div><h3>Needs Major Repairs</h3></a>
+            <a class='situation' href='/vacant-property'><div class="icon">&#127961;</div><h3>Vacant Property</h3></a>
+            <a class='situation' href='/tired-landlord'><div class="icon">&#128100;</div><h3>Tired Landlord</h3></a>
+            <a class='situation' href='/tax-liens'><div class="icon">&#128200;</div><h3>Tax Liens</h3></a>
+            <a class='situation' href='/relocating'><div class="icon">&#128587;</div><h3>Relocating</h3></a>
+            <a class='situation' href='/foreclosure'><div class="icon">&#9200;</div><h3>Foreclosure Risk</h3></a>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="section-inner">
+        <div class="section-heading"><h2>Why Sell to Forward Wisconsin Home Buyers?</h2><p>We make selling your home the easiest thing you've done all year.</p></div>
+        <div class="benefits-grid">
+            <div class="benefit"><div class="benefit-icon">&#128176;</div><div><h3>Fair Cash Offers</h3><p>We run the numbers transparently and give you a fair price. No hidden fees, no last-minute deductions.</p></div></div>
+            <div class="benefit"><div class="benefit-icon">&#128197;</div><div><h3>You Pick the Closing Date</h3><p>Need to close in 3 days? No problem. Need 60 days? That works too. Your timeline, your terms.</p></div></div>
+            <div class="benefit"><div class="benefit-icon">&#128295;</div><div><h3>No Repairs Needed</h3><p>Leaky roof? Old furnace? Water damage? We buy houses in any condition. Leave the headaches to us.</p></div></div>
+            <div class="benefit"><div class="benefit-icon">&#128274;</div><div><h3>100% Confidential</h3><p>No yard signs. No open houses. No nosy neighbors. Your sale stays private from start to finish.</p></div></div>
+            <div class="benefit"><div class="benefit-icon">&#10060;</div><div><h3>Zero Commissions</h3><p>With a traditional sale, you'd pay 5-6% in agent commissions. With us, you pay absolutely nothing.</p></div></div>
+            <div class="benefit"><div class="benefit-icon">&#129309;</div><div><h3>Local Wisconsin Buyer</h3><p>We're not a faceless corporation. Ken is a local Wisconsin buyer who will personally handle your sale.</p></div></div>
+        </div>
+    </div>
+</section>
+<section class="section-alt">
+    <div class="section-inner">
+        <div class="section-heading"><h2>What Homeowners Are Saying</h2></div>
+        <div class="testimonials">
+            <div class="testimonial"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testimonial-text">After my mother passed, dealing with her house was the last thing I wanted to worry about. Ken made it so easy. He gave us a fair offer and handled everything. We closed in two weeks.</p><div class="testimonial-author"><div class="testimonial-avatar">MJ</div><div><div class="testimonial-name">Margaret J.</div><div class="testimonial-detail">Dane County, WI</div></div></div></div>
+            <div class="testimonial"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testimonial-text">I was behind on my mortgage and didn't know what to do. Ken didn't judge my situation — he just offered a solution. I avoided foreclosure and walked away with cash in my pocket.</p><div class="testimonial-author"><div class="testimonial-avatar">RL</div><div><div class="testimonial-name">Robert L.</div><div class="testimonial-detail">Waukesha County, WI</div></div></div></div>
+            <div class="testimonial"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="testimonial-text">We needed to sell our rental property fast after dealing with problem tenants. Ken bought it as-is — no cleaning, no repairs. The whole process took 18 days start to finish.</p><div class="testimonial-author"><div class="testimonial-avatar">TK</div><div><div class="testimonial-name">Tom & Susan K.</div><div class="testimonial-detail">Jefferson County, WI</div></div></div></div>
+        </div>
+    </div>
+</section>
+<div class="cta-banner">
+    <h2>Ready to Get Your Cash Offer?</h2>
+    <p>No obligations. No pressure. Just a fair offer on your Wisconsin home.</p>
+    <div class="btn-group">
+        <a href="tel:9203972922" class="btn btn-primary btn-phone-hero">&#128222; Call Now: 920-397-2922</a>
+        <a href="sms:9203972922?body=Hi%20Ken%2C%20I%27d%20like%20a%20cash%20offer%20on%20my%20property." class="btn btn-secondary">&#128172; Text Us for an Offer</a>
+        <a href="#offer" class="btn btn-green">Fill Out the Form &#8593;</a>
+    </div>
+</div>
+<section>
+    <div class="section-inner">
+        <div class="section-heading"><h2>Common Questions</h2></div>
+        <div class="faq-list">
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">How do you determine the offer price?</button><div class="faq-answer">We look at recent comparable sales in your area, the current condition of the property, and any repairs needed. We're transparent about our numbers and will walk you through exactly how we arrived at our offer.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Are there any fees or commissions?</button><div class="faq-answer">None. Zero. We pay all closing costs. There are no agent commissions, no hidden fees, and no surprise deductions at closing. The offer we give you is the amount you receive.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Do I need to make repairs before selling?</button><div class="faq-answer">Absolutely not. We buy houses in any condition — water damage, foundation issues, old roof, outdated everything. That's our specialty. We handle all repairs after purchase.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">How fast can you close?</button><div class="faq-answer">We can close in as little as 3 days. But we also work on your timeline — if you need 30, 60, or even 90 days, that's perfectly fine. You pick the date that works for you.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">What if I'm behind on mortgage payments?</button><div class="faq-answer">We work with homeowners in pre-foreclosure situations regularly. We can often close before the foreclosure process completes, helping you protect your credit and walk away with cash.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Is there any obligation if I get an offer?</button><div class="faq-answer">None whatsoever. Getting an offer from us is completely free and carries zero obligation. If the number works for you, great. If not, no hard feelings.</div></div>
+        </div>
+    </div>
+</section>
+<footer>
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand"><img src="logo.png" alt="Forward Wisconsin Home Buyers"><p>We buy Wisconsin homes. As-is. Your timeline. A local, family-operated home buying company.</p></div>
+            <div class="footer-contact"><h3>Get in Touch</h3><a href="tel:9203972922">☎ 920-397-2922</a><a href="sms:9203972922">💬 Text Us</a><a href="mailto:forwardhomebuyer@gmail.com" target="_blank">✉ forwardhomebuyer@gmail.com</a></div>
+            <div class="footer-contact"><h3>Situations</h3><a href='/inherited-property'>Inherited Property</a><a href='/divorce'>Divorce</a><a href='/foreclosure'>Foreclosure</a><a href='/behind-on-payments'>Behind on Payments</a><a href='/needs-repairs'>Needs Repairs</a><a href='/tired-landlord'>Tired Landlord</a></div>
+            <div class="footer-contact"><h3>Cities We Serve</h3><a href='/madison'>Madison</a><a href='/waukesha'>Waukesha</a><a href='/milwaukee'>Milwaukee</a><a href='/janesville'>Janesville</a><a href='/brookfield'>Brookfield</a><a href='/racine'>Racine</a><a href='/middleton'>Middleton</a><a href='/menomonee-falls'>Menomonee Falls</a><a href='/beaver-dam'>Beaver Dam</a></div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 Forward Wisconsin Home Buyers. All rights reserved.</div>
+    </div>
+</footer>
+<div class="mobile-cta"><div class="mobile-cta-inner"><a href="tel:9203972922" class="btn btn-primary">&#128222; Call Ken</a><a href="sms:9203972922?body=Hi%20Ken%2C%20I%27d%20like%20a%20cash%20offer." class="btn btn-green">&#128172; Text Us</a></div></div>
+<script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { site } from "@/lib/site";
+
+type Props = {
+  /** Netlify form name — must match a form defined in public/__forms.html */
+  formName: string;
+  /** Extra hidden fields, e.g. { city: "Madison" } or { situation: "Foreclosure" } */
+  hidden?: Record<string, string>;
+};
+
+const inputCls =
+  "w-full rounded-lg border-2 border-[#E5E7EB] px-4 py-3.5 text-base text-foreground transition-all focus:border-brand-500 focus:outline-none focus:ring-[3px] focus:ring-brand-500/15";
+
+/**
+ * Step 1 of the two-step lead flow. Dual-writes the lead:
+ *  1. Netlify Forms (drives SMS notification + /admin dashboard)
+ *  2. The existing Supabase notify-web-lead pipeline (unchanged from the
+ *     current live site, so nothing downstream breaks)
+ * Then forwards to /details for step 2. Lead is safe even if step 2 is
+ * abandoned or one of the two writes fails.
+ */
+export default function LeadForm({ formName, hidden = {} }: Props) {
+  const router = useRouter();
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setSubmitting(true);
+    setError("");
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    // Spam honeypot: real users never fill this field
+    if (data.get("bot-field")) return;
+
+    const body = new URLSearchParams();
+    body.set("form-name", formName);
+    body.set("source-page", window.location.pathname);
+    for (const [k, v] of Object.entries(hidden)) body.set(k, v);
+    for (const [k, v] of data.entries()) {
+      if (typeof v === "string" && k !== "bot-field") body.set(k, v);
+    }
+
+    const name = String(data.get("name") ?? "").trim();
+    const nameParts = name.split(/\s+/);
+    const supabasePayload = {
+      first_name: nameParts[0] || "",
+      last_name: nameParts.slice(1).join(" ") || nameParts[0] || "",
+      phone: String(data.get("phone") ?? "").trim(),
+      email: String(data.get("email") ?? "").trim(),
+      property_address: String(data.get("address") ?? "").trim(),
+      notes: `Submitted via website form (${window.location.pathname})`,
+    };
+
+    const results = await Promise.allSettled([
+      fetch("/__forms.html", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body.toString(),
+      }).then((r) => {
+        if (!r.ok) throw new Error(`netlify ${r.status}`);
+      }),
+      fetch(site.supabaseLeadEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(supabasePayload),
+      }).then((r) => {
+        if (!r.ok) throw new Error(`supabase ${r.status}`);
+      }),
+    ]);
+
+    // Proceed if EITHER pipeline captured the lead
+    if (results.some((r) => r.status === "fulfilled")) {
+      sessionStorage.setItem(
+        "fhb-lead",
+        JSON.stringify({
+          name,
+          address: supabasePayload.property_address,
+          phone: supabasePayload.phone,
+          sourcePage: window.location.pathname,
+        })
+      );
+      router.push("/details");
+    } else {
+      setError(
+        `Something went wrong sending your info. Please try again, or call/text us at ${site.phone}.`
+      );
+      setSubmitting(false);
+    }
+  }
+
+  return (
+    <div className="anim-in-right rounded-2xl bg-white p-7 shadow-[0_20px_60px_rgba(0,0,0,0.3)] sm:p-9">
+      <h2 className="heading-display text-3xl text-brand-900">
+        Get Your Free Cash Offer
+      </h2>
+      <p className="mt-1.5 text-[#6B7280]">
+        Takes about 30 seconds. We&apos;ll text or email your offer within 24
+        hours — no pressure, no obligation.
+      </p>
+
+      <form onSubmit={onSubmit} className="mt-5 space-y-4" data-form-name={formName}>
+        <p className="hidden">
+          <label>
+            Don&apos;t fill this out: <input name="bot-field" tabIndex={-1} autoComplete="off" />
+          </label>
+        </p>
+
+        <div>
+          <label htmlFor={`${formName}-address`} className="mb-1.5 block text-sm font-bold text-brand-900">
+            Property Address *
+          </label>
+          <input
+            id={`${formName}-address`}
+            name="address"
+            type="text"
+            required
+            autoComplete="street-address"
+            placeholder="123 Main St, Madison, WI"
+            className={inputCls}
+          />
+        </div>
+
+        <div className="grid gap-4 sm:grid-cols-2">
+          <div>
+            <label htmlFor={`${formName}-name`} className="mb-1.5 block text-sm font-bold text-brand-900">
+              Full Name *
+            </label>
+            <input id={`${formName}-name`} name="name" type="text" required autoComplete="name" className={inputCls} />
+          </div>
+          <div>
+            <label htmlFor={`${formName}-phone`} className="mb-1.5 block text-sm font-bold text-brand-900">
+              Phone *
+            </label>
+            <input id={`${formName}-phone`} name="phone" type="tel" required autoComplete="tel" className={inputCls} />
+          </div>
+        </div>
+
+        <div>
+          <label htmlFor={`${formName}-email`} className="mb-1.5 block text-sm font-bold text-brand-900">
+            Email (Optional)
+          </label>
+          <input id={`${formName}-email`} name="email" type="email" autoComplete="email" className={inputCls} />
+        </div>
+
+        {error ? <p className="text-sm font-medium text-red-600">{error}</p> : null}
+
+        <button
+          type="submit"
+          disabled={submitting}
+          className="w-full rounded-lg bg-accent-500 py-4 text-lg font-extrabold text-white shadow-[0_4px_14px_rgba(249,115,22,0.4)] transition-all hover:-translate-y-0.5 hover:bg-accent-600 hover:shadow-[0_6px_20px_rgba(249,115,22,0.5)] disabled:opacity-60"
+        >
+          {submitting ? "Submitting…" : "Get My Cash Offer →"}
+        </button>
+
+        {/* SMS consent disclosure — required by TCPA and carrier reviews. */}
+        <p className="text-xs leading-relaxed text-[#9CA3AF]">
+          By submitting, you agree that {site.name} may contact you by phone,
+          text message, or email about your property inquiry, including via
+          automated means. Consent is not a condition of any purchase. Message
+          and data rates may apply. Message frequency varies. Reply STOP to
+          opt out or HELP for help. See our{" "}
+          <Link href="/privacy" className="underline hover:text-brand-800">
+            Privacy Policy
+          </Link>
+          .
+        </p>
+      </form>
+    </div>
+  );
+}

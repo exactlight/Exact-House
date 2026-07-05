@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sell a house that needs repairs in Wisconsin. No repairs needed. We buy as-is. Fair cash offer in 24 hours. Call 920-397-2922.">
+    <meta name="keywords" content="sell house needs repairs Wisconsin, fixer-upper buyer, sell house as-is, damaged house buyer">
+    <meta property="og:title" content="Sell a House That Needs Repairs in Wisconsin">
+    <meta property="og:description" content="House needs major work? We buy it as-is. No repairs, no cleanup, no hassle.">
+    <title>Sell a House That Needs Repairs in Wisconsin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="top-bar">House needs work? <a href="#offer">Get a cash offer</a> as-is. No repairs needed.</div>
+<header>
+    <div class="header-logo"><a href='/'><img src="logo.png" alt="Forward Wisconsin Home Buyers"></a></div>
+    <nav class="header-nav">
+        <a href='/'>Home</a>
+        <div class="nav-dropdown-wrap">
+            <a href='/#situations'>Situations</a>
+            <div class="nav-dropdown">
+                <a href='/inherited-property'>Inherited Property</a>
+                <a href='/divorce'>Going Through Divorce</a>
+                <a href='/foreclosure'>Facing Foreclosure</a>
+                <a href='/behind-on-payments'>Behind on Payments</a>
+                <a href='/needs-repairs'>Needs Repairs</a>
+                <a href='/tired-landlord'>Tired Landlord</a>
+                <a href='/vacant-property'>Vacant Property</a>
+                <a href='/tax-liens'>Tax Liens</a>
+                <a href='/relocating'>Relocating</a>
+            </div>
+        </div>
+        <div class="nav-dropdown-wrap">
+            <a href="#">Cities We Serve</a>
+            <div class="nav-dropdown wide">
+                <a href='/madison'>Madison</a>
+                <a href='/middleton'>Middleton</a>
+                <a href='/sun-prairie'>Sun Prairie</a>
+                <a href='/fitchburg'>Fitchburg</a>
+                <a href='/verona'>Verona</a>
+                <a href='/waunakee'>Waunakee</a>
+                <a href='/stoughton'>Stoughton</a>
+                <a href='/oregon'>Oregon</a>
+                <a href='/deforest'>DeForest</a>
+                <a href='/waukesha'>Waukesha</a>
+                <a href='/brookfield'>Brookfield</a>
+                <a href='/new-berlin'>New Berlin</a>
+                <a href='/muskego'>Muskego</a>
+                <a href='/oconomowoc'>Oconomowoc</a>
+                <a href='/menomonee-falls'>Menomonee Falls</a>
+                <a href='/pewaukee'>Pewaukee</a>
+                <a href='/sussex'>Sussex</a>
+                <a href='/milwaukee'>Milwaukee</a>
+                <a href='/racine'>Racine</a>
+                <a href='/janesville'>Janesville</a>
+                <a href='/beloit'>Beloit</a>
+                <a href='/fort-atkinson'>Fort Atkinson</a>
+                <a href='/watertown'>Watertown</a>
+                <a href='/whitewater'>Whitewater</a>
+                <a href='/elkhorn'>Elkhorn</a>
+                <a href='/beaver-dam'>Beaver Dam</a>
+                <a href='/waupun'>Waupun</a>
+            </div>
+        </div>
+        <a href="#offer">Get Offer</a>
+    </nav>
+    <button class="mobile-menu-btn" onclick="document.querySelector('.header-nav').classList.toggle('mobile-open')">☰</button>
+    <div class="header-phone">
+        <span class="header-phone-label">Call or Text Anytime</span>
+        <a href="tel:9203972922" class="header-phone-number">920-397-2922</a>
+    </div>
+</header>
+<div class="breadcrumb"><div class="breadcrumb-inner"><a href='/'>Home</a> <span class="breadcrumb-sep">→</span> Needs Repairs</div></div>
+<section class="hero" id="offer">
+    <div class="hero-inner">
+        <div class="hero-text">
+            <h1>Sell a House That <span class="highlight">Needs Repairs</span> in Wisconsin</h1>
+            <p class="subtitle">Foundation problems? Old roof? Water damage? We buy homes in any condition. No repairs needed. No contractor estimates. No stress.</p>
+            <div class="hero-badges">
+                <div class="hero-badge"><span class="icon">&#10003;</span> Buy As-Is</div>
+                <div class="hero-badge"><span class="icon">&#10003;</span> No Repairs Required</div>
+                <div class="hero-badge"><span class="icon">&#10003;</span> Fair Offers</div>
+            </div>
+            <div class="hero-cta-group">
+                <a href="tel:9203972922" class="btn btn-primary btn-phone-hero">&#128222; Call Now: 920-397-2922</a>
+                <a href="sms:9203972922?body=Hi%20Ken%2C%20my%20house%20needs%20repairs." class="btn btn-secondary">&#128172; Text Us</a>
+            </div>
+        </div>
+        <div class="hero-form-wrapper">
+            <div class="hero-form-card">
+                <h2>Get Your Free Cash Offer</h2>
+                <p class="form-sub">We buy homes in any condition.</p>
+                <form id="captureForm" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="address">Property Address *</label>
+                        <input type="text" id="address" name="address" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><label for="name">Your Name *</label><input type="text" id="name" name="name" required></div>
+                        <div class="form-group"><label for="phone">Phone *</label><input type="tel" id="phone" name="phone" required></div>
+                    </div>
+                    <div class="form-group"><label for="email">Email (optional)</label><input type="email" id="email" name="email"></div>
+                    <button type="submit" class="btn btn-primary form-submit" id="submitBtn">Get My Cash Offer &#8594;</button>
+                    <p class="form-trust"><span class="lock">&#128274;</span> No inspections or appraisals needed.</p>
+                </form>
+                <div class="form-success" id="formSuccess">
+                    <div class="check">&#9989;</div>
+                    <h3>We Got Your Info!</h3>
+                    <p>Ken will reach out within 24 hours with a cash offer. No repairs. No conditions.</p>
+                    <a href="tel:9203972922" class="form-call-btn" style="margin-top:16px">&#128222; Call Ken Now: 920-397-2922</a>
+                </div>
+                <div class="form-or">or</div>
+                <a href="tel:9203972922" class="form-call-btn">&#128222; Call Ken Directly: 920-397-2922</a>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="trust-bar">
+    <div class="trust-bar-inner">
+        <div class="trust-item"><div class="trust-number">100+</div><div class="trust-label">Homes Purchased</div></div>
+        <div class="trust-item"><div class="trust-number">24hr</div><div class="trust-label">Offer Turnaround</div></div>
+        <div class="trust-item"><div class="trust-number">$0</div><div class="trust-label">Fees & Commissions</div></div>
+        <div class="trust-item"><div class="trust-number">3</div><div class="trust-label">Days to Close</div></div>
+    </div>
+</div>
+<section>
+    <div class="section-inner">
+        <div class="local-details">
+            <h3>Why Repairing Before Selling Costs More</h3>
+            <p>You get estimates for the roof, foundation work, electrical updates, plumbing, and more. Contractors are booked out. The cost balloons. You make repairs, but buyers still demand more inspections and concessions. Traditional sale timelines stretch to 4-6 months with uncertain results.</p>
+            <p><strong>Our solution:</strong> We buy as-is. No repairs. No inspections. No appraisals. One fair cash offer. Close in 3 days. The repairs are our problem, not yours.</p>
+        </div>
+        <div class="section-heading"><h2>We Buy Any Condition Home</h2></div>
+        <div class="benefits-grid">
+            <div class="benefit"><div class="benefit-icon">🏚️</div><div><h3>Any Condition</h3><p>Roof leaks, foundation cracks, electrical issues, plumbing problems, mold, water damage — we buy them all.</p></div></div>
+            <div class="benefit"><div class="benefit-icon">💰</div><div><h3>Fair Offers</h3><p>We price in repair costs fairly. You get a true market value offer, not a lowball from someone exploiting distress.</p></div></div>
+            <div class="benefit"><div class="benefit-icon">⏱️</div><div><h3>No Inspection Games</h3><p>Traditional buyers get inspections, ask for credits, renegotiate. We buy as-is. One offer. No back-and-forth.</p></div></div>
+            <div class="benefit"><div class="benefit-icon">🚫</div><div><h3>No Repairs Needed</h3><p>No contractor estimates. No repair negotiations. No temporary fixes. Walk away from the problem.</p></div></div>
+            <div class="benefit"><div class="benefit-icon">🎯</div><div><h3>Straight Sale</h3><p>No financing contingencies. No appraisals. No lender surprises. Cash offer, firm timeline.</p></div></div>
+            <div class="benefit"><div class="benefit-icon">🏁</div><div><h3>Fast Closing</h3><p>3 days to close once you accept. You're free of the problem and the property quickly.</p></div></div>
+        </div>
+    </div>
+</section>
+<section class="section-alt">
+    <div class="section-inner">
+        <div class="section-heading"><h2>Common Repair Issues We Handle</h2></div>
+        <div class="faq-list">
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">What about foundation problems?</button><div class="faq-answer">We buy homes with foundation issues regularly. Cracks, settling, basement water — we handle them all. Our offer accounts for the repair cost.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Can you buy a house with a bad roof?</button><div class="faq-answer">Yes. Old roof, leaking roof, missing shingles — doesn't matter. We buy it and handle the replacement.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">What if there's water damage or mold?</button><div class="faq-answer">We buy water-damaged homes and homes with mold. We know how to remediate and repair. Your offer accounts for it.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Do you buy homes with electrical or plumbing issues?</button><div class="faq-answer">Absolutely. Outdated electrical, failing plumbing, systems that need replacement — we handle it all.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">What about houses that are just outdated?</button><div class="faq-answer">Outdated kitchens, bathrooms, flooring, paint, fixtures — these don't need to be updated. We buy and renovate.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Do I need to disclose all the issues?</button><div class="faq-answer">Yes, disclose everything. We appreciate transparency. Our offer is based on honest information, so there are no surprises.</div></div>
+        </div>
+    </div>
+</section>
+<div class="cta-banner">
+    <h2>Stop Worrying About Repairs</h2>
+    <p>Sell as-is. Get cash. Move on.</p>
+    <div class="btn-group">
+        <a href="tel:9203972922" class="btn btn-primary btn-phone-hero">&#128222; Call Now: 920-397-2922</a>
+        <a href="sms:9203972922?body=Hi%20Ken%2C%20my%20house%20needs%20repairs." class="btn btn-secondary">&#128172; Text Us</a>
+        <a href="#offer" class="btn btn-green">Fill Out the Form &#8593;</a>
+    </div>
+</div>
+<footer>
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand"><img src="logo.png" alt="Forward Wisconsin Home Buyers"><p>We buy Wisconsin homes. As-is. Your timeline. A local, family-operated home buying company.</p></div>
+            <div class="footer-contact"><h3>Get in Touch</h3><a href="tel:9203972922">☎ 920-397-2922</a><a href="sms:9203972922">💬 Text Us</a><a href="mailto:forwardhomebuyer@gmail.com" target="_blank">✉ forwardhomebuyer@gmail.com</a></div>
+            <div class="footer-contact"><h3>Situations</h3><a href='/inherited-property'>Inherited Property</a><a href='/divorce'>Divorce</a><a href='/foreclosure'>Foreclosure</a><a href='/behind-on-payments'>Behind on Payments</a><a href='/needs-repairs'>Needs Repairs</a><a href='/tired-landlord'>Tired Landlord</a></div>
+            <div class="footer-contact"><h3>Cities We Serve</h3><a href='/madison'>Madison</a><a href='/waukesha'>Waukesha</a><a href='/milwaukee'>Milwaukee</a><a href='/janesville'>Janesville</a><a href='/brookfield'>Brookfield</a><a href='/racine'>Racine</a><a href='/middleton'>Middleton</a><a href='/menomonee-falls'>Menomonee Falls</a><a href='/beaver-dam'>Beaver Dam</a></div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 Forward Wisconsin Home Buyers. All rights reserved.</div>
+    </div>
+</footer>
+<div class="mobile-cta"><div class="mobile-cta-inner"><a href="tel:9203972922" class="btn btn-primary">&#128222; Call Ken</a><a href="sms:9203972922?body=Hi%20Ken%2C%20I%27d%20like%20a%20cash%20offer." class="btn btn-green">&#128172; Text Us</a></div></div>
+<script src="main.js"></script>
+</body>
+</html>

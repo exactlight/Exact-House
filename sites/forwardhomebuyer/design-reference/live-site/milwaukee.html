@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sell your home fast in Milwaukee, Wisconsin. Forward Wisconsin Home Buyers buys homes throughout Milwaukee County. Fair cash offers in 24 hours.">
+    <meta name="keywords" content="sell home fast Milwaukee, cash offer Wisconsin, buy house Milwaukee County, fast sale">
+    <meta property="og:title" content="Sell Home Fast in Milwaukee, WI | Forward Wisconsin Home Buyers">
+    <meta property="og:description" content="Need to sell your Milwaukee home quickly? We buy homes in any condition. Fair cash offer in 24 hours.">
+    <meta property="og:url" content="https://www.forwardhomebuyer.com/milwaukee.html">
+    <title>Sell Home Fast in Milwaukee, WI | Forward Wisconsin Home Buyers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="top-bar">Need to sell fast? Get a <a href="#offer">no-obligation cash offer</a> in 24 hours.</div>
+<header>
+    <div class="header-logo"><a href='/'><img src="logo.png" alt="Forward Wisconsin Home Buyers"></a></div>
+    <nav class="header-nav">
+        <a href='/'>Home</a>
+        <div class="nav-dropdown-wrap">
+            <a href='/#situations'>Situations</a>
+            <div class="nav-dropdown">
+                <a href='/inherited-property'>Inherited Property</a>
+                <a href='/divorce'>Going Through Divorce</a>
+                <a href='/foreclosure'>Facing Foreclosure</a>
+                <a href='/behind-on-payments'>Behind on Payments</a>
+                <a href='/needs-repairs'>Needs Repairs</a>
+                <a href='/tired-landlord'>Tired Landlord</a>
+                <a href='/vacant-property'>Vacant Property</a>
+                <a href='/tax-liens'>Tax Liens</a>
+                <a href='/relocating'>Relocating</a>
+            </div>
+        </div>
+        <div class="nav-dropdown-wrap">
+            <a href="#">Cities We Serve</a>
+            <div class="nav-dropdown wide">
+                <a href='/madison'>Madison</a>
+                <a href='/middleton'>Middleton</a>
+                <a href='/sun-prairie'>Sun Prairie</a>
+                <a href='/fitchburg'>Fitchburg</a>
+                <a href='/verona'>Verona</a>
+                <a href='/waunakee'>Waunakee</a>
+                <a href='/stoughton'>Stoughton</a>
+                <a href='/oregon'>Oregon</a>
+                <a href='/deforest'>DeForest</a>
+                <a href='/waukesha'>Waukesha</a>
+                <a href='/brookfield'>Brookfield</a>
+                <a href='/new-berlin'>New Berlin</a>
+                <a href='/muskego'>Muskego</a>
+                <a href='/oconomowoc'>Oconomowoc</a>
+                <a href='/menomonee-falls'>Menomonee Falls</a>
+                <a href='/pewaukee'>Pewaukee</a>
+                <a href='/sussex'>Sussex</a>
+                <a href='/milwaukee'>Milwaukee</a>
+                <a href='/racine'>Racine</a>
+                <a href='/janesville'>Janesville</a>
+                <a href='/beloit'>Beloit</a>
+                <a href='/fort-atkinson'>Fort Atkinson</a>
+                <a href='/watertown'>Watertown</a>
+                <a href='/whitewater'>Whitewater</a>
+                <a href='/elkhorn'>Elkhorn</a>
+                <a href='/beaver-dam'>Beaver Dam</a>
+                <a href='/waupun'>Waupun</a>
+            </div>
+        </div>
+        <a href="#offer">Get Offer</a>
+    </nav>
+    <button class="mobile-menu-btn" onclick="document.querySelector('.header-nav').classList.toggle('mobile-open')">☰</button>
+    <div class="header-phone">
+        <span class="header-phone-label">Call or Text Anytime</span>
+        <a href="tel:9203972922" class="header-phone-number">920-397-2922</a>
+    </div>
+</header>
+<div class="breadcrumb"><div class="breadcrumb-inner"><a href='/'>Home</a> <span class="breadcrumb-sep">→</span> Milwaukee</div></div>
+<section class="hero" id="offer">
+    <div class="hero-inner">
+        <div class="hero-text">
+            <h1>Sell Your Home Fast in <span class="highlight">Milwaukee</span></h1>
+            <p class="subtitle">Forward Wisconsin Home Buyers buys homes throughout Milwaukee County. Get a fair cash offer in 24 hours.</p>
+            <div class="hero-badges">
+                <div class="hero-badge"><span class="icon">✓</span> Fast Process</div>
+                <div class="hero-badge"><span class="icon">✓</span> Fair Pricing</div>
+                <div class="hero-badge"><span class="icon">✓</span> As-Is Purchases</div>
+            </div>
+            <div class="hero-cta-group">
+                <a href="tel:9203972922" class="btn btn-primary btn-phone-hero">☎ Call Now: 920-397-2922</a>
+                <a href="sms:9203972922?body=Hi%20Ken%2C%20I%27d%20like%20help%20selling%20my%20Milwaukee%20home." class="btn btn-secondary">💬 Text Us</a>
+            </div>
+        </div>
+        <div class="hero-form-wrapper">
+            <div class="hero-form-card">
+                <h2>Get Your Free Cash Offer</h2>
+                <p class="form-sub">No obligation. Fast response guaranteed.</p>
+                <form id="captureForm" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="address">Property Address *</label>
+                        <input type="text" id="address" name="address" placeholder="Milwaukee address" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><label for="name">Your Name *</label><input type="text" id="name" name="name" required></div>
+                        <div class="form-group"><label for="phone">Phone *</label><input type="tel" id="phone" name="phone" required></div>
+                    </div>
+                    <div class="form-group"><label for="email">Email (optional)</label><input type="email" id="email" name="email"></div>
+                    <button type="submit" class="btn btn-primary form-submit" id="submitBtn">Get My Cash Offer →</button>
+                    <p class="form-trust"><span class="lock">🔒</span> 100% confidential. Fair offers only.</p>
+                </form>
+                <div class="form-success" id="formSuccess">
+                    <div class="check">✅</div>
+                    <h3>We Got Your Info!</h3>
+                    <p>Ken will reach out within 24 hours with a fair cash offer for your Milwaukee property.</p>
+                    <a href="tel:9203972922" class="form-call-btn" style="margin-top:16px">☎ Call Ken Now: 920-397-2922</a>
+                    <a href="sms:9203972922?body=Hi%20Ken%2C%20I%27d%20like%20to%20sell%20my%20home." class="form-call-btn" style="margin-top:12px">💬 Text Ken</a>
+                    <a href="mailto:forwardhomebuyer@gmail.com" class="form-call-btn" style="margin-top:12px">✉ Email Ken</a>
+                </div>
+                <div class="form-or">or</div>
+                <a href="tel:9203972922" class="form-call-btn">☎ Call Ken Directly: 920-397-2922</a>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="trust-bar">
+    <div class="trust-bar-inner">
+        <div class="trust-item"><div class="trust-number">100+</div><div class="trust-label">Homes Purchased</div></div>
+        <div class="trust-item"><div class="trust-number">24hr</div><div class="trust-label">Offer Turnaround</div></div>
+        <div class="trust-item"><div class="trust-number">$0</div><div class="trust-label">Fees & Commissions</div></div>
+        <div class="trust-item"><div class="trust-number">3</div><div class="trust-label">Days to Close</div></div>
+    </div>
+</div>
+<section>
+    <div class="section-inner">
+        <div class="local-details">
+            <h3>Fast Home Sales in Milwaukee and Milwaukee County</h3>
+            <p>Milwaukee is Wisconsin's largest city, known for its historic neighborhoods, waterfront attractions, and diverse communities. Whether you're in downtown Milwaukee, the suburbs, or anywhere in Milwaukee County, we buy homes quickly and fairly in any condition.</p>
+            <p>Milwaukee's real estate market is diverse, with properties ranging from historic homes to modern developments. Traditional sales involve lengthy inspection periods, appraisals, and buyer contingencies. If you need to sell quickly—due to inherited property, financial hardship, foreclosure, relocation, or any other reason—Forward Wisconsin Home Buyers offers a straightforward cash alternative.</p>
+            <p>We've worked with hundreds of Milwaukee-area homeowners and understand the local market across all neighborhoods and property types.</p>
+        </div>
+        <div class="section-heading"><h2>Why Sell to Forward Wisconsin Home Buyers in Milwaukee</h2></div>
+        <div class="benefits-grid">
+            <div class="benefit"><div class="benefit-icon">🏠</div><div><h3>Neighborhood Expertise</h3><p>We know Milwaukee neighborhoods and Milwaukee County property values. Your offer reflects fair market assessment specific to your location.</p></div></div>
+            <div class="benefit"><div class="benefit-icon">⚡</div><div><h3>Fast Closing</h3><p>3 days from offer to closing. No waiting for financing, inspections, or appraisals. You decide when to close.</p></div></div>
+            <div class="benefit"><div class="benefit-icon">🏚️</div><div><h3>Buy Any Condition</h3><p>Historic homes, newer homes, homes needing work—we buy as-is. Your home's condition doesn't matter.</p></div></div>
+            <div class="benefit"><div class="benefit-icon">💰</div><div><h3>Cash Offer, No Contingencies</h3><p>We make firm cash offers. No financing risk, no deal cancellations, no surprises at closing.</p></div></div>
+            <div class="benefit"><div class="benefit-icon">⚖️</div><div><h3>Fair Market Pricing</h3><p>Our offers are based on genuine market analysis and fair valuation, not low-ball tactics.</p></div></div>
+            <div class="benefit"><div class="benefit-icon">✨</div><div><h3>Professional, Straightforward</h3><p>No open houses, no showings, no real estate commissions. Just professional service and quick results.</p></div></div>
+        </div>
+    </div>
+</section>
+<section class="section-alt">
+    <div class="section-inner">
+        <div class="section-heading"><h2>Questions About Selling in Milwaukee</h2></div>
+        <div class="faq-list">
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Do you buy homes in all Milwaukee neighborhoods?</button><div class="faq-answer">Yes. We buy homes throughout Milwaukee County—south side, north side, downtown areas, and suburbs. Neighborhood and condition don't matter.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">How do you price Milwaukee properties?</button><div class="faq-answer">We evaluate comparable recent sales in your specific neighborhood, your home's condition, needed repairs, and current market trends in Milwaukee County.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">What if my home has issues or needs repairs?</button><div class="faq-answer">No problem. We buy homes in any condition—structural issues, outdated systems, cosmetic damage, anything. We make offers as-is.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Can you buy rental properties in Milwaukee?</button><div class="faq-answer">Yes. We buy investment properties and rental homes in any condition. We handle the transaction directly without requiring tenant involvement.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">How fast is your closing timeline?</button><div class="faq-answer">As little as 3 days from offer acceptance to closing. We work with experienced Milwaukee title companies to ensure smooth, quick transactions.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Can I stay in the home during the sale?</button><div class="faq-answer">Yes. In most cases you can live in the home until closing. This is helpful if you're arranging a move or coordinating timing.</div></div>
+        </div>
+    </div>
+</section>
+<div class="cta-banner">
+    <h2>Get Your Milwaukee Home Valued Today</h2>
+    <p>We buy homes throughout Milwaukee County quickly and fairly. Get your cash offer now.</p>
+    <div class="btn-group">
+        <a href="tel:9203972922" class="btn btn-primary btn-phone-hero">☎ Call Now: 920-397-2922</a>
+        <a href="sms:9203972922?body=Hi%20Ken%2C%20I%27d%20like%20to%20sell%20my%20Milwaukee%20home." class="btn btn-secondary">💬 Text Us</a>
+        <a href="#offer" class="btn btn-green">Fill Out the Form ↑</a>
+    </div>
+</div>
+<footer>
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand"><img src="logo.png" alt="Forward Wisconsin Home Buyers"><p>We buy Wisconsin homes. As-is. Your timeline. A local, family-operated home buying company.</p></div>
+            <div class="footer-contact"><h3>Get in Touch</h3><a href="tel:9203972922">☎ 920-397-2922</a><a href="sms:9203972922">💬 Text Us</a><a href="mailto:forwardhomebuyer@gmail.com" target="_blank">✉ forwardhomebuyer@gmail.com</a></div>
+            <div class="footer-contact"><h3>Situations</h3><a href='/inherited-property'>Inherited Property</a><a href='/divorce'>Divorce</a><a href='/foreclosure'>Foreclosure</a><a href='/behind-on-payments'>Behind on Payments</a><a href='/needs-repairs'>Needs Repairs</a><a href='/tired-landlord'>Tired Landlord</a></div>
+            <div class="footer-contact"><h3>Cities We Serve</h3><a href='/madison'>Madison</a><a href='/waukesha'>Waukesha</a><a href='/milwaukee'>Milwaukee</a><a href='/janesville'>Janesville</a><a href='/brookfield'>Brookfield</a><a href='/racine'>Racine</a><a href='/middleton'>Middleton</a><a href='/menomonee-falls'>Menomonee Falls</a><a href='/beaver-dam'>Beaver Dam</a></div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 Forward Wisconsin Home Buyers. All rights reserved.</div>
+    </div>
+</footer>
+<div class="mobile-cta"><div class="mobile-cta-inner"><a href="tel:9203972922" class="btn btn-primary">☎ Call Ken</a><a href="sms:9203972922?body=Hi%20Ken%2C%20I%27d%20like%20a%20cash%20offer." class="btn btn-green">💬 Text Us</a></div></div>
+<script src="main.js"></script>
+</body>
+</html>

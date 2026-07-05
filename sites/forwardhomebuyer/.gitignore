@@ -39,8 +39,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-# nested site apps
-sites/*/node_modules/
-sites/*/.next/
-sites/*/.netlify/

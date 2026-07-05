@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Avoid foreclosure in Wisconsin. We buy homes quickly to help you stay ahead of foreclosure. Stop the process, get cash, move forward. Call 920-397-2922.">
+    <meta name="keywords" content="avoid foreclosure Wisconsin, foreclosure help, pre-foreclosure home buyer, foreclosure prevention">
+    <meta property="og:title" content="Avoid Foreclosure — We Can Help | Forward Wisconsin Home Buyers">
+    <meta property="og:description" content="Facing foreclosure? We can help. Fast sale, cash in hand, before foreclosure completes. Call 920-397-2922.">
+    <title>Avoid Foreclosure in Wisconsin | Forward Wisconsin Home Buyers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="top-bar">Facing foreclosure? <a href="#offer">We can help</a> — get a cash offer in 24 hours.</div>
+<header>
+    <div class="header-logo"><a href='/'><img src="logo.png" alt="Forward Wisconsin Home Buyers"></a></div>
+    <nav class="header-nav">
+        <a href='/'>Home</a>
+        <div class="nav-dropdown-wrap">
+            <a href='/#situations'>Situations</a>
+            <div class="nav-dropdown">
+                <a href='/inherited-property'>Inherited Property</a>
+                <a href='/divorce'>Going Through Divorce</a>
+                <a href='/foreclosure'>Facing Foreclosure</a>
+                <a href='/behind-on-payments'>Behind on Payments</a>
+                <a href='/needs-repairs'>Needs Repairs</a>
+                <a href='/tired-landlord'>Tired Landlord</a>
+                <a href='/vacant-property'>Vacant Property</a>
+                <a href='/tax-liens'>Tax Liens</a>
+                <a href='/relocating'>Relocating</a>
+            </div>
+        </div>
+        <div class="nav-dropdown-wrap">
+            <a href="#">Cities We Serve</a>
+            <div class="nav-dropdown wide">
+                <a href='/madison'>Madison</a>
+                <a href='/middleton'>Middleton</a>
+                <a href='/sun-prairie'>Sun Prairie</a>
+                <a href='/fitchburg'>Fitchburg</a>
+                <a href='/verona'>Verona</a>
+                <a href='/waunakee'>Waunakee</a>
+                <a href='/stoughton'>Stoughton</a>
+                <a href='/oregon'>Oregon</a>
+                <a href='/deforest'>DeForest</a>
+                <a href='/waukesha'>Waukesha</a>
+                <a href='/brookfield'>Brookfield</a>
+                <a href='/new-berlin'>New Berlin</a>
+                <a href='/muskego'>Muskego</a>
+                <a href='/oconomowoc'>Oconomowoc</a>
+                <a href='/menomonee-falls'>Menomonee Falls</a>
+                <a href='/pewaukee'>Pewaukee</a>
+                <a href='/sussex'>Sussex</a>
+                <a href='/milwaukee'>Milwaukee</a>
+                <a href='/racine'>Racine</a>
+                <a href='/janesville'>Janesville</a>
+                <a href='/beloit'>Beloit</a>
+                <a href='/fort-atkinson'>Fort Atkinson</a>
+                <a href='/watertown'>Watertown</a>
+                <a href='/whitewater'>Whitewater</a>
+                <a href='/elkhorn'>Elkhorn</a>
+                <a href='/beaver-dam'>Beaver Dam</a>
+                <a href='/waupun'>Waupun</a>
+            </div>
+        </div>
+        <a href="#offer">Get Offer</a>
+    </nav>
+    <button class="mobile-menu-btn" onclick="document.querySelector('.header-nav').classList.toggle('mobile-open')">☰</button>
+    <div class="header-phone">
+        <span class="header-phone-label">Call or Text Anytime</span>
+        <a href="tel:9203972922" class="header-phone-number">920-397-2922</a>
+    </div>
+</header>
+<div class="breadcrumb"><div class="breadcrumb-inner"><a href='/'>Home</a> <span class="breadcrumb-sep">→</span> Avoid Foreclosure</div></div>
+<section class="hero" id="offer">
+    <div class="hero-inner">
+        <div class="hero-text">
+            <h1>Avoid <span class="highlight">Foreclosure</span> — We Can Help</h1>
+            <p class="subtitle">Foreclosure notices are scary, but you have options. We buy homes quickly so you can close before the foreclosure process completes. Protect your credit, walk away with cash.</p>
+            <div class="hero-badges">
+                <div class="hero-badge"><span class="icon">&#10003;</span> Stop Foreclosure Now</div>
+                <div class="hero-badge"><span class="icon">&#10003;</span> Protect Your Credit</div>
+                <div class="hero-badge"><span class="icon">&#10003;</span> Walk Away with Cash</div>
+            </div>
+            <div class="hero-cta-group">
+                <a href="tel:9203972922" class="btn btn-primary btn-phone-hero">&#128222; Call Now: 920-397-2922</a>
+                <a href="sms:9203972922?body=Hi%20Ken%2C%20I%27m%20facing%20foreclosure%20and%20need%20help." class="btn btn-secondary">&#128172; Text Us</a>
+            </div>
+        </div>
+        <div class="hero-form-wrapper">
+            <div class="hero-form-card">
+                <h2>Get Your Free Cash Offer</h2>
+                <p class="form-sub">Time is critical. Let's act fast.</p>
+                <form id="captureForm" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="address">Property Address *</label>
+                        <input type="text" id="address" name="address" placeholder="Your home address" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group"><label for="name">Your Name *</label><input type="text" id="name" name="name" required></div>
+                        <div class="form-group"><label for="phone">Phone *</label><input type="tel" id="phone" name="phone" required></div>
+                    </div>
+                    <div class="form-group"><label for="email">Email (optional)</label><input type="email" id="email" name="email"></div>
+                    <button type="submit" class="btn btn-primary form-submit" id="submitBtn">Get My Cash Offer &#8594;</button>
+                    <p class="form-trust"><span class="lock">&#128274;</span> Confidential. We work with foreclosure situations daily.</p>
+                </form>
+                <div class="form-success" id="formSuccess">
+                    <div class="check">&#9989;</div>
+                    <h3>We Got Your Info!</h3>
+                    <p>Ken will reach out within 24 hours with a cash offer and timeline. Help is on the way.</p>
+                    <a href="tel:9203972922" class="form-call-btn" style="margin-top:16px">&#128222; Call Ken Now: 920-397-2922</a>
+                </div>
+                <div class="form-or">or</div>
+                <a href="tel:9203972922" class="form-call-btn">&#128222; Call Ken Directly: 920-397-2922</a>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="trust-bar">
+    <div class="trust-bar-inner">
+        <div class="trust-item"><div class="trust-number">100+</div><div class="trust-label">Homes Purchased</div></div>
+        <div class="trust-item"><div class="trust-number">24hr</div><div class="trust-label">Offer Turnaround</div></div>
+        <div class="trust-item"><div class="trust-number">$0</div><div class="trust-label">Fees & Commissions</div></div>
+        <div class="trust-item"><div class="trust-number">3</div><div class="trust-label">Days to Close</div></div>
+    </div>
+</div>
+<section>
+    <div class="section-inner">
+        <div class="local-details">
+            <h3>Facing Foreclosure? You Have Options</h3>
+            <p>A foreclosure notice feels like the end, but it's actually a critical window. Wisconsin law gives you time to act. We specialize in buying homes from people in pre-foreclosure situations, allowing them to close before the foreclosure process completes.</p>
+            <p><strong>Why it matters:</strong> A foreclosure on your credit report damages your ability to borrow for 7+ years. We help you avoid this by closing quickly, before the legal process finalizes. You stop the foreclosure, walk away with cash, and protect your credit.</p>
+        </div>
+        <div class="section-heading"><h2>How We Help You Avoid Foreclosure</h2></div>
+        <div class="benefits-grid">
+            <div class="benefit"><div class="benefit-icon">⏱️</div><div><h3>Fast Action</h3><p>Foreclosure timelines are tight. We move quickly — 24-hour offers, 3-day closes. Faster than traditional sales.</p></div></div>
+            <div class="benefit"><div class="benefit-icon">💰</div><div><h3>Cash Offer</h3><p>No financing contingencies. No appraisals delaying things. Cash offer that closes on schedule.</p></div></div>
+            <div class="benefit"><div class="benefit-icon">📊</div><div><h3>Fair Price</h3><p>We don't exploit distressed sellers. Fair market offer that lets you settle debts and move forward.</p></div></div>
+            <div class="benefit"><div class="benefit-icon">🛡️</div><div><h3>Protect Your Credit</h3><p>A foreclosure sale (before completion) is much better than a foreclosure judgment. Still damaging, but better than the alternative.</p></div></div>
+            <div class="benefit"><div class="benefit-icon">🤝</div><div><h3>Work with Lenders</h3><p>We communicate with lenders. We know pre-foreclosure dynamics and can often negotiate directly with banks.</p></div></div>
+            <div class="benefit"><div class="benefit-icon">💵</div><div><h3>Walk Away with Cash</h3><p>Even in pre-foreclosure, there's often equity. We help you access it before the bank takes over.</p></div></div>
+        </div>
+    </div>
+</section>
+<section class="section-alt">
+    <div class="section-inner">
+        <div class="section-heading"><h2>Foreclosure & Pre-Foreclosure FAQs</h2></div>
+        <div class="faq-list">
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">How much time do I have once I get a notice?</button><div class="faq-answer">Wisconsin law varies, but typically 120+ days from the notice. That's plenty of time for us to make an offer and close. We can often close in 3 days, well before foreclosure completion.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Will selling stop the foreclosure?</button><div class="faq-answer">Yes. Once we close and pay off the lender, the foreclosure stops. The process terminates legally.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Can you help if I have a second mortgage or liens?</button><div class="faq-answer">Yes. We handle complex title situations. Multiple liens, judgments, tax liens — we know how to work through them.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Will I have equity left after the sale?</button><div class="faq-answer">Possibly. If your home is worth more than what's owed, you get the difference. We'll run the numbers and show you what you'd receive.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">What if I owe more than the house is worth?</button><div class="faq-answer">We still work with you. We handle short sales and can coordinate with lenders to accept less than owed. No deficiency judgment against you.</div></div>
+            <div class="faq-item"><button class="faq-question" onclick="toggleFaq(this)">Can I stay in the house until closing?</button><div class="faq-answer">Usually yes. We'll work out a timeline that lets you stay until closing or you can move earlier. Your choice.</div></div>
+        </div>
+    </div>
+</section>
+<div class="cta-banner">
+    <h2>Stop Foreclosure Today</h2>
+    <p>You have options. Let's explore them together. Fast, fair, and confidential.</p>
+    <div class="btn-group">
+        <a href="tel:9203972922" class="btn btn-primary btn-phone-hero">&#128222; Call Now: 920-397-2922</a>
+        <a href="sms:9203972922?body=Hi%20Ken%2C%20I%27m%20facing%20foreclosure." class="btn btn-secondary">&#128172; Text Us</a>
+        <a href="#offer" class="btn btn-green">Fill Out the Form &#8593;</a>
+    </div>
+</div>
+<footer>
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand"><img src="logo.png" alt="Forward Wisconsin Home Buyers"><p>We buy Wisconsin homes. As-is. Your timeline. A local, family-operated home buying company.</p></div>
+            <div class="footer-contact"><h3>Get in Touch</h3><a href="tel:9203972922">☎ 920-397-2922</a><a href="sms:9203972922">💬 Text Us</a><a href="mailto:forwardhomebuyer@gmail.com" target="_blank">✉ forwardhomebuyer@gmail.com</a></div>
+            <div class="footer-contact"><h3>Situations</h3><a href='/inherited-property'>Inherited Property</a><a href='/divorce'>Divorce</a><a href='/foreclosure'>Foreclosure</a><a href='/behind-on-payments'>Behind on Payments</a><a href='/needs-repairs'>Needs Repairs</a><a href='/tired-landlord'>Tired Landlord</a></div>
+            <div class="footer-contact"><h3>Cities We Serve</h3><a href='/madison'>Madison</a><a href='/waukesha'>Waukesha</a><a href='/milwaukee'>Milwaukee</a><a href='/janesville'>Janesville</a><a href='/brookfield'>Brookfield</a><a href='/racine'>Racine</a><a href='/middleton'>Middleton</a><a href='/menomonee-falls'>Menomonee Falls</a><a href='/beaver-dam'>Beaver Dam</a></div>
+        </div>
+        <div class="footer-bottom">&copy; 2026 Forward Wisconsin Home Buyers. All rights reserved.</div>
+    </div>
+</footer>
+<div class="mobile-cta"><div class="mobile-cta-inner"><a href="tel:9203972922" class="btn btn-primary">&#128222; Call Ken</a><a href="sms:9203972922?body=Hi%20Ken%2C%20I%27d%20like%20a%20cash%20offer." class="btn btn-green">&#128172; Text Us</a></div></div>
+<script src="main.js"></script>
+</body>
+</html>
