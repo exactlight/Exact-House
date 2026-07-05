@@ -6,11 +6,19 @@
  */
 const ORIGIN = process.argv[2] ?? "https://exacthouse-rebuild.netlify.app";
 
+// Honor HTTPS_PROXY when present (needed in sandboxed dev environments;
+// no-op elsewhere). Node's built-in fetch ignores proxy env vars.
+if (process.env.HTTPS_PROXY) {
+  const { ProxyAgent, setGlobalDispatcher } = await import("undici");
+  setGlobalDispatcher(new ProxyAgent(process.env.HTTPS_PROXY));
+}
+
 const cities = ["madison","sun-prairie","watertown","fort-atkinson","stoughton","oconomowoc","beaver-dam","deforest","waunakee","whitewater"];
 const situations = ["foreclosure","divorce","inherited","job-relocation","senior-transition","financial-strain","tired-landlord","double-mortgage","repairs","tax-liens"];
 
+// Madison has no city icon of its own — it uses bucky-badger.png
 const legacyAssets = ["logo.png","wisconsin-icon.png","bucky-badger.png",
-  ...cities.map((c) => `${c.replace(/-/g, "_")}-icon.png`),
+  ...cities.filter((c) => c !== "madison").map((c) => `${c.replace(/-/g, "_")}-icon.png`),
   ...cities.map((c) => `${c.replace(/-/g, "_")}-photo.jpg`)];
 
 const pages = ["", "details", "thank-you", "privacy", "terms", "get-offer",

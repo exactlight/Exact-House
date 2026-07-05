@@ -1,4 +1,3 @@
-import type { Handler } from "@netlify/functions";
 import { getStore } from "@netlify/blobs";
 
 /**
@@ -147,14 +146,14 @@ async function storeLead(formName: string, data: Record<string, string>) {
   return "store:saved";
 }
 
-export const handler: Handler = async (event) => {
+export default async (req: Request) => {
   let payload: SubmissionPayload;
   try {
-    payload = JSON.parse(event.body ?? "{}").payload;
+    payload = (await req.json()).payload;
     if (!payload?.data) throw new Error("no payload.data");
   } catch (err) {
     console.error("submission-created: unparseable event body", err);
-    return { statusCode: 200, body: "ignored" };
+    return new Response("ignored", { status: 200 });
   }
 
   const formName = payload.form_name ?? "unknown";
@@ -174,5 +173,5 @@ export const handler: Handler = async (event) => {
 
   // Always 200 — the lead is already safe in Netlify Forms; notification
   // failures are logged for follow-up, never surfaced as submission errors.
-  return { statusCode: 200, body: "ok" };
+  return new Response("ok", { status: 200 });
 };
