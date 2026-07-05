@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
+import { cities } from "@/data/cities";
 
 export default function Footer() {
   return (
@@ -41,8 +42,12 @@ export default function Footer() {
         <div>
           <p className="font-semibold text-white">Areas We Buy In</p>
           <ul className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
-            {site.serviceArea.slice(0, 8).map((city) => (
-              <li key={city}>{city}, WI</li>
+            {cities.map((c) => (
+              <li key={c.slug}>
+                <Link href={`/sell-my-house-fast/${c.slug}`} className="hover:text-accent-400">
+                  {c.name}, WI
+                </Link>
+              </li>
             ))}
           </ul>
         </div>

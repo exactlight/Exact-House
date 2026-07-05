@@ -133,7 +133,32 @@ Chosen for zero platform lock-in (the point of leaving LeadPropeller), low/no mo
 
 ---
 
-## 7. Post-parity upgrades (beyond LeadPropeller, optional later)
+## 7. Live-site inventory (discovered via Netlify — governs the rebuild)
+
+The current exacthouse.com (Netlify project `exacthouse`) already implements much
+of the LeadPropeller playbook. The rebuild preserves all of it:
+
+- **Two-step flow already live:** `contact` form (name/phone/email/address) →
+  `property-details` form (bedrooms, bathrooms, sqft, condition, mortgage-balance,
+  asking-price, lowest-price, accept-payoff, timeline, reason, additional-info).
+- **City forms:** contact-madison, contact-sun-prairie, contact-watertown,
+  contact-fort-atkinson, contact-stoughton, contact-oconomowoc, contact-beaver-dam,
+  contact-deforest, contact-waunakee, contact-whitewater (hidden `city` field).
+- **Situation forms:** contact-foreclosure, contact-divorce, contact-inherited,
+  contact-job-relocation, contact-senior-transition, contact-financial-strain,
+  contact-tired-landlord, contact-double-mortgage, contact-repairs,
+  contact-tax-liens (hidden `source-page` + `situation` fields).
+- **Notifications:** Netlify functions `sms-notification` and `slack-notification`
+  are deployed on the live site. Phase 2 must port equivalents into this repo
+  (a `submission-created` function) before cutover, since functions ship with the
+  site deploy.
+- **Form names and field names are load-bearing** — they are kept identical in
+  `public/__forms.html` so form history and notification wiring carry over.
+- Launch prerequisite: crawl the live site for exact page URLs to build the 301
+  redirect map, and port the visual design (blocked from this sandbox — needs
+  network access to exacthouse.com, a screenshot from Ken, or the source).
+
+## 8. Post-parity upgrades (beyond LeadPropeller, optional later)
 
 - Instant cash-offer range estimator (address autocomplete + comps API) — stronger hook than any LeadPropeller form
 - Drip follow-up sequences for unconverted leads (Resend scheduled sends)
