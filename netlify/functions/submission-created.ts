@@ -84,7 +84,9 @@ async function sendSms(headline: string, lines: string[]) {
 }
 
 async function sendSlack(headline: string, fields: (readonly [string, string])[]) {
-  const url = process.env.SLACK_WEBHOOK_URL;
+  // LEAD_SLACK_WEBHOOK preferred — Netlify's env API rejects the key
+  // SLACK_WEBHOOK_URL, so both names are supported.
+  const url = process.env.LEAD_SLACK_WEBHOOK || process.env.SLACK_WEBHOOK_URL;
   if (!url) return "slack:skipped(unconfigured)";
 
   const res = await fetch(url, {
