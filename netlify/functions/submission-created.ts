@@ -1,4 +1,5 @@
 import type { Handler } from "@netlify/functions";
+import { getStore } from "@netlify/blobs";
 
 /**
  * Fires automatically on every verified Netlify Forms submission (all 22
@@ -127,6 +128,25 @@ async function sendAutoresponder(formName: string, data: Record<string, string>)
   return sent ? "autoresponder:sent" : "autoresponder:skipped(unconfigured)";
 }
 
+/** Persist the lead to Netlify Blobs so the /admin dashboard can manage it. */
+async function storeLead(formName: string, data: Record<string, string>) {
+  const store = getStore("leads");
+  const phone = (data["phone"] || data["lead-phone"] || "")
+    .replace(/\D/g, "")
+    .slice(-10);
+  const key = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+  await store.setJSON(key, {
+    key,
+    formName,
+    phone,
+    data,
+    createdAt: new Date().toISOString(),
+    status: "New",
+    note: "",
+  });
+  return "store:saved";
+}
+
 export const handler: Handler = async (event) => {
   let payload: SubmissionPayload;
   try {
@@ -144,6 +164,7 @@ export const handler: Handler = async (event) => {
     sendSms(headline, lines),
     sendOwnerEmail(headline, lines),
     sendAutoresponder(formName, payload.data),
+    storeLead(formName, payload.data),
   ]);
 
   for (const r of results) {
