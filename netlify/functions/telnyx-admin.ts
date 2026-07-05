@@ -16,8 +16,8 @@ const ALLOWED_PATHS = [
   /^\/v2\/number_orders/,
   /^\/v2\/phone_numbers/,
   /^\/v2\/messaging_profiles/,
-  /^\/v2\/messages$/,
-  /^\/messaging_tollfree\/verification\/requests/,
+  /^\/v2\/messages(\/|$)/,
+  /^\/v2\/messaging_tollfree\/verification\/requests/,
 ];
 
 export const handler: Handler = async (event) => {
