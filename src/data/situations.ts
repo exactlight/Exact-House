@@ -1,4 +1,4 @@
-export type SituationProblem = { title: string; body: string };
+export type SituationProblem = { title: string; body: string; solution: string };
 export type SituationStep = { title: string; body: string };
 
 export type Situation = {
@@ -40,10 +40,14 @@ export const situations: Situation[] = [
       {
         title: "Problem 1: Losing Your Equity at Auction",
         body: "A public foreclosure auction usually results in the loss of ALL your equity. Banks just want to recover what they're owed - they don't care about getting you fair market value. You could lose tens of thousands of dollars.",
+        solution:
+          "We make fair cash offers that protect your equity. A private sale to us means YOU keep the difference, not the bank.",
       },
       {
         title: "Problem 2: Credit Destroyed for 7 Years",
         body: "A foreclosure stays on your credit report for 7 years, making it nearly impossible to buy another home, get approved for a car loan, or even rent an apartment. Your financial future is on the line.",
+        solution:
+          "Selling to us BEFORE the auction prevents the foreclosure from ever appearing on your credit report. You walk away with your credit intact.",
       },
     ],
     stepsTitle: "How We Stop Foreclosure in 3 Simple Steps",
@@ -85,14 +89,20 @@ export const situations: Situation[] = [
       {
         title: "Problem 1: Court-Ordered Asset Division",
         body: "Most divorce court orders require the home to be sold to facilitate a 50/50 or equitable split of the equity. But traditional sales can take months, delaying your settlement and keeping you tied to your ex.",
+        solution:
+          "We buy your house for cash in as little as 7 days. Get your settlement done quickly so both parties can move forward with their lives.",
       },
       {
         title: "Problem 2: Shared Mortgage Liability",
         body: "Neither party wants to be legally responsible for a mortgage on a home they no longer inhabit. If one person can't afford the payments alone, both credit scores are at risk.",
+        solution:
+          "We pay off the mortgage at closing. Both parties walk away free and clear with no ongoing liability or credit risk.",
       },
       {
         title: "Problem 3: Emotional Closure",
         body: "The house is often the final \"tether\" to a past life that prevents both parties from truly moving on. Every month that passes with the house unsold keeps old wounds open.",
+        solution:
+          "A fast, fair cash sale means emotional closure for both parties. Sell quickly and start your new chapter.",
       },
     ],
     stepsTitle: "How We Help Divorcing Couples in 3 Simple Steps",
@@ -134,14 +144,20 @@ export const situations: Situation[] = [
       {
         title: "Problem 1: Out-of-State Management",
         body: "Heirs often live hundreds of miles away and cannot effectively manage a vacant property. Driving back and forth to check on the house, arrange repairs, or meet contractors is expensive and time-consuming.",
+        solution:
+          "We buy the property as-is, from wherever you live. No need to travel, manage contractors, or deal with the house at all.",
       },
       {
         title: "Problem 2: Tax & Utility Burden",
         body: "Ongoing property taxes, insurance, and utilities can quickly drain an estate's cash reserves. An empty house still costs money every single month while you wait to sell it.",
+        solution:
+          "We close fast - often in 7-14 days. Stop the bleeding and convert the property into cash you can actually use.",
       },
       {
         title: "Problem 3: Sibling Conflict",
         body: "When multiple heirs own a home, selling is usually the only way to resolve disagreements over what to do with the asset. One wants to keep it, another wants to sell, tensions rise.",
+        solution:
+          "Our fair cash offer gives everyone their share quickly and cleanly. No more arguments - just a simple, equitable solution.",
       },
     ],
     stepsTitle: "How We Buy Inherited Properties in 3 Simple Steps",
@@ -183,10 +199,14 @@ export const situations: Situation[] = [
       {
         title: "Problem 1: Need Cash for New Home",
         body: "You need the cash from your current home to put a down payment on a home in your new city. But traditional home sales can take 2-6 months - you can't wait that long.",
+        solution:
+          "We close in 7-14 days and give you cash in hand. Get your down payment money fast so you can buy in your new city.",
       },
       {
         title: "Problem 2: The \"Commuter\" Drain",
         body: "Paying for a hotel or short-term rental in your new city while still paying a mortgage in the old one is financially unsustainable. You're bleeding money every month.",
+        solution:
+          "Fast cash sale means you stop paying double housing costs immediately. No more financial drain while waiting for a buyer.",
       },
     ],
     stepsTitle: "How We Help Relocating Families in 3 Simple Steps",
@@ -229,10 +249,14 @@ export const situations: Situation[] = [
       {
         title: "Problem 1: Need Cash for Care Costs",
         body: "Assisted living and memory care facilities often require high \"buy-in\" fees or expensive monthly costs. The equity in your home is the key to affording quality care, but traditional sales take too long.",
+        solution:
+          "We close in 7-14 days and give you cash immediately. Get the funds you need to secure a spot in a quality care facility.",
       },
       {
         title: "Problem 2: Home is No Longer Safe",
         body: "The current home (usually a multi-story) may no longer be safe for a resident with limited mobility. Stairs, narrow doorways, and bathtubs become serious fall hazards.",
+        solution:
+          "Sell the unsafe home quickly and move to a safe, accessible environment. We buy houses in any condition - no cleaning or repairs needed.",
       },
     ],
     stepsTitle: "How We Help Seniors & Families in 3 Simple Steps",
@@ -275,10 +299,14 @@ export const situations: Situation[] = [
       {
         title: "Problem 1: Can't Afford Monthly Payments",
         body: "Your property taxes and insurance have increased dramatically - up 17% since 2022 in many Wisconsin counties. The escrow portion of your mortgage payment is now unaffordable, and you're struggling to keep up with monthly costs.",
+        solution:
+          "Sell for cash now and stop the financial bleeding. Get your equity out before you start missing payments and damaging your credit.",
       },
       {
         title: "Problem 2: Heading Toward Debt",
         body: "You're equity rich but cash poor. If you keep the house, you'll eventually miss payments, damage your credit, and possibly face foreclosure. You need to \"cash out\" while you still can.",
+        solution:
+          "We buy your house for cash and pay off the mortgage. Walk away with money in your pocket and your credit intact.",
       },
     ],
     stepsTitle: "How We Help Struggling Homeowners in 3 Simple Steps",
@@ -320,10 +348,14 @@ export const situations: Situation[] = [
       {
         title: "Problem 1: Management Exhaustion",
         body: "The mental toll of property maintenance and tenant disputes outweighs the rental income. Late-night calls about broken toilets, dealing with problem tenants, and constant repairs have burned you out completely.",
+        solution:
+          "Sell your rental property for cash and end the headaches immediately. No more tenant calls, no more repairs, just cash in hand.",
       },
       {
         title: "Problem 2: Property Losing Money",
         body: "If your property is cash-flow negative due to rising interest rates, insurance costs, or constant repairs, you're losing money every month. You want to move that capital into a safer investment like a high-yield CD or index fund.",
+        solution:
+          "We buy your rental property quickly so you can reinvest your capital in something more profitable and less stressful.",
       },
     ],
     stepsTitle: "How We Help Burned-Out Landlords in 3 Simple Steps",
@@ -365,10 +397,14 @@ export const situations: Situation[] = [
       {
         title: "Problem 1: Lender Won't Finalize New Loan",
         body: "Your offer on a new house was accepted before your old one sold. Now many lenders will not finalize the loan on the new house until the old house is under contract. Your debt-to-income ratio is too high.",
+        solution:
+          "We can close in 7-14 days and put your old house \"under contract\" immediately. Get your new loan approved and move forward.",
       },
       {
         title: "Problem 2: Financial Bleeding",
         body: "Most families cannot sustain two sets of housing costs for more than 60 days. You're paying two mortgages, two insurance policies, two sets of utilities - it's draining your savings fast.",
+        solution:
+          "Fast cash sale means you stop paying double immediately. Close in days and end the financial drain.",
       },
     ],
     stepsTitle: "How We Help in 3 Simple Steps",
@@ -411,10 +447,14 @@ export const situations: Situation[] = [
       {
         title: "Problem 1: House is Unlivable",
         body: "If the HVAC or plumbing fails, the house becomes unlivable. You're facing a \"fire sale\" situation because you literally can't stay there. Bad roof? Mold? Foundation issues? These make the home unsafe and unsellable on the traditional market.",
+        solution:
+          "We buy houses in ANY condition - even uninhabitable ones. Sell as-is and move to a safe place immediately.",
       },
       {
         title: "Problem 2: Can't Sell with FHA/VA Loans",
         body: "Traditional buyers using FHA or VA loans cannot buy a house with major defects. Banks won't approve loans on properties that don't meet minimum standards. You're stuck unless you spend $30K+ on repairs you can't afford.",
+        solution:
+          "We pay cash - no banks, no loan requirements. We buy houses that would NEVER qualify for traditional financing.",
       },
     ],
     stepsTitle: "How We Buy Problem Houses in 3 Simple Steps",
@@ -456,10 +496,14 @@ export const situations: Situation[] = [
       {
         title: "Problem 1: Facing Legal Forfeiture",
         body: "The county or IRS is about to seize your home for pennies on the dollar. Once they take it, you lose ALL your equity. A forced seizure means you get almost nothing while the government gets your property.",
+        solution:
+          "We can close in 7-14 days and pay off the lien. You keep the remaining equity instead of losing everything to seizure.",
       },
       {
         title: "Problem 2: Fees Compounding Daily",
         body: "Ongoing litigation and tax penalties are compounding every single day. The longer you wait, the more you owe and the less equity you keep. Every day costs you hundreds or thousands in additional fees and interest.",
+        solution:
+          "Fast sale stops the fees immediately. Sell now and stop the financial bleeding before it gets worse.",
       },
     ],
     stepsTitle: "How We Stop Seizure in 3 Simple Steps",

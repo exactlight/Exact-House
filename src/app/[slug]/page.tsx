@@ -151,10 +151,18 @@ function SituationPage({ situation }: { situation: Situation }) {
               {situation.problems.map((p) => (
                 <div
                   key={p.title}
-                  className="rounded-[15px] border-l-4 border-accent-500 bg-brand-50 p-7 shadow-[0_10px_30px_rgba(0,0,0,0.06)]"
+                  className="flex flex-col rounded-[15px] border-l-4 border-accent-500 bg-brand-50 p-7 shadow-[0_10px_30px_rgba(0,0,0,0.06)]"
                 >
                   <h3 className="mb-3 text-xl font-semibold text-brand-800">{p.title}</h3>
                   <p className="text-[#666]">{p.body}</p>
+                  {p.solution ? (
+                    <div className="mt-auto pt-5">
+                      <div className="rounded-[10px] bg-emerald-600/10 p-4">
+                        <p className="text-sm font-semibold text-emerald-700">✓ Our Solution:</p>
+                        <p className="mt-1 text-sm text-brand-800">{p.solution}</p>
+                      </div>
+                    </div>
+                  ) : null}
                 </div>
               ))}
             </div>
