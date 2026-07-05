@@ -9,9 +9,7 @@ import type { Handler } from "@netlify/functions";
  * already stored by Netlify Forms before this function runs, so nothing
  * here can lose a lead.
  *
- *   SMS to Ken ......... TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN,
- *                        TWILIO_FROM_NUMBER, LEAD_NOTIFY_SMS_TO
- *   Slack .............. SLACK_WEBHOOK_URL
+ *   SMS to Ken ......... TELNYX_API_KEY, TELNYX_FROM_NUMBER, LEAD_NOTIFY_SMS_TO
  *   Email to Ken ....... RESEND_API_KEY, LEAD_NOTIFY_EMAIL_TO, LEAD_FROM_EMAIL
  *   Seller autoresponder RESEND_API_KEY, LEAD_FROM_EMAIL (needs seller email)
  */
@@ -48,8 +46,9 @@ function pick(data: Record<string, string>, keys: string[]) {
 
 function summarize(formName: string, data: Record<string, string>) {
   const isDetails = formName === "property-details";
-  const fields = pick(data, isDetails ? DETAILS_FIELDS : STEP1_FIELDS);
-  const lines = fields.map(([k, v]) => `${k}: ${v}`);
+  const lines = pick(data, isDetails ? DETAILS_FIELDS : STEP1_FIELDS).map(
+    ([k, v]) => `${k}: ${v}`
+  );
 
   const who = isDetails ? data["lead-name"] || "lead" : data["name"] || "lead";
   const where = isDetails ? data["lead-address"] || "" : data["address"] || "";
@@ -57,57 +56,26 @@ function summarize(formName: string, data: Record<string, string>) {
     ? `Property details from ${who}${where ? ` — ${where}` : ""}`
     : `NEW LEAD: ${who}${where ? ` — ${where}` : ""}`;
 
-  return { headline, lines, fields };
+  return { headline, lines };
 }
 
 async function sendSms(headline: string, lines: string[]) {
-  const sid = process.env.TWILIO_ACCOUNT_SID;
-  const token = process.env.TWILIO_AUTH_TOKEN;
-  const from = process.env.TWILIO_FROM_NUMBER;
+  const key = process.env.TELNYX_API_KEY;
+  const from = process.env.TELNYX_FROM_NUMBER;
   const to = process.env.LEAD_NOTIFY_SMS_TO;
-  if (!sid || !token || !from || !to) return "sms:skipped(unconfigured)";
+  if (!key || !from || !to) return "sms:skipped(unconfigured)";
 
-  const body = [headline, ...lines].join("\n").slice(0, 1500);
-  const res = await fetch(
-    `https://api.twilio.com/2010-04-01/Accounts/${sid}/Messages.json`,
-    {
-      method: "POST",
-      headers: {
-        Authorization: `Basic ${Buffer.from(`${sid}:${token}`).toString("base64")}`,
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: new URLSearchParams({ From: from, To: to, Body: body }).toString(),
-    }
-  );
-  if (!res.ok) throw new Error(`Twilio ${res.status}: ${await res.text()}`);
-  return "sms:sent";
-}
-
-async function sendSlack(headline: string, fields: (readonly [string, string])[]) {
-  // LEAD_SLACK_WEBHOOK preferred — Netlify's env API rejects the key
-  // SLACK_WEBHOOK_URL, so both names are supported.
-  const url = process.env.LEAD_SLACK_WEBHOOK || process.env.SLACK_WEBHOOK_URL;
-  if (!url) return "slack:skipped(unconfigured)";
-
-  const res = await fetch(url, {
+  const text = [headline, ...lines].join("\n").slice(0, 1500);
+  const res = await fetch("https://api.telnyx.com/v2/messages", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      text: headline,
-      blocks: [
-        { type: "header", text: { type: "plain_text", text: headline.slice(0, 150) } },
-        {
-          type: "section",
-          fields: fields.slice(0, 10).map(([k, v]) => ({
-            type: "mrkdwn",
-            text: `*${k}:*\n${v}`,
-          })),
-        },
-      ],
-    }),
+    headers: {
+      Authorization: `Bearer ${key}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ from, to, text }),
   });
-  if (!res.ok) throw new Error(`Slack ${res.status}: ${await res.text()}`);
-  return "slack:sent";
+  if (!res.ok) throw new Error(`Telnyx ${res.status}: ${await res.text()}`);
+  return "sms:sent";
 }
 
 async function sendResendEmail(to: string, subject: string, text: string) {
@@ -170,11 +138,10 @@ export const handler: Handler = async (event) => {
   }
 
   const formName = payload.form_name ?? "unknown";
-  const { headline, lines, fields } = summarize(formName, payload.data);
+  const { headline, lines } = summarize(formName, payload.data);
 
   const results = await Promise.allSettled([
     sendSms(headline, lines),
-    sendSlack(headline, fields),
     sendOwnerEmail(headline, lines),
     sendAutoresponder(formName, payload.data),
   ]);
