@@ -1,0 +1,9 @@
+# Deploys to forwardhomebuyer-rebuild.netlify.app only.
+# forwardhomebuyer.com DNS is NOT pointed here until launch is approved.
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

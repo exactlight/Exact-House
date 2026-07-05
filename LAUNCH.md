@@ -55,3 +55,42 @@ exacthouse-rebuild.netlify.app/admin (post-launch: exacthouse.com/admin).
 Password is in Netlify env `LEADS_ADMIN_PASSWORD`. Leads stored in Netlify
 Blobs (`leads` store); statuses: New → Contacted → Appointment → Offer Made
 → Under Contract → Closed/Dead.
+
+
+---
+
+# Launch Runbook — forwardhomebuyer.com cutover
+
+Rebuild lives in `sites/forwardhomebuyer/`, deployed to the
+`forwardhomebuyer-rebuild` Netlify project
+(forwardhomebuyer-rebuild.netlify.app).
+
+## Status
+
+- [x] All 36 legacy URLs (27 cities + 9 situations) preserved; QA sweep passes (50 checks)
+- [x] Two-step lead flow, dual-writing to Netlify Forms AND the existing
+      Supabase notify-web-lead pipeline (unchanged)
+- [x] Lead dashboard at /admin (password in Netlify env LEADS_ADMIN_PASSWORD
+      on the forwardhomebuyer-rebuild project)
+- [x] TCPA consent on all forms + /privacy page (the live site had neither)
+- [x] End-to-end verified: form submission -> Netlify Forms -> dashboard
+- [ ] TELNYX_API_KEY env var — needed before SMS alerts fire (see below);
+      email/dashboard/Supabase channels work without it
+- [ ] SMS sender is the shared (833) 850-2664 — fine for notifications to
+      Ken; if seller-facing texting is added for this brand, register a
+      second toll-free number under the Forward Home Buyer name
+
+## Cutover (same 10-minute procedure as exacthouse)
+
+1. Netlify: remove forwardhomebuyer.com from the `forwardhomebuyer`
+   project, add it to `forwardhomebuyer-rebuild` (+ www).
+2. DNS check (same note as exacthouse — depends whether the record targets
+   Netlify's LB or a site-specific CNAME).
+3. Smoke test on the real domain; submit one test lead; confirm it reaches
+   the Supabase pipeline, the dashboard, and (once the key is set) SMS.
+4. Search Console: submit https://forwardhomebuyer.com/sitemap.xml.
+
+## Rollback
+
+Move the domain back, or publish the previous deploy from the
+`forwardhomebuyer` project's deploy history.
