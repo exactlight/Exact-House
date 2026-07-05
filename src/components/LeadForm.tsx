@@ -151,6 +151,20 @@ export default function LeadForm({ formName, hidden = {} }: Props) {
         >
           {submitting ? "Sending…" : "Get Me An Offer"}
         </button>
+
+        {/* SMS consent disclosure — required by TCPA and reviewed by carriers
+            during toll-free verification / A2P 10DLC campaign approval. */}
+        <p className="text-xs leading-relaxed text-[#888]">
+          By submitting, you agree that Exact House may contact you by phone,
+          text message, or email about your property inquiry, including via
+          automated means. Consent is not a condition of any purchase. Message
+          and data rates may apply. Message frequency varies. Reply STOP to
+          opt out or HELP for help. See our{" "}
+          <a href="/privacy" className="underline hover:text-accent-600">
+            Privacy Policy
+          </a>
+          .
+        </p>
       </form>
     </div>
   );

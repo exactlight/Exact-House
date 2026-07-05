@@ -29,11 +29,22 @@ export default function PrivacyPage() {
             rent, or share your personal information with third parties for their
             marketing purposes.
           </p>
-          <h2 className="pt-2 text-xl font-semibold text-brand-800">Communications</h2>
+          <h2 className="pt-2 text-xl font-semibold text-brand-800">
+            Communications &amp; SMS Terms
+          </h2>
           <p>
-            By submitting a form, you agree that we may contact you by phone, text
-            message, or email about your inquiry. You can opt out at any time by
-            replying STOP to texts or telling us your preference.
+            By submitting a form on this site, you consent to receive calls, text
+            messages, and emails from {site.legalName} regarding your property
+            inquiry, including messages sent via automated means. Consent is not a
+            condition of any purchase or sale.
+          </p>
+          <p>
+            Message and data rates may apply, and message frequency varies based on
+            your inquiry. You can opt out of text messages at any time by replying
+            STOP, or reply HELP for assistance. You may also contact us at{" "}
+            {site.phone} or {site.email} to update your communication preferences.
+            We do not share your mobile number or SMS consent with third parties
+            for their marketing purposes.
           </p>
           <h2 className="pt-2 text-xl font-semibold text-brand-800">Questions</h2>
           <p>
