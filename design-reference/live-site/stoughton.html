@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>We Buy Houses in Stoughton, WI - Fast Cash Offers | Exact House</title>
+    <meta name="description" content="Sell your Stoughton house fast for cash. No repairs, no fees. Local Stoughton house buyer. Call Ken at 920-650-8300.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #3d4d5c;
+            --light-navy: #5a6b7a;
+            --accent: #ff6b35;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-light: #666;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: var(--navy);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logo {
+            height: 50px;
+            width: auto;
+        }
+        
+        .local-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+        
+        .badge-icon {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .badge-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .phone-cta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .phone-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--light-navy) 100%);
+            color: white;
+            padding: 4rem 2rem;
+        }
+        
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+        
+        .hero-text .city-highlight {
+            color: var(--accent);
+        }
+        
+        .hero-text p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            font-size: 0.95rem;
+        }
+        
+        .benefit-item:last-child {
+            grid-column: 1 / -1;
+        }
+        
+        .benefit-item svg {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            fill: var(--accent);
+        }
+        
+        .form-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .form-card h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-card p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--navy);
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Work Sans', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 1.25rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: 'Bebas Neue', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
+        }
+        
+        /* Success Stories Carousel */
+        .stories-section {
+            padding: 5rem 2rem;
+            background: var(--light-bg);
+        }
+        
+        .stories-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--navy);
+            letter-spacing: 2px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+        }
+        
+        .carousel-container {
+            position: relative;
+            max-width: 100%;
+            padding: 0 60px;
+        }
+        
+        .carousel-wrapper {
+            overflow: hidden;
+            width: 100%;
+        }
+        
+        .stories-track {
+            display: flex;
+            gap: 2rem;
+            transition: transform 0.4s ease-in-out;
+        }
+        
+        .story-card {
+            flex: 0 0 calc(33.333% - 1.34rem);
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .story-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--accent), #ff8c5a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .story-icon svg {
+            width: 50px;
+            height: 50px;
+            fill: white;
+        }
+        
+        .story-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .story-card h3 {
+            font-size: 1.3rem;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+        
+        .story-card .location {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .story-card .details {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+        
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: var(--accent);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        
+        .carousel-btn:hover {
+            background: var(--navy);
+        }
+        
+        .carousel-btn.prev {
+            left: 0;
+        }
+        
+        .carousel-btn.next {
+            right: 0;
+        }
+        
+        /* City Banner */
+        .city-banner {
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .city-banner::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(transparent, var(--light-bg));
+        }
+        
+        /* Local Info */
+        .local-info {
+            padding: 5rem 2rem;
+            background: var(--light-bg);
+        }
+        
+        .local-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .cities {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .city-tag {
+            background: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        footer {
+            background: var(--navy);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+        
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+            
+            .benefits {
+                grid-template-columns: 1fr;
+            }
+            
+            .carousel-container {
+                padding: 0;
+            }
+            
+            .carousel-btn {
+                display: none;
+            }
+            
+            .carousel-wrapper {
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+            }
+            
+            .carousel-wrapper::-webkit-scrollbar {
+                display: none;
+            }
+            
+            .stories-track {
+                padding: 0 1rem;
+            }
+            
+            .story-card {
+                flex: 0 0 calc(100% - 2rem);
+                scroll-snap-align: center;
+            }
+            
+            .city-banner {
+                height: 250px;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-area">
+                <a href="/"><img src="logo.png" alt="Exact House" class="logo"></a>
+                <div class="local-badge">
+                    <div class="badge-icon">
+                        <img src="stoughton-icon.png" alt="Stoughton">
+                    </div>
+                    <span>Proud to Serve Stoughton</span>
+                </div>
+            </div>
+            <a href="tel:9206508300" class="phone-cta">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                    <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+                </svg>
+                920-650-8300
+            </a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>We Buy Houses in <span class="city-highlight">Stoughton</span></h1>
+                <p>Need to sell your Stoughton house fast? We buy houses in any condition for cash. No repairs, no fees, no hassle. Get a fair offer today.</p>
+                
+                <div class="benefits">
+                    <div class="benefit-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                        <span>Cash Offer in 24 Hours</span>
+                    </div>
+                    <div class="benefit-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                        <span>Close in as Few as 3-5 Days</span>
+                    </div>
+                    <div class="benefit-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                        <span>No Repairs Needed</span>
+                    </div>
+                    <div class="benefit-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                        <span>Zero Fees or Commissions</span>
+                    </div>
+                    <div class="benefit-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                        <span>We Pride Ourselves on Solving Tough Real Estate Problems</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-card">
+                <h2>Get a Cash Offer</h2>
+                <p>Send your details below and we'll text or email your offer the same day. No pressure.</p>
+                <p style="font-weight: 600; margin-top: 0.5rem;">Prefer faster? Call or text the number above.</p>
+                
+                <form action='/details' method='POST' name='contact-stoughton'>
+                    <input type="hidden" name="form-name" value="contact-stoughton">
+                    <input type="hidden" name="city" value="Stoughton">
+                    
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email (Optional)</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Property Address *</label>
+                        <input type="text" id="address" name="address" placeholder="123 Main St, Stoughton, WI" required>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Get Me An Offer</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories Carousel -->
+    <section class="stories-section">
+        <div class="stories-content">
+            <h2 class="section-title">Recent Stoughton Area Success Stories</h2>
+            <p class="section-subtitle">Real houses, real people, Hassle-free fast closings</p>
+            
+            <div class="carousel-container">
+                <button class="carousel-btn prev" onclick="slideCarousel(-1)">‹</button>
+                <button class="carousel-btn next" onclick="slideCarousel(1)">›</button>
+                
+                <div class="carousel-wrapper">
+                    <div class="stories-track" id="storiesTrack">
+                        <div class="story-card">
+                            <div class="story-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                            </div>
+                            <div class="story-badge">Closed in 6 Days</div>
+                            <h3>Downtown Stoughton</h3>
+                            <p class="location">3 bed, 1.5 bath</p>
+                            <p class="details">Historic home needed major updates. Owner didn't want the hassle of renovating. We bought it as-is and closed fast.</p>
+                        </div>
+                        
+                        <div class="story-card">
+                            <div class="story-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                            </div>
+                            <div class="story-badge">Closed in 9 Days</div>
+                            <h3>Near Yahara River</h3>
+                            <p class="location">4 bed, 2 bath</p>
+                            <p class="details">Family inherited property and siblings couldn't agree on what to do. Our cash offer solved the problem for everyone.</p>
+                        </div>
+                        
+                        <div class="story-card">
+                            <div class="story-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                            </div>
+                            <div class="story-badge">Closed Fast</div>
+                            <h3>Stoughton Area</h3>
+                            <p class="location">2 bed, 1 bath</p>
+                            <p class="details">Owner was behind on taxes and facing a lien. We paid off the taxes and closed quickly to avoid further penalties.</p>
+                        </div>
+                        
+                        <div class="story-card">
+                            <div class="story-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                            </div>
+                            <div class="story-badge">Closed in 7 Days</div>
+                            <h3>Dane County</h3>
+                            <p class="location">3 bed, 2 bath</p>
+                            <p class="details">Senior couple moving to assisted living needed cash for care costs. We closed on their timeline and let them take what they needed.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const track = document.getElementById('storiesTrack');
+        const wrapper = document.querySelector('.carousel-wrapper');
+        const isMobile = window.innerWidth <= 968;
+        
+        if (!isMobile) {
+            // Desktop: Clone cards for infinite loop
+            const cards = Array.from(track.children);
+            cards.forEach(card => {
+                const clone = card.cloneNode(true);
+                track.appendChild(clone);
+            });
+            
+            let currentIndex = 0;
+            const totalCards = cards.length;
+            let isTransitioning = false;
+            
+            function slideCarousel(direction) {
+                if (isTransitioning) return;
+                isTransitioning = true;
+                
+                currentIndex += direction;
+                const cardWidth = cards[0].offsetWidth;
+                const gap = 32; // 2rem gap
+                const moveAmount = cardWidth + gap;
+                
+                track.style.transition = 'transform 0.4s ease-in-out';
+                track.style.transform = `translateX(-${currentIndex * moveAmount}px)`;
+                
+                setTimeout(() => {
+                    // Loop to beginning seamlessly
+                    if (currentIndex >= totalCards) {
+                        track.style.transition = 'none';
+                        currentIndex = 0;
+                        track.style.transform = `translateX(0)`;
+                    } else if (currentIndex < 0) {
+                        track.style.transition = 'none';
+                        currentIndex = totalCards - 1;
+                        track.style.transform = `translateX(-${currentIndex * moveAmount}px)`;
+                    }
+                    isTransitioning = false;
+                }, 400);
+            }
+            
+            window.slideCarousel = slideCarousel;
+        }
+        // Mobile uses native scroll snapping - no JavaScript needed
+    </script>
+
+    <!-- Local Buyer Statement -->
+    <div style="background: var(--navy); color: white; text-align: center; padding: 1.5rem 2rem;">
+        <p style="font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 2px; margin: 0;">Not a call center. A neighbor.</p>
+    </div>
+
+    <!-- City Photo Banner -->
+    <section class="city-banner" style="background-image: url('stoughton-photo.jpg');" aria-label="Stoughton, Wisconsin">
+    </section>
+
+    <!-- Local Info -->
+    <section class="local-info">
+        <div class="local-content">
+            <h2 class="section-title">Serving Stoughton and Surrounding Cities</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; text-align: center;">We're local house buyers serving the greater Stoughton area including:</p>
+            
+            <div class="cities">
+                <div class="city-tag">Stoughton</div>
+                <a class='city-tag' href='/madison' style='text-decoration: none; color: inherit;'>Madison</a>
+                <div class="city-tag">McFarland</div>
+                <div class="city-tag">Oregon</div>
+                <div class="city-tag">Edgerton</div>
+                <div class="city-tag">Milton</div>
+                <div class="city-tag">Cambridge</div>
+                <div class="city-tag">Deerfield</div>
+                <div class="city-tag">Cottage Grove</div>
+                <div class="city-tag">Brooklyn</div>
+                <div class="city-tag">Evansville</div>
+                <div class="city-tag">Albion</div>
+            </div>
+            
+            <div style="margin-top: 3rem; padding: 2rem; background: white; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+                <h3 style="font-size: 2rem; color: var(--navy); margin-bottom: 1rem;">Why Stoughton Homeowners Choose Us</h3>
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    As a local Stoughton house buyer, we understand the Dane County real estate market. Whether you're selling a historic Victorian downtown, a home near the Yahara River, or a property anywhere in the Stoughton area, we make fair cash offers and close on your timeline. No matter the condition of your Stoughton property - we buy houses as-is.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>Exact House</strong> - Stoughton's Local House Buyer</p>
+        <p>Ken Collins | <a href="tel:9206508300" style="color: var(--accent);">920-650-8300</a> | <a href="/cdn-cgi/l/email-protection#c9a2aca789acb1a8aabda1a6bcbaace7aaa6a4" style="color: var(--accent);"><span class="__cf_email__" data-cfemail="e08b858ea08598818394888f959385ce838f8d"

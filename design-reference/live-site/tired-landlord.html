@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tired of Being a Landlord? Sell Your Rental Fast | Exact House Wisconsin</title>
+    <meta name="description" content="Burned out from managing tenants in Wisconsin? We buy rental properties fast for cash. No more headaches. Call Ken at 920-650-8300.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #3d4d5c;
+            --light-navy: #5a6b7a;
+            --accent: #ff6b35;
+            --situation-color: #7f8c8d;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-light: #666;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: var(--navy);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logo {
+            height: 50px;
+            width: auto;
+        }
+        
+        .local-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+        
+        .badger-icon {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .badger-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .phone-cta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .phone-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #7f8c8d 0%, #95a5a6 100%);
+            color: white;
+            padding: 4rem 2rem;
+        }
+        
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+        
+        .hero-text p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .urgency-box {
+            background: rgba(255,255,255,0.15);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 5px solid white;
+        }
+        
+        .urgency-box h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .form-card h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-card p {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--navy);
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Work Sans', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--situation-color);
+            box-shadow: 0 0 0 3px rgba(127, 140, 141, 0.1);
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 1.25rem;
+            background: var(--situation-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: 'Bebas Neue', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(127, 140, 141, 0.4);
+        }
+        
+        /* Problems Section */
+        .problems-section {
+            padding: 5rem 2rem;
+            background: white;
+        }
+        
+        .section-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--navy);
+            letter-spacing: 2px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+        }
+        
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .problem-card {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid var(--situation-color);
+        }
+        
+        .problem-card h3 {
+            font-size: 1.5rem;
+            color: var(--situation-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .problem-card h3::before {
+            content: "⚠";
+            font-size: 1.8rem;
+        }
+        
+        .problem-card p {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+        
+        .solution {
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 3px solid #27ae60;
+        }
+        
+        .solution strong {
+            color: #27ae60;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* How We Help Section */
+        .how-section {
+            padding: 5rem 2rem;
+            background: var(--light-bg);
+        }
+        
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .step-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--situation-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            margin: 0 auto 1rem;
+        }
+        
+        .step-card h3 {
+            font-size: 1.3rem;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+        }
+        
+        .step-card p {
+            color: var(--text-light);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--light-navy) 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            padding: 1.25rem 3rem;
+            background: var(--situation-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            font-family: 'Bebas Neue', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(127, 140, 141, 0.4);
+        }
+        
+        footer {
+            background: var(--navy);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+            
+            .problems-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-area">
+                <a href="/"><img src="logo.png" alt="Exact House" class="logo"></a>
+                <div class="local-badge">
+                    <div class="badger-icon">
+                        <img src="wisconsin-icon.png" alt="Wisconsin">
+                    </div>
+                    <span>Proud to Serve Wisconsin</span>
+                </div>
+            </div>
+            <a href="tel:9206508300" class="phone-cta">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                    <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+                </svg>
+                920-650-8300
+            </a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Burned Out from Being a Landlord?</h1>
+                <p>Tired of dealing with tenants, repairs, and late-night emergencies? Sell your rental property for cash and get your life back.</p>
+                
+                <div class="urgency-box">
+                    <h3>End the Landlord Nightmare</h3>
+                    <p>The mental toll isn't worth it anymore. Sell your rental property fast and move your capital into something that doesn't keep you up at night.</p>
+                </div>
+            </div>
+            
+            <div class="form-card">
+                <h2>Get a Cash Offer</h2>
+                <p>Send your details below and we'll text or email your offer the same day. No pressure.</p>
+                <p style="font-weight: 600;">Prefer faster? Call or text the number above.</p>
+                
+                <form id='contactForm' method='POST' name='contact-tired-landlord'>
+                    <input type="hidden" name="form-name" value="contact-tired-landlord">
+                    <input type="hidden" name="source-page" id="source-page" value="">
+                    <input type="hidden" name="situation" value="Tired Landlord">
+                    
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email (Optional)</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Property Address *</label>
+                        <input type="text" id="address" name="address" placeholder="123 Main St, Madison, WI" required>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Get My Offer</button>
+                
+                
+                <script>
+                    // Set source page
+                    document.getElementById('source-page').value = window.location.pathname.replace('/', '') || 'index.html';
+                    
+                    // Handle form submission
+                    document.getElementById('contactForm').addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        
+                        const formData = new FormData(this);
+                        const name = formData.get('name');
+                        const address = formData.get('address');
+                        const phone = formData.get('phone');
+                        const sourcePage = formData.get('source-page');
+                        
+                        // Submit to Netlify
+                        fetch('/', {
+                            method: 'POST',
+                            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                            body: new URLSearchParams(formData).toString()
+                        }).then(() => {
+                            // Redirect to details page with contact info
+                            const params = new URLSearchParams({
+                                name: name,
+                                address: address,
+                                phone: phone,
+                                source: sourcePage
+                            });
+                            window.location.href = '/details.html?' + params.toString();
+                        }).catch((error) => {
+                            alert('Error submitting form');
+                        });
+                    });
+                </script>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="problems-section">
+        <div class="section-content">
+            <h2 class="section-title">The Landlord Burnout Problems You're Facing</h2>
+            <p class="section-subtitle">We understand the exhaustion - and we have solutions</p>
+            
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <h3>Problem 1: Management Exhaustion</h3>
+                    <p>The mental toll of property maintenance and tenant disputes outweighs the rental income. Late-night calls about broken toilets, dealing with problem tenants, and constant repairs have burned you out completely.</p>
+                    <div class="solution">
+                        <strong>✓ Our Solution:</strong>
+                        Sell your rental property for cash and end the headaches immediately. No more tenant calls, no more repairs, just cash in hand.
+                    </div>
+                </div>
+                
+                <div class="problem-card">
+                    <h3>Problem 2: Property Losing Money</h3>
+                    <p>If your property is cash-flow negative due to rising interest rates, insurance costs, or constant repairs, you're losing money every month. You want to move that capital into a safer investment like a high-yield CD or index fund.</p>
+                    <div class="solution">
+                        <strong>✓ Our Solution:</strong>
+                        We buy your rental property quickly so you can reinvest your capital in something more profitable and less stressful.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-section">
+        <div class="section-content">
+            <h2 class="section-title">How We Help Burned-Out Landlords in 3 Simple Steps</h2>
+            
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Contact Us</h3>
+                    <p>Tell us about your rental property. We buy properties with tenants in place or vacant.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Get Your Cash Offer</h3>
+                    <p>We make fair cash offers on rental properties. No need to evict tenants or make repairs first.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Close & Move On</h3>
+                    <p>Close in days and get your cash. No more landlord stress - invest your money elsewhere.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Stop Being a Landlord?</h2>
+            <p>Life's too short to deal with problem tenants and constant repairs. Sell your rental property now and get your peace of mind back.</p>
+            <a href="tel:9206508300" class="cta-btn">Call 920-650-8300 Now</a>
+        </div>
+    </section>
+
+    <footer>
+        <p><strong>Exact House</strong> - Wisconsin's Trusted Cash Home Buyer</p>
+        <p>Ken Collins | <a href="tel:9206508300" style="color: var(--accent);">920-650-8300</a> | <a href="/cdn-cgi/l/email-protection#056e606b45607d6466716d6a7076602b666a68" style="color: var(--accent);"><span class="__cf_email__" data-cfemail="d7bcb2b997b2afb6b4a3bfb8a2a4b2f9b4b8ba">[email&#160;protected]</span></a></p>
+        <p>Proudly serving homeowners across Wisconsin</

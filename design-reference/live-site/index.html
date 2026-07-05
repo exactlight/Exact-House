@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>We Buy Houses in Wisconsin - Fast, Fair Cash Offers | Exact House</title>
+    <meta name="description" content="Get a cash offer for your Wisconsin home in 24 hours. No repairs, no fees, fast closing in 3-5 days. Call Ken at 920-650-8300.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #3d4d5c;
+            --light-navy: #5a6b7a;
+            --accent: #ff6b35;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-light: #666;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Header */
+        header {
+            background: var(--navy);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .logo {
+            height: 50px;
+            width: auto;
+        }
+        
+        .local-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: white;
+            backdrop-filter: blur(10px);
+        }
+        
+        .badger-icon {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .badger-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .phone-cta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+        
+        .phone-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--light-navy) 100%);
+            color: white;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(255,255,255,0.02) 10px,
+                    rgba(255,255,255,0.02) 20px
+                );
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-text h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+            animation: slideInLeft 0.8s ease-out;
+        }
+        
+        .hero-text p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: slideInLeft 0.8s ease-out 0.2s both;
+        }
+        
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            animation: slideInLeft 0.8s ease-out 0.4s both;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            font-size: 0.95rem;
+        }
+        
+        .benefit-item:last-child {
+            grid-column: 1 / -1;
+        }
+        
+        .benefit-item svg {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            fill: var(--accent);
+        }
+        
+        /* Form Card */
+        .form-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: slideInRight 0.8s ease-out 0.4s both;
+        }
+        
+        .form-card h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            color: var(--navy);
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+        
+        .form-card p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--navy);
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Work Sans', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 1.25rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            padding: 5rem 2rem;
+            background: var(--light-bg);
+        }
+        
+        .section-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--navy);
+            letter-spacing: 2px;
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .step {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .step:hover {
+            transform: translateY(-5px);
+        }
+        
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            padding: 1rem;
+        }
+        
+        .step-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: white;
+        }
+        
+        .step h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--navy);
+        }
+        
+        /* Situations Section */
+        .situations {
+            padding: 5rem 2rem;
+            background: white;
+        }
+        
+        .situation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .situation-card {
+            background: linear-gradient(135deg, var(--navy), var(--light-navy));
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .situation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        
+        .situation-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        footer p {
+            margin-bottom: 1rem;
+        }
+        
+        /* Animations */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+            
+            .benefits {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo-area">
+                <img src="logo.png" alt="Exact House" class="logo">
+                <div class="local-badge">
+                    <div class="badger-icon">
+                        <img src="wisconsin-icon.png" alt="Wisconsin">
+                    </div>
+                    <span>Proud to Serve Wisconsin</span>
+                </div>
+            </div>
+            <a href="tel:9206508300" class="phone-cta">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                    <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+                </svg>
+                920-650-8300
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>We Buy Houses in Wisconsin</h1>
+                <p>Get a fair cash offer fast. We Buy As-Is, no repairs, no cleaning, take what you want and we will take care of the rest. Save with no realtor fees. Sell your house on the day you chose or in as quick as 3 days.</p>
+                
+                <div class="benefits">
+                    <div class="benefit-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                        <span>We Buy When Others Can't or Won't</span>
+                    </div>
+                    <div class="benefit-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                        <span>Save on Moving and Storage, Take Only What You Want</span>
+                    </div>
+                    <div class="benefit-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                        <span>Owe Too Much? We Can Help</span>
+                    </div>
+                    <div class="benefit-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                        <span>We Buy Mobile Homes Too</span>
+                    </div>
+                    <div class="benefit-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                        <span>Think You Can't Sell It? We Have a Solution</span>
+                    </div>
+                    <div class="benefit-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                        <span>Have Other Debts? We Can Roll It In</span>
+                    </div>
+                    <div class="benefit-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        </svg>
+                        <span>We Pride Ourselves on Solving Tough Real Estate Problems</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="form-card">
+                <h2>Get a Cash Offer</h2>
+                <p>Send your details below and we'll text or email your offer the same day. No pressure.</p>
+                <p style="font-weight: 600; margin-top: 0.5rem;">Prefer faster? Call or text the number above.</p>
+                
+                <form action='/details' method='POST' name='contact'>
+                    <input type="hidden" name="form-name" value="contact">
+                    
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email (Optional)</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Property Address *</label>
+                        <input type="text" id="address" name="address" placeholder="123 Main St, Madison, WI" required>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Get Me An Offer</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="section-content">
+            <h2 class="section-title">How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+                        </svg>
+                    </div>
+                    <h3>Contact Us</h3>
+                    <p>Fill out the form or call us. It takes less than 2 minutes.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M22 9h-4.79l-4.38-6.56c-.19-.28-.51-.42-.83-.42s-.64.14-.83.43L6.79 9H2c-.55 0-1 .45-1 1 0 .09.01.18.04.27l2.54 9.27c.23.84 1 1.46 1.92 1.46h13c.92 0 1.69-.62 1.93-1.46l2.54-9.27L23 10c0-.55-.45-1-1-1zM12 4.8L14.8 9H9.2L12 4.8zM18.5 19l-12.99.01L3.31 11H20.7l-2.2 8zM12 13c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                        </svg>
+                    </div>
+                    <h3>Find a Solution</h3>
+                    <p>We'll work with you to understand your situation and create a solution that works for you.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+                        </svg>
+                    </div>
+                    <h3>Close & Get Paid</h3>
+                    <p>Choose your closing date - as quick as 3 days or on your timeline. Walk away with cash in hand. We handle all the paperwork and pay all closing costs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Situations -->
+    <section class="situations">
+        <div class="section-content">
+            <h2 class="section-title">We Buy Houses in Any Situation</h2>
+            <div class="situation-grid">
+                <a class='situation-card' href='/divorce'>
+                    <h3>1. Divorce or Separation</h3>
+                    <p>Selling during a divorce? Get a fair split fast so both parties can move forward.</p>
+                </a>
+                <a class='situation-card' href='/inherited'>
+                    <h3>2. Inherited Property</h3>
+                    <p>Don't want to deal with an inherited house? We'll buy it as-is.</p>
+                </a>
+                <a class='situation-card' href='/job-relocation'>
+                    <h3>3. Job Relocation</h3>
+                    <p>Moving for work? We can close quickly so you can start your new chapter.</p>
+                </a>
+                <a class='situation-card' href='/senior-transition'>
+                    <h3>4. Senior Transition</h3>
+                    <p>Moving to assisted living? Get the cash you need for care costs.</p>
+                </a>
+                <a class='situation-card' href='/financial-strain'>
+                    <h3>5. Financial Strain</h3>
+                    <p>Can't afford the payments? Sell before you damage your credit.</p>
+                </a>
+                <a class='situation-card' href='/tired-landlord'>
+                    <h3>6. Burned-Out Landlord</h3>
+                    <p>Done dealing with tenants and repairs? Sell your rental property fast.</p>
+                </a>
+                <a class='situation-card' href='/foreclosure'>
+                    <h3>7. Mortgage Delinquency</h3>
+                    <p>Facing foreclosure? Stop the auction and protect your credit.</p>
+                </a>
+                <a class='situation-card' href='/double-mortgage'>
+                    <h3>8. Double Mortgage</h3>
+                    <p>Bought before selling? We can help you avoid paying two mortgages.</p>
+                </a>
+                <a class='situation-card' href='/repairs'>
+                    <h3>9. Major Repairs Needed</h3>
+                    <p>House needs work? We buy houses in any condition. No repairs needed.</p>
+                </a>
+                <a class='situation-card' href='/tax-liens'>
+                    <h3>10. Tax Liens</h3>
+                    <p>Facing a tax lien or legal issues? Sell fast before seizure.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- City Links (inconspicuous navigation) -->
+    <div style="padding: 1rem 2rem; background: #ecf0f1; text-align: center;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <p style="font-size: 0.75rem; color: #95a5a6; margin-bottom: 0.5rem;">City Pages:</p>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem;">
+                <a href='/madison' style='font-size: 0.7rem; color: #7f8c8d; text-decoration: none; padding: 0.25rem 0.5rem;'>Madison</a>
+                <span style="color: #bdc3c7; font-size: 0.7rem;">|</span>
+                <a href='/fort-atkinson' style='font-size: 0.7rem; color: #7f8c8d; text-decoration: none; padding: 0.25rem 0.5rem;'>Fort Atkinson</a>
+                <span style="color: #bdc3c7; font-size: 0.7rem;">|</span>
+                <a href='/watertown' style='font-size: 0.7rem; color: #7f8c8d; text-decoration: none; padding: 0.25rem 0.5rem;'>Watertown</a>
+                <span style="color: #bdc3c7; font-size: 0.7rem;">|</span>
+                <a href='/sun-prairie' style='font-size: 0.7rem; color: #7f8c8d; text-decoration: none; padding: 0.25rem 0.5rem;'>Sun Prairie</a>
+                <span style="color: #bdc3c7; font-size: 0.7rem;">|</span>
+                <a href='/oconomowoc' style='font-size: 0.7rem; color: #7f8c8d; text-decoration: none; padding: 0.25rem 0.5rem;'>Oconomowoc</a>
+                <span style="color: #bdc3c7; font-size: 0.7rem;">|</span>
+                <a href='/stoughton' style='font-size: 0.7rem; color: #7f8c8d; text-decoration: none; padding: 0.25rem 0.5rem;'>Stoughton</a>
+                <span style="color: #bdc3c7; font-size: 0.7rem;">|</span>
+                <a href='/whitewater' style='font-size: 0.7rem; color: #7f8c8d; text-decoration: none; padding: 0.25rem 0.5rem;'>Whitewater</a>
+                <span style="color: #bdc3c7; font-size: 0.7rem;">|</span>
+                <a href='/deforest' style='font-size: 0.7rem; color: #7f8c8d; text-decoration: none; padding: 0.25rem 0.5rem;'>DeForest</a>
+                <span style="color: #bdc3c7; font-size: 0.7rem;">|</span>
+                <a href='/beaver-dam' style='font-size: 0.7rem; color: #7f8c8d; text-decoration: none; padding: 0.25rem 0.5rem;'>Beaver Dam</a>
+                <span style="color: #bdc3c7; font-size: 0.7rem;">|</span>
+                <a href='/waunakee' style='font-size: 0.7rem; color: #7f8c8d; text-decoration: none; padding: 0.25rem 0.5rem;'>Waunakee</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>Exact House</strong> - We Buy Houses in Southern Wisconsin</p>
+        <p>Ken Collins | <a href="tel:9206508300" style="color: var(--accent);">920-650-8300</a> | <a href="/cdn-cgi/l/email-protection#503b353e103528313324383f2523357e333f3d" style="color: var(--accent);"><span class="__cf_email__" data-cfemail="b6ddd3d8f6d3ced7d5c2ded9c3c5d398d5d9db">[email&#160;protected]</span></a></p>
+        <p>Serving Jefferson, Dane, Waukesha, Milwaukee, Dodge, and Columbia Counties</

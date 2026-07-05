@@ -6,20 +6,19 @@ import { useRouter } from "next/navigation";
 type Props = {
   /** Netlify form name — must match a form defined in public/__forms.html */
   formName: string;
-  /** Extra hidden fields, e.g. { city: "Madison" } or { situation: "foreclosure" } */
+  /** Extra hidden fields, e.g. { city: "Madison" } or { situation: "Divorce" } */
   hidden?: Record<string, string>;
-  /** Compact style for in-page embeds vs. full standalone */
-  title?: string;
-  subtitle?: string;
 };
 
+const inputCls =
+  "w-full rounded-[10px] border-2 border-[#e0e0e0] px-4 py-3.5 text-base text-foreground transition-all focus:border-accent-500 focus:outline-none focus:ring-[3px] focus:ring-accent-500/10";
+
 /**
- * Step 1 of the two-step lead flow (same flow as the live site):
- * captures name/phone/email/address into Netlify Forms immediately, then
- * forwards the seller to /property-details for step 2. The lead is saved
- * even if they never complete step 2.
+ * Step 1 of the two-step lead flow — visual match for the live site's form
+ * card. Captures the lead into Netlify Forms immediately, then forwards to
+ * /details for step 2. The lead is saved even if step 2 is abandoned.
  */
-export default function LeadForm({ formName, hidden = {}, title, subtitle }: Props) {
+export default function LeadForm({ formName, hidden = {} }: Props) {
   const router = useRouter();
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
@@ -60,23 +59,27 @@ export default function LeadForm({ formName, hidden = {}, title, subtitle }: Pro
           sourcePage: window.location.pathname,
         })
       );
-      router.push("/property-details");
+      router.push("/details");
     } catch {
       setError(
-        `Something went wrong sending your info. Please try again, or call/text us directly.`
+        "Something went wrong sending your info. Please try again, or call/text us directly."
       );
       setSubmitting(false);
     }
   }
 
   return (
-    <div className="rounded-xl bg-white p-6 shadow-lg ring-1 ring-brand-100">
-      {title ? (
-        <h2 className="text-xl font-bold text-brand-800">{title}</h2>
-      ) : null}
-      {subtitle ? <p className="mt-1 text-sm text-brand-700/80">{subtitle}</p> : null}
+    <div className="anim-in-right rounded-[20px] bg-white p-8 shadow-[0_20px_60px_rgba(0,0,0,0.3)] sm:p-10">
+      <h2 className="heading-display text-4xl text-brand-800">Get a Cash Offer</h2>
+      <p className="mt-1 text-[#666]">
+        Send your details below and we&apos;ll text or email your offer the same
+        day. No pressure.
+      </p>
+      <p className="mt-2 font-semibold text-[#666]">
+        Prefer faster? Call or text the number above.
+      </p>
 
-      <form onSubmit={onSubmit} className="mt-4 space-y-3" data-form-name={formName}>
+      <form onSubmit={onSubmit} className="mt-6 space-y-5" data-form-name={formName}>
         <p className="hidden">
           <label>
             Don&apos;t fill this out: <input name="bot-field" tabIndex={-1} autoComplete="off" />
@@ -84,8 +87,49 @@ export default function LeadForm({ formName, hidden = {}, title, subtitle }: Pro
         </p>
 
         <div>
-          <label htmlFor={`${formName}-address`} className="mb-1 block text-sm font-medium text-brand-800">
-            Property Address*
+          <label htmlFor={`${formName}-name`} className="mb-2 block font-semibold text-brand-800">
+            Full Name *
+          </label>
+          <input
+            id={`${formName}-name`}
+            name="name"
+            type="text"
+            required
+            autoComplete="name"
+            className={inputCls}
+          />
+        </div>
+
+        <div>
+          <label htmlFor={`${formName}-phone`} className="mb-2 block font-semibold text-brand-800">
+            Phone Number *
+          </label>
+          <input
+            id={`${formName}-phone`}
+            name="phone"
+            type="tel"
+            required
+            autoComplete="tel"
+            className={inputCls}
+          />
+        </div>
+
+        <div>
+          <label htmlFor={`${formName}-email`} className="mb-2 block font-semibold text-brand-800">
+            Email (Optional)
+          </label>
+          <input
+            id={`${formName}-email`}
+            name="email"
+            type="email"
+            autoComplete="email"
+            className={inputCls}
+          />
+        </div>
+
+        <div>
+          <label htmlFor={`${formName}-address`} className="mb-2 block font-semibold text-brand-800">
+            Property Address *
           </label>
           <input
             id={`${formName}-address`}
@@ -93,50 +137,8 @@ export default function LeadForm({ formName, hidden = {}, title, subtitle }: Pro
             type="text"
             required
             autoComplete="street-address"
-            placeholder="123 Main St, City, WI"
-            className="w-full rounded-lg border border-brand-100 px-3 py-2.5 text-brand-900 placeholder:text-brand-700/40 focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/30"
-          />
-        </div>
-
-        <div className="grid gap-3 sm:grid-cols-2">
-          <div>
-            <label htmlFor={`${formName}-name`} className="mb-1 block text-sm font-medium text-brand-800">
-              Name*
-            </label>
-            <input
-              id={`${formName}-name`}
-              name="name"
-              type="text"
-              required
-              autoComplete="name"
-              className="w-full rounded-lg border border-brand-100 px-3 py-2.5 text-brand-900 focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/30"
-            />
-          </div>
-          <div>
-            <label htmlFor={`${formName}-phone`} className="mb-1 block text-sm font-medium text-brand-800">
-              Phone*
-            </label>
-            <input
-              id={`${formName}-phone`}
-              name="phone"
-              type="tel"
-              required
-              autoComplete="tel"
-              className="w-full rounded-lg border border-brand-100 px-3 py-2.5 text-brand-900 focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/30"
-            />
-          </div>
-        </div>
-
-        <div>
-          <label htmlFor={`${formName}-email`} className="mb-1 block text-sm font-medium text-brand-800">
-            Email
-          </label>
-          <input
-            id={`${formName}-email`}
-            name="email"
-            type="email"
-            autoComplete="email"
-            className="w-full rounded-lg border border-brand-100 px-3 py-2.5 text-brand-900 focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/30"
+            placeholder="123 Main St, Madison, WI"
+            className={inputCls}
           />
         </div>
 
@@ -145,13 +147,10 @@ export default function LeadForm({ formName, hidden = {}, title, subtitle }: Pro
         <button
           type="submit"
           disabled={submitting}
-          className="w-full rounded-lg bg-accent-500 px-6 py-3.5 text-lg font-semibold text-white shadow-md hover:bg-accent-600 disabled:opacity-60"
+          className="heading-display w-full rounded-full bg-accent-500 py-5 text-xl tracking-[1px] text-white shadow-[0_10px_30px_rgba(255,107,53,0.3)] transition-all hover:-translate-y-0.5 hover:bg-accent-600 hover:shadow-[0_15px_40px_rgba(255,107,53,0.4)] disabled:opacity-60"
         >
-          {submitting ? "Sending…" : "Get My Fair Cash Offer"}
+          {submitting ? "Sending…" : "Get Me An Offer"}
         </button>
-        <p className="text-center text-xs text-brand-700/60">
-          No obligation. No fees. Your info is never shared or sold.
-        </p>
       </form>
     </div>
   );

@@ -1,31 +1,28 @@
 @import "tailwindcss";
 
 /*
- * Exact House design tokens.
- * Change brand colors here and the whole site follows.
+ * Exact House design tokens — matched to the live exacthouse.com palette:
+ * slate navy (#3d4d5c) + orange accent (#ff6b35), Bebas Neue display headings,
+ * Work Sans body. Reference snapshots: design-reference/live-site/.
  */
 :root {
   --background: #ffffff;
-  --foreground: #1a2333;
+  --foreground: #1a1a1a;
 
-  /* Brand: trustworthy deep navy */
-  --brand-50: #f0f5fa;
-  --brand-100: #dce8f3;
-  --brand-500: #2d5f8a;
-  --brand-600: #1f4a70;
-  --brand-700: #17395a;
-  --brand-800: #122c46;
-  --brand-900: #0d2033;
+  /* Brand: slate navy (live --navy / --light-navy) */
+  --brand-50: #f8f9fa;
+  --brand-100: #e4e8eb;
+  --brand-500: #5a6b7a;
+  --brand-600: #4d5d6c;
+  --brand-700: #455463;
+  --brand-800: #3d4d5c;
+  --brand-900: #33404d;
 
-  /* Accent: action green for CTAs */
-  --accent-400: #34c467;
-  --accent-500: #1fa855;
-  --accent-600: #178a45;
-  --accent-700: #126e38;
-
-  /* Highlight: warm gold for badges / emphasis */
-  --gold-400: #e9b949;
-  --gold-500: #d9a32e;
+  /* Accent: orange (live --accent) */
+  --accent-400: #ff8c5a;
+  --accent-500: #ff6b35;
+  --accent-600: #f05a24;
+  --accent-700: #d94e1f;
 }
 
 @theme inline {
@@ -42,13 +39,72 @@
   --color-accent-500: var(--accent-500);
   --color-accent-600: var(--accent-600);
   --color-accent-700: var(--accent-700);
-  --color-gold-400: var(--gold-400);
-  --color-gold-500: var(--gold-500);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-work-sans);
+  --font-display: var(--font-bebas);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+  line-height: 1.6;
+}
+
+/* Display headings — Bebas Neue with the live site's letter-spacing */
+.heading-display {
+  font-family: var(--font-bebas);
+  letter-spacing: 2px;
+  line-height: 1.05;
+}
+
+/* Subtle diagonal stripe overlay used on the live hero.
+   Applied via ::before so it layers on top of the gradient background
+   (setting background-image directly would replace the gradient utility). */
+.hero-stripes {
+  position: relative;
+}
+.hero-stripes::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(255, 255, 255, 0.02) 10px,
+    rgba(255, 255, 255, 0.02) 20px
+  );
+  pointer-events: none;
+}
+.hero-stripes > * {
+  position: relative;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.anim-in-left {
+  animation: slideInLeft 0.8s ease-out both;
+}
+
+.anim-in-right {
+  animation: slideInRight 0.8s ease-out 0.4s both;
 }

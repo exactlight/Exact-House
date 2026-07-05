@@ -9,42 +9,34 @@ export const metadata: Metadata = {
 
 export default function GetOfferPage() {
   return (
-    <section className="bg-brand-50">
-      <div className="mx-auto grid max-w-5xl items-start gap-10 px-4 py-14 lg:grid-cols-2">
-        <div>
-          <h1 className="text-4xl font-bold text-brand-800">
-            Get Your Fair Cash Offer
-          </h1>
-          <p className="mt-4 text-brand-700/80">
+    <section className="hero-stripes bg-gradient-to-br from-brand-800 to-brand-500 px-4 py-14 text-white">
+      <div className="mx-auto grid max-w-[1200px] items-center gap-12 sm:px-8 lg:grid-cols-2">
+        <div className="anim-in-left">
+          <h1 className="heading-display mb-6 text-6xl">Get Your Fair Cash Offer</h1>
+          <p className="mb-6 text-xl opacity-95">
             Tell us where the property is and how to reach you — that&apos;s it.
-            We&apos;ll follow up quickly, usually the same day, with next steps and a
-            no-obligation offer.
+            We&apos;ll text or email your offer the same day. No pressure, no
+            obligation.
           </p>
-          <ul className="mt-6 space-y-3 text-brand-800">
+          <ul className="space-y-3">
             {[
-              "No fees, no commissions, no closing costs",
-              "Sell completely as-is — any condition",
-              "You choose the closing date",
-              "No obligation — the offer is free, deciding is up to you",
+              "No fees, no commissions — we pay all closing costs",
+              "Sell completely as-is, any condition",
+              "You choose the closing date — as quick as 3 days",
+              "The offer is free. Deciding is up to you.",
             ].map((item) => (
-              <li key={item} className="flex items-start gap-2">
-                <span className="mt-0.5 text-accent-600">✓</span>
+              <li key={item} className="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="mt-0.5 h-6 w-6 shrink-0 fill-accent-500" aria-hidden>
+                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                </svg>
                 {item}
               </li>
             ))}
           </ul>
-          <p className="mt-8 text-brand-700/80">
-            Rather talk it through?{" "}
-            <a href={site.phoneHref} className="font-semibold text-accent-600">
-              Call or text {site.phone}
-            </a>
-          </p>
         </div>
-        <LeadForm
-          formName="contact"
-          title="Where's the Property?"
-          subtitle="Takes about 30 seconds."
-        />
+        <div className="text-foreground">
+          <LeadForm formName="contact" />
+        </div>
       </div>
     </section>
   );

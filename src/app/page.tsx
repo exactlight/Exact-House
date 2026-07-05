@@ -1,10 +1,9 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
-import { cities } from "@/data/cities";
 import { situations } from "@/data/situations";
 import LeadForm from "@/components/LeadForm";
+import HeroBenefits from "@/components/HeroBenefits";
 import HowItWorksSteps from "@/components/HowItWorksSteps";
-import CtaBanner from "@/components/CtaBanner";
 import JsonLd from "@/components/JsonLd";
 
 const localBusiness = {
@@ -20,84 +19,69 @@ const localBusiness = {
     addressRegion: site.address.region,
     addressCountry: site.address.country,
   },
-  areaServed: site.serviceArea.map((c) => ({ "@type": "City", name: `${c}, WI` })),
+  areaServed: [
+    "Jefferson County, WI",
+    "Dane County, WI",
+    "Waukesha County, WI",
+    "Milwaukee County, WI",
+    "Dodge County, WI",
+    "Columbia County, WI",
+  ],
   sameAs: [site.social.facebook],
 };
 
+/** Homepage situations grid — numbered cards with the live site's copy. */
+const situationCards = [
+  { slug: "divorce", title: "1. Divorce or Separation", body: "Selling during a divorce? Get a fair split fast so both parties can move forward." },
+  { slug: "inherited", title: "2. Inherited Property", body: "Don't want to deal with an inherited house? We'll buy it as-is." },
+  { slug: "job-relocation", title: "3. Job Relocation", body: "Moving for work? We can close quickly so you can start your new chapter." },
+  { slug: "senior-transition", title: "4. Senior Transition", body: "Moving to assisted living? Get the cash you need for care costs." },
+  { slug: "financial-strain", title: "5. Financial Strain", body: "Can't afford the payments? Sell before you damage your credit." },
+  { slug: "tired-landlord", title: "6. Burned-Out Landlord", body: "Done dealing with tenants and repairs? Sell your rental property fast." },
+  { slug: "foreclosure", title: "7. Mortgage Delinquency", body: "Facing foreclosure? Stop the auction and protect your credit." },
+  { slug: "double-mortgage", title: "8. Double Mortgage", body: "Bought before selling? We can help you avoid paying two mortgages." },
+  { slug: "repairs", title: "9. Major Repairs Needed", body: "House needs work? We buy houses in any condition. No repairs needed." },
+  { slug: "tax-liens", title: "10. Tax Liens", body: "Facing a tax lien or legal issues? Sell fast before seizure." },
+];
+
 export default function Home() {
+  // Guard: keep the grid in sync with the situations data
+  const known = new Set(situations.map((s) => s.slug));
+  const cards = situationCards.filter((c) => known.has(c.slug));
+
   return (
     <>
       <JsonLd data={localBusiness} />
 
-      {/* Hero with step-1 lead form */}
-      <section className="bg-gradient-to-b from-brand-800 to-brand-700 text-white">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 lg:grid-cols-2 lg:py-20">
-          <div>
-            <p className="mb-4 inline-block rounded-full bg-gold-400/20 px-4 py-1 text-sm font-semibold text-gold-400">
-              Local &amp; Trusted — {site.address.locality}, Wisconsin
-            </p>
-            <h1 className="text-4xl font-bold leading-tight sm:text-5xl">
-              We Buy Houses in Wisconsin — Fast, Fair Cash Offers
+      {/* Hero — live layout: text + benefits left, form card right */}
+      <section className="hero-stripes relative bg-gradient-to-br from-brand-800 to-brand-500 text-white">
+        <div className="mx-auto grid max-w-[1400px] items-center gap-12 px-4 py-14 sm:px-8 lg:grid-cols-2 lg:py-16">
+          <div className="anim-in-left">
+            <h1 className="heading-display mb-6 text-6xl sm:text-7xl">
+              We Buy Houses in Wisconsin
             </h1>
-            <p className="mt-4 text-lg text-brand-100">
-              Sell your South-Central Wisconsin house in any condition, on your
-              schedule. No fees, no commissions, no repairs, no cleaning.
+            <p className="mb-8 text-xl opacity-95">
+              Get a fair cash offer fast. We Buy As-Is, no repairs, no cleaning,
+              take what you want and we will take care of the rest. Save with no
+              realtor fees. Sell your house on the day you chose or in as quick as
+              3 days.
             </p>
-            <ul className="mt-6 space-y-2 text-brand-100">
-              {[
-                "Fair cash offer, usually within 24 hours",
-                "Close in as little as 7 days — or whenever you choose",
-                "We buy as-is: take what you want, leave the rest",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-2">
-                  <span className="mt-1 text-accent-400">✓</span>
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-6 text-brand-100">
-              Prefer to talk?{" "}
-              <a href={site.phoneHref} className="font-semibold text-white underline decoration-accent-400 underline-offset-4">
-                Call or text {site.phone}
-              </a>
-            </p>
+            <HeroBenefits />
           </div>
 
-          <div className="text-brand-900">
-            <LeadForm
-              formName="contact"
-              title="Get Your Fair Cash Offer"
-              subtitle="Takes about 30 seconds. No obligation."
-            />
+          <div className="text-foreground">
+            <LeadForm formName="contact" />
           </div>
         </div>
       </section>
 
-      {/* Trust strip */}
-      <section className="border-b border-brand-100 bg-white">
-        <div className="mx-auto grid max-w-6xl gap-6 px-4 py-10 text-center sm:grid-cols-3">
-          {[
-            ["No Fees or Commissions", "You pay nothing. We cover standard closing costs."],
-            ["Sell 100% As-Is", "No repairs, no cleaning — we buy in any condition."],
-            ["You Pick the Closing Date", "In as little as 7 days, or months out if you need time."],
-          ].map(([title, body]) => (
-            <div key={title}>
-              <p className="font-semibold text-brand-800">{title}</p>
-              <p className="mt-1 text-sm text-brand-700/80">{body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* How it works */}
-      <section className="bg-brand-50">
-        <div className="mx-auto max-w-6xl px-4 py-16">
-          <h2 className="text-center text-3xl font-bold text-brand-800">
-            Selling Your House Is as Easy as 1-2-3
+      {/* How It Works */}
+      <section className="bg-brand-50 px-4 py-20">
+        <div className="mx-auto max-w-[1200px]">
+          <h2 className="heading-display mb-12 text-center text-5xl text-brand-800">
+            How It Works
           </h2>
-          <div className="mt-10">
-            <HowItWorksSteps />
-          </div>
+          <HowItWorksSteps />
           <p className="mt-8 text-center">
             <Link href="/how-it-works" className="font-semibold text-accent-600 hover:text-accent-700">
               See exactly how our offers work →
@@ -107,54 +91,32 @@ export default function Home() {
       </section>
 
       {/* Situations */}
-      <section className="bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-16">
-          <h2 className="text-center text-3xl font-bold text-brand-800">
-            Whatever the Situation, We Can Help
+      <section className="bg-white px-4 py-20">
+        <div className="mx-auto max-w-[1200px]">
+          <h2 className="heading-display mb-12 text-center text-5xl text-brand-800">
+            We Buy Houses in Any Situation
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-center text-brand-700/80">
-            We&apos;ve helped Wisconsin homeowners through all of these. No judgment —
-            just a straightforward way out.
-          </p>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {situations.map((s) => (
-              <Link
-                key={s.slug}
-                href={`/situations/${s.slug}`}
-                className="rounded-lg border border-brand-100 px-4 py-5 text-center text-sm font-semibold text-brand-800 hover:border-accent-500 hover:bg-accent-500/5"
-              >
-                {s.name}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Service area */}
-      <section className="bg-brand-50">
-        <div className="mx-auto max-w-6xl px-4 py-16 text-center">
-          <h2 className="text-3xl font-bold text-brand-800">
-            We Buy Houses Across South-Central Wisconsin
-          </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-brand-700/80">
-            Based in {site.address.locality}, we buy in these communities and
-            everywhere in between:
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            {cities.map((c) => (
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {cards.map((c) => (
               <Link
                 key={c.slug}
-                href={`/sell-my-house-fast/${c.slug}`}
-                className="rounded-full border border-brand-100 bg-white px-5 py-2 text-sm font-medium text-brand-800 hover:border-accent-500 hover:text-accent-600"
+                href={`/${c.slug}`}
+                className="rounded-[15px] bg-gradient-to-br from-brand-800 to-brand-500 p-8 text-white shadow-[0_10px_30px_rgba(0,0,0,0.1)] transition-all hover:-translate-y-1 hover:shadow-[0_15px_40px_rgba(0,0,0,0.2)]"
               >
-                {c.name}, WI
+                <h3 className="mb-2 text-2xl font-semibold">{c.title}</h3>
+                <p className="opacity-90">{c.body}</p>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      <CtaBanner />
+      {/* Signature strip from the live city pages */}
+      <section className="bg-brand-800 px-4 py-10 text-center text-white">
+        <p className="heading-display text-3xl tracking-[2px]">
+          Not a call center. A neighbor.
+        </p>
+      </section>
     </>
   );
 }

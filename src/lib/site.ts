@@ -1,19 +1,19 @@
 /**
  * Single source of truth for business info used across the site.
- * Update values here — every page, header, footer, and schema block reads from this.
+ * Values verified against the live exacthouse.com (snapshots in design-reference/).
  */
 export const site = {
   name: "Exact House",
   legalName: "Exact House LLC",
   domain: "exacthouse.com",
   url: "https://exacthouse.com",
-  tagline: "Sell Your House Fast for Cash in South-Central Wisconsin",
+  tagline: "We Buy Houses in Wisconsin - Fast, Fair Cash Offers",
   description:
-    "Exact House buys houses for cash in South-Central Wisconsin. Any condition, on your schedule. No fees, no commissions, no repairs — get a fair cash offer today.",
+    "Get a cash offer for your Wisconsin home in 24 hours. No repairs, no fees, fast closing in 3-5 days. Call Ken at 920-650-8300.",
 
-  phone: "(920) 397-9663",
-  phoneHref: "tel:+19203979663",
-  smsHref: "sms:+19203979663",
+  phone: "920-650-8300",
+  phoneHref: "tel:9206508300",
+  smsHref: "sms:9206508300",
   email: "ken@exacthouse.com",
 
   owner: "Ken Collins",
@@ -24,20 +24,8 @@ export const site = {
     country: "US",
   },
 
-  serviceArea: [
-    "Lake Mills",
-    "Madison",
-    "Sun Prairie",
-    "Watertown",
-    "Fort Atkinson",
-    "Jefferson",
-    "Waterloo",
-    "Cambridge",
-    "Johnson Creek",
-    "Deerfield",
-    "Cottage Grove",
-    "Oconomowoc",
-  ],
+  footerTagline: "We Buy Houses in Southern Wisconsin",
+  counties: "Serving Jefferson, Dane, Waukesha, Milwaukee, Dodge, and Columbia Counties",
 
   social: {
     facebook: "https://www.facebook.com/exacthouse/",

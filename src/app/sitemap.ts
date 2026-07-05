@@ -18,17 +18,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: path === "" ? 1 : 0.7,
   }));
 
-  const cityPages = cities.map((c) => ({
-    url: `${site.url}/sell-my-house-fast/${c.slug}`,
+  const slugPages = [...cities, ...situations].map((entry) => ({
+    url: `${site.url}/${entry.slug}`,
     changeFrequency: "monthly" as const,
     priority: 0.8,
   }));
 
-  const situationPages = situations.map((s) => ({
-    url: `${site.url}/situations/${s.slug}`,
-    changeFrequency: "monthly" as const,
-    priority: 0.8,
-  }));
-
-  return [...staticPages, ...cityPages, ...situationPages];
+  return [...staticPages, ...slugPages];
 }
