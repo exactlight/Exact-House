@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 type Props = {
@@ -160,9 +161,9 @@ export default function LeadForm({ formName, hidden = {} }: Props) {
           automated means. Consent is not a condition of any purchase. Message
           and data rates may apply. Message frequency varies. Reply STOP to
           opt out or HELP for help. See our{" "}
-          <a href="/privacy" className="underline hover:text-accent-600">
+          <Link href="/privacy" className="underline hover:text-accent-600">
             Privacy Policy
-          </a>
+          </Link>
           .
         </p>
       </form>
