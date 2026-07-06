@@ -158,13 +158,26 @@ export default function LeadForm({ formName, hidden = {} }: Props) {
           {submitting ? "Submitting…" : "Get My Cash Offer →"}
         </button>
 
-        {/* SMS consent disclosure — required by TCPA and carrier reviews. */}
+        {/* Optional SMS opt-in (unchecked by default) + disclosure — carriers
+            require text-message consent to be optional, not a condition of
+            submitting the form. */}
+        <label className="flex items-start gap-2 text-xs leading-relaxed text-[#9CA3AF]">
+          <input
+            type="checkbox"
+            name="sms-consent"
+            value="yes"
+            className="mt-0.5 h-4 w-4 shrink-0 accent-accent-600"
+          />
+          <span>
+            Yes, it&apos;s OK to text me about my inquiry (optional). Message and
+            data rates may apply. Message frequency varies. Reply STOP to opt
+            out or HELP for help.
+          </span>
+        </label>
         <p className="text-xs leading-relaxed text-[#9CA3AF]">
-          By submitting, you agree that {site.name} may contact you by phone,
-          text message, or email about your property inquiry, including via
-          automated means. Consent is not a condition of any purchase. Message
-          and data rates may apply. Message frequency varies. Reply STOP to
-          opt out or HELP for help. See our{" "}
+          By submitting, you agree that {site.name} may contact you by phone or
+          email about your property inquiry. Consent is not a condition of any
+          purchase. See our{" "}
           <Link href="/privacy" className="underline hover:text-brand-800">
             Privacy Policy
           </Link>
