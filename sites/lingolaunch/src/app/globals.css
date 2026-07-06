@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+/*
+ * LingoLaunch design tokens — warm cream canvas, deep ink text, and a
+ * five-color "crayon box" accent set. Everything is sized to read from
+ * the back of a classroom when projected.
+ */
+@theme {
+  --color-cream: #fdf8ee;
+  --color-paper: #ffffff;
+  --color-ink: #2b2a45;
+  --color-ink-soft: #5c5a7a;
+
+  --color-teal-100: #d3f3ee;
+  --color-teal-500: #0f9d8f;
+  --color-teal-600: #0c8375;
+  --color-teal-700: #0a6a60;
+
+  --color-coral-100: #ffe3e0;
+  --color-coral-500: #ff6b5e;
+  --color-coral-600: #ef4f42;
+
+  --color-sun-100: #fff1cc;
+  --color-sun-400: #ffc94d;
+  --color-sun-500: #f5b52e;
+
+  --color-sky-100: #dcf1fd;
+  --color-sky-500: #38a8e8;
+  --color-sky-600: #2389c7;
+
+  --color-grape-100: #efe2fb;
+  --color-grape-500: #8b5cf6;
+  --color-grape-600: #7a45ea;
+
+  --font-sans: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
+  --font-display:
+    var(--font-baloo), var(--font-nunito), ui-sans-serif, sans-serif;
+
+  --shadow-pop: 0 4px 0 0 rgb(43 42 69 / 0.16);
+  --shadow-pop-lg: 0 6px 0 0 rgb(43 42 69 / 0.16);
+}
+
+/* Playing-card flip used by Flashcards. */
+.perspective-1000 {
+  perspective: 1200px;
+}
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+.backface-hidden {
+  backface-visibility: hidden;
+}
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Emoji burst celebration (Scramble, Picker). */
+@keyframes burst {
+  0% {
+    transform: translate(0, 0) scale(0.4);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--burst-x), var(--burst-y)) scale(1.3);
+    opacity: 0;
+  }
+}
+.animate-burst {
+  animation: burst 900ms ease-out forwards;
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}
+.animate-wiggle {
+  animation: wiggle 300ms ease-in-out infinite;
+}
+
+/* Print styles: bingo cards print clean, one card per page, no chrome. */
+@media print {
+  body {
+    background: #fff !important;
+  }
+  .print-hidden {
+    display: none !important;
+  }
+  .print-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .print-page {
+    break-after: page;
+    page-break-after: always;
+  }
+}
