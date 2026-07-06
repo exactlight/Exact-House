@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+/*
+ * DealLens design tokens.
+ * Brand: deep ink slate + emerald "money" accent, light theme (fixed —
+ * the printable deal report shares these styles).
+ * Chart series colors are the dataviz reference palette in an order
+ * validated for CVD separation (see README).
+ */
+:root {
+  color-scheme: light;
+
+  --background: #ffffff;
+  --surface: #f8faf9;
+  --foreground: #101828;
+  --muted: #5b6472;
+  --faint: #8a93a1;
+  --hairline: #e5e8ec;
+
+  --ink-800: #17263c;
+  --ink-900: #0f1a2b;
+
+  --accent-050: #e7f6ef;
+  --accent-100: #d0eee1;
+  --accent-500: #059669;
+  --accent-600: #047857;
+  --accent-700: #036048;
+
+  /* Stacked-bar slots, in render order: purchase, rehab, carry, selling, profit */
+  --viz-purchase: #2a78d6;
+  --viz-rehab: #1baf7a;
+  --viz-carry: #eda100;
+  --viz-selling: #4a3aa7;
+  --viz-profit: #008300;
+  --viz-loss: #d03b3b;
+  --viz-track: #eceff3;
+
+  --status-good: #0ca30c;
+  --status-good-text: #006300;
+  --status-warning: #b97e00;
+  --status-critical: #d03b3b;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-hairline: var(--hairline);
+  --color-ink-800: var(--ink-800);
+  --color-ink-900: var(--ink-900);
+  --color-accent-050: var(--accent-050);
+  --color-accent-100: var(--accent-100);
+  --color-accent-500: var(--accent-500);
+  --color-accent-600: var(--accent-600);
+  --color-accent-700: var(--accent-700);
+  --color-good: var(--status-good-text);
+  --color-bad: var(--status-critical);
+  --font-sans: var(--font-inter);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  line-height: 1.6;
+}
+
+/* Dotted-underline glossary terms */
+.term {
+  text-decoration: underline dotted;
+  text-decoration-color: var(--faint);
+  text-underline-offset: 3px;
+  cursor: help;
+}
+
+@media print {
+  .print-hidden {
+    display: none !important;
+  }
+  .print-visible {
+    display: block !important;
+  }
+  body {
+    background: #ffffff;
+  }
+  @page {
+    margin: 14mm;
+  }
+}

@@ -1,0 +1,9 @@
+# DealLens — deploys to a *.netlify.app preview URL only.
+# No custom domain is pointed here until the concept is approved.
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
