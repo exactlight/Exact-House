@@ -9,6 +9,7 @@ const tools = [
   { href: "/scramble", label: "Scramble", emoji: "🧩" },
   { href: "/bingo", label: "Bingo", emoji: "🎯" },
   { href: "/picker", label: "Picker", emoji: "🎡" },
+  { href: "/speaking", label: "Speaking", emoji: "🎤" },
   { href: "/prompts", label: "Talk Cards", emoji: "💬" },
   { href: "/timer", label: "Timer", emoji: "⏱️" },
   { href: "/classes", label: "Classes", emoji: "🏫" },

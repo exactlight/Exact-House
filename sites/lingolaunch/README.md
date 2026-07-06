@@ -14,6 +14,7 @@ no server, no accounts, works offline once loaded.
 | 🃏 **Flashcards** | Flip cards from any list. "Got it" retires a card, "Again" recycles it — with a mastery bar and a celebration when the deck is done. Reversible (word → meaning or meaning → word). |
 | 🧩 **Sentence Scramble** | Each word's example sentence gets shuffled into tiles; the class rebuilds it. Teaches word order, capitals, and reading aloud. |
 | 🎯 **Vocabulary Bingo** | Print unique 3×3 cards for the class (print-optimized, 2 per page), then project **Caller Mode**: it shows the *definition*, students mark the matching word. Includes a teacher answer key of called words. |
+| 🎤 **Speaking Studio** | Record a student speaking sample on camera (chosen from WIDA-style task prompts by grade cluster, or a custom prompt), then score it on the three WIDA speaking criteria — linguistic complexity, vocabulary usage, language control — across levels 1–6, with notes, CSV export, and video download. Videos save to the browser's IndexedDB and never leave the computer. For progress monitoring, not official ACCESS scores. |
 | 🎡 **Student Picker** | Dramatic name spinner with **fair mode** — nobody repeats until everyone has had a turn. Uses saved rosters or pasted names. |
 | 💬 **Talk Cards** | 24 conversation prompts for pair speaking practice, in **starter** (newcomer) and **stretch** (longer answers) levels. |
 | ⏱️ **Class Timer** | A countdown the back row can read, with presets, a progress bar, and a WebAudio chime — no sound files. |

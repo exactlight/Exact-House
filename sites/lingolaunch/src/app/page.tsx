@@ -45,6 +45,13 @@ const tools = [
     color: "bg-sun-100",
   },
   {
+    href: "/speaking",
+    emoji: "🎤",
+    name: "Speaking Studio",
+    blurb: "Record speaking samples and score them on the WIDA rubric — videos stay on this computer.",
+    color: "bg-sun-100",
+  },
+  {
     href: "/prompts",
     emoji: "💬",
     name: "Talk Cards",
