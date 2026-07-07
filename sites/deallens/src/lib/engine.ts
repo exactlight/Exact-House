@@ -25,6 +25,10 @@ export type FinancingMethod = {
   ratePct: number;
   pointsPct: number;
   coversRehab: boolean;
+  /** Default long-term seed: can you hold a rental on this loan without a refi? */
+  longTerm: boolean;
+  /** Whether the long-term/short-term nature is the user's to toggle (private). */
+  termIsAdjustable: boolean;
   blurb: string;
 };
 
@@ -36,8 +40,10 @@ export const FINANCING_METHODS: FinancingMethod[] = [
     ratePct: 11,
     pointsPct: 2,
     coversRehab: true,
+    longTerm: false,
+    termIsAdjustable: false,
     blurb:
-      "Short-term, asset-based loan. Funds purchase + rehab, closes fast, but is the most expensive option.",
+      "Short-term, asset-based loan. Funds purchase + rehab, closes fast, but is the most expensive option. To hold it long-term you refinance out of it — that's a BRRRR.",
   },
   {
     key: "private",
@@ -46,8 +52,10 @@ export const FINANCING_METHODS: FinancingMethod[] = [
     ratePct: 10,
     pointsPct: 1,
     coversRehab: true,
+    longTerm: false,
+    termIsAdjustable: true,
     blurb:
-      "An individual investor's capital. Terms are whatever you negotiate — edit the numbers to match your lender.",
+      "An individual investor's capital. Terms are whatever you negotiate — edit the numbers to match your lender. If they'll carry the note long-term at a reasonable rate, tick the box below and you can hold on it directly (no refi).",
   },
   {
     key: "seller",
@@ -56,8 +64,10 @@ export const FINANCING_METHODS: FinancingMethod[] = [
     ratePct: 7,
     pointsPct: 0,
     coversRehab: false,
+    longTerm: true,
+    termIsAdjustable: false,
     blurb:
-      "The seller carries the note. Usually no points and a softer rate; you put money down and fund the rehab in cash.",
+      "The seller carries the note. Usually no points and a softer rate; you put money down and fund the rehab in cash. Typically long-term, so you can hold on it directly.",
   },
   {
     key: "conventional",
@@ -66,6 +76,8 @@ export const FINANCING_METHODS: FinancingMethod[] = [
     ratePct: 8.5,
     pointsPct: 1,
     coversRehab: false,
+    longTerm: true,
+    termIsAdjustable: false,
     blurb:
       "A portfolio or DSCR loan on the purchase. Banks rarely fund a heavy rehab — you cover that in cash. (Your long-term rental mortgage is set in Rental assumptions.)",
   },
@@ -76,6 +88,8 @@ export const FINANCING_METHODS: FinancingMethod[] = [
     ratePct: 0,
     pointsPct: 0,
     coversRehab: false,
+    longTerm: false,
+    termIsAdjustable: false,
     blurb: "No acquisition loan — most cash out of pocket, no interest or points, simplest close.",
   },
 ];
@@ -108,6 +122,7 @@ export type DealInputs = {
   acqRatePct: number; // annual, interest-only during the hold
   acqPointsPct: number; // % of loan, paid up front
   acqCoversRehab: boolean; // does the loan fund rehab too, or purchase only?
+  acqIsLongTerm: boolean; // can you hold a rental on this loan, or must you refi?
 
   // rental assumptions
   vacancyPct: number; // % of gross rent
@@ -146,6 +161,7 @@ export const DEFAULT_INPUTS: DealInputs = {
   acqRatePct: 11,
   acqPointsPct: 2,
   acqCoversRehab: true,
+  acqIsLongTerm: false,
 
   vacancyPct: 8,
   maintenancePct: 8,
@@ -358,27 +374,37 @@ function rentalMetrics(
   };
 }
 
-export type HoldBasis = "cash" | "seller" | "conventional";
+export type HoldBasis =
+  | "cash" // free and clear
+  | "note" // hold on the acquisition note itself (seller / long-term private)
+  | "conventional" // hold on a standard bank mortgage (Rental assumptions)
+  | "refi"; // short-term money — refinance out to hold (a BRRRR)
 
 /** Which loan a long-term hold rides on, given how the deal is financed. */
-export function holdBasis(financing: Financing): HoldBasis {
-  if (financing === "cash") return "cash";
-  if (financing === "seller") return "seller";
-  // Hard money and private notes are short-term — to hold, you refinance into a
-  // conventional loan; a conventional purchase already is one. All three hold on
-  // the conventional terms in "Rental assumptions".
-  return "conventional";
+export function holdBasis(i: DealInputs): HoldBasis {
+  if (i.financing === "cash") return "cash";
+  if (i.financing === "conventional") return "conventional";
+  if (i.financing === "seller") return "note";
+  if (i.financing === "private") return i.acqIsLongTerm ? "note" : "refi";
+  // hard money — always short-term, so holding means refinancing out (a BRRRR).
+  return "refi";
 }
 
 /**
- * Buy & hold acquires on the deal's actual financing, so seller terms (or an
- * all-cash purchase) flow into the hold — which is what lets great owner
- * financing make "hold and rent" the winning play.
+ * Buy & hold acquires on the deal's actual financing:
+ *   - cash  → held free and clear
+ *   - note  → held on the acquisition note (seller, or a long-term private loan)
+ *   - conventional → a standard bank mortgage (Rental assumptions)
+ *   - refi  → short-term money can't be held, so you refinance out — which is a
+ *             BRRRR; the hold economics are exactly the post-refi rental.
+ * This is what lets financing terms (great seller/private terms, or a cash buy)
+ * decide whether "hold and rent" is the winning play.
  */
 export function analyzeRental(i: DealInputs): RentalResult {
-  const buyClosing = i.purchasePrice * (i.buyClosingPct / 100);
-  const basis = holdBasis(i.financing);
+  const basis = holdBasis(i);
+  if (basis === "refi") return analyzeBrrrr(i).rental;
 
+  const buyClosing = i.purchasePrice * (i.buyClosingPct / 100);
   let down: number;
   let loan: number;
   let ratePct: number;
@@ -386,8 +412,8 @@ export function analyzeRental(i: DealInputs): RentalResult {
     down = i.purchasePrice; // free and clear — no mortgage
     loan = 0;
     ratePct = 0;
-  } else if (basis === "seller") {
-    loan = (i.acqLtcPct / 100) * i.purchasePrice; // hold on the seller note
+  } else if (basis === "note") {
+    loan = (i.acqLtcPct / 100) * i.purchasePrice; // hold on the owner/private note
     down = i.purchasePrice - loan;
     ratePct = i.acqRatePct;
   } else {

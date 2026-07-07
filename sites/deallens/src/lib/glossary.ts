@@ -66,7 +66,7 @@ export const GLOSSARY: Record<string, { term: string; short: string; long: strin
   private: {
     term: "Private / gap lending",
     short: "An individual's capital, on whatever terms you negotiate.",
-    long: "Money from a private individual — often another investor, a self-directed retirement account, or a \"gap\" lender who covers the slice hard money won't. There's no rate sheet: the LTC, rate, and points are whatever the two of you agree to, which is why DealLens lets you edit them. Frequently cheaper than hard money and, like it, usually funds the rehab too. The relationship and a clear written note matter as much as the numbers.",
+    long: "Money from a private individual — often another investor, a self-directed retirement account, or a \"gap\" lender who covers the slice hard money won't. There's no rate sheet: the LTC, rate, and points are whatever the two of you agree to, which is why DealLens lets you edit them. Frequently cheaper than hard money and, like it, usually funds the rehab too. Unlike hard money, a private lender may be willing to carry the note for years at a reasonable rate — if so, you can hold the rental on it directly instead of refinancing out (tick \"Lender will hold long-term\"). The relationship and a clear written note matter as much as the numbers.",
   },
   seller: {
     term: "Seller financing",

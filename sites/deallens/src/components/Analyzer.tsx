@@ -42,13 +42,15 @@ function verdictSentence(a: Analysis, i: DealInputs): string {
 
 /** Which loan the buy & hold card is holding on, in plain words. */
 function holdBasisLabel(i: DealInputs): string {
-  switch (holdBasis(i.financing)) {
+  switch (holdBasis(i)) {
     case "cash":
       return "Held free & clear (all cash)";
-    case "seller":
-      return `On the seller note (${pct(i.acqRatePct, 2)}, ${pct(i.acqLtcPct, 0)} LTV)`;
+    case "note":
+      return `On the ${i.financing === "seller" ? "seller" : "private"} note (${pct(i.acqRatePct, 2)}, ${pct(i.acqLtcPct, 0)} LTV)`;
     case "conventional":
       return `On a conventional ${pct(i.rentalRatePct, 2)} loan, ${pct(i.rentalDownPct, 0)} down`;
+    case "refi":
+      return `Via cash-out refinance — ${pct(i.refiRatePct, 2)}, ${pct(i.refiLtvPct, 0)} of ARV (a BRRRR)`;
   }
 }
 
@@ -101,6 +103,7 @@ export default function Analyzer() {
       acqRatePct: m.ratePct,
       acqPointsPct: m.pointsPct,
       acqCoversRehab: m.coversRehab,
+      acqIsLongTerm: m.longTerm,
     }));
   }
 
@@ -225,6 +228,22 @@ export default function Analyzer() {
                   <PctField label="Rate (yr)" value={inputs.acqRatePct} onChange={set("acqRatePct")} step={0.25} />
                   <PctField label="Points" value={inputs.acqPointsPct} onChange={set("acqPointsPct")} step={0.5} />
                 </div>
+              )}
+
+              {FINANCING_BY_KEY[inputs.financing].termIsAdjustable && (
+                <label className="mt-3 flex items-start gap-2 rounded-lg border border-hairline bg-white p-2.5 text-xs">
+                  <input
+                    type="checkbox"
+                    checked={inputs.acqIsLongTerm}
+                    onChange={(e) => set("acqIsLongTerm")(e.target.checked)}
+                    className="mt-0.5 h-4 w-4 shrink-0 accent-[#047857]"
+                  />
+                  <span className="text-muted">
+                    <span className="font-semibold text-foreground">Lender will hold long-term</span> — the note
+                    runs long enough to keep as a rental, so buy &amp; hold rides on it directly instead of
+                    refinancing out.
+                  </span>
+                </label>
               )}
               <div className="mt-3 grid grid-cols-2 gap-3">
                 <PctField label="Buying closing costs (% of price)" value={inputs.buyClosingPct} onChange={set("buyClosingPct")} />
@@ -404,6 +423,12 @@ export default function Analyzer() {
                   />
                   <Row k="Cash needed" v={money(rental.cashInvested)} />
                 </dl>
+                {holdBasis(inputs) === "refi" && (
+                  <p className="mt-3 text-xs text-faint">
+                    You can&apos;t hold on short-term money, so this holds via a cash-out refinance — that&apos;s a
+                    BRRRR. See the BRRRR card for how much of your cash you&apos;d pull back out.
+                  </p>
+                )}
               </Card>
 
               <Card
