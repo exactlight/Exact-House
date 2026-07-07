@@ -358,12 +358,46 @@ function rentalMetrics(
   };
 }
 
+export type HoldBasis = "cash" | "seller" | "conventional";
+
+/** Which loan a long-term hold rides on, given how the deal is financed. */
+export function holdBasis(financing: Financing): HoldBasis {
+  if (financing === "cash") return "cash";
+  if (financing === "seller") return "seller";
+  // Hard money and private notes are short-term — to hold, you refinance into a
+  // conventional loan; a conventional purchase already is one. All three hold on
+  // the conventional terms in "Rental assumptions".
+  return "conventional";
+}
+
+/**
+ * Buy & hold acquires on the deal's actual financing, so seller terms (or an
+ * all-cash purchase) flow into the hold — which is what lets great owner
+ * financing make "hold and rent" the winning play.
+ */
 export function analyzeRental(i: DealInputs): RentalResult {
-  const down = i.purchasePrice * (i.rentalDownPct / 100);
-  const loan = i.purchasePrice - down;
   const buyClosing = i.purchasePrice * (i.buyClosingPct / 100);
+  const basis = holdBasis(i.financing);
+
+  let down: number;
+  let loan: number;
+  let ratePct: number;
+  if (basis === "cash") {
+    down = i.purchasePrice; // free and clear — no mortgage
+    loan = 0;
+    ratePct = 0;
+  } else if (basis === "seller") {
+    loan = (i.acqLtcPct / 100) * i.purchasePrice; // hold on the seller note
+    down = i.purchasePrice - loan;
+    ratePct = i.acqRatePct;
+  } else {
+    down = i.purchasePrice * (i.rentalDownPct / 100); // conventional long-term loan
+    loan = i.purchasePrice - down;
+    ratePct = i.rentalRatePct;
+  }
+
   const cashInvested = down + buyClosing + i.rehabCost;
-  return rentalMetrics(i, loan, i.rentalRatePct, cashInvested);
+  return rentalMetrics(i, loan, ratePct, cashInvested);
 }
 
 // ---------------------------------------------------------------------------

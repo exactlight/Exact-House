@@ -11,6 +11,7 @@ import {
   analyzeDeal,
   applyStress,
   gradeOf,
+  holdBasis,
   type Analysis,
   type DealInputs,
   type Financing,
@@ -36,6 +37,18 @@ function verdictSentence(a: Analysis, i: DealInputs): string {
       return `Best kept as a rental: ${money(a.rental.monthlyCashflow)}/mo after all expenses — a ${pct(a.rental.cashOnCashPct)} cash-on-cash return.`;
     case "wholesale":
       return `The spread is the prize here: contract it and assign to a flipper for up to ${money(a.wholesale.spread)}.`;
+  }
+}
+
+/** Which loan the buy & hold card is holding on, in plain words. */
+function holdBasisLabel(i: DealInputs): string {
+  switch (holdBasis(i.financing)) {
+    case "cash":
+      return "Held free & clear (all cash)";
+    case "seller":
+      return `On the seller note (${pct(i.acqRatePct, 2)}, ${pct(i.acqLtcPct, 0)} LTV)`;
+    case "conventional":
+      return `On a conventional ${pct(i.rentalRatePct, 2)} loan, ${pct(i.rentalDownPct, 0)} down`;
   }
 }
 
@@ -372,6 +385,7 @@ export default function Analyzer() {
                     className="col-span-2"
                     label="Cash flow"
                     value={`${money(rental.monthlyCashflow)}/mo`}
+                    sub={holdBasisLabel(inputs)}
                     tone={rental.monthlyCashflow >= 0 ? "good" : "bad"}
                   />
                   <Stat label={<Term k="coc">Cash-on-cash</Term>} value={pct(rental.cashOnCashPct)} />
@@ -379,8 +393,11 @@ export default function Analyzer() {
                 </div>
                 <dl className="mt-4 space-y-1 text-xs text-muted">
                   <Row k={<Term k="noi">NOI (yearly)</Term>} v={money(rental.noi)} />
-                  <Row k="Mortgage (P&I)" v={`${money(rental.monthlyPI)}/mo`} />
-                  <Row k={<Term k="dscr">DSCR</Term>} v={ratio(rental.dscr)} />
+                  <Row
+                    k="Mortgage (P&I)"
+                    v={rental.loanAmount <= 0 ? "None — held free & clear" : `${money(rental.monthlyPI)}/mo`}
+                  />
+                  <Row k={<Term k="dscr">DSCR</Term>} v={rental.loanAmount <= 0 ? "— (no debt)" : ratio(rental.dscr)} />
                   <Row
                     k={<Term k="onepct">1% rule</Term>}
                     v={`${pct(rental.rentToPricePct, 2)} ${rental.rentToPricePct >= 1 ? "· passes" : "· misses"}`}
