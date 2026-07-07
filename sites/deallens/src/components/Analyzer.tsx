@@ -4,6 +4,8 @@ import { useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import {
   DEFAULT_INPUTS,
+  FINANCING_BY_KEY,
+  FINANCING_METHODS,
   NO_STRESS,
   STRATEGY_LABELS,
   analyzeDeal,
@@ -11,6 +13,7 @@ import {
   gradeOf,
   type Analysis,
   type DealInputs,
+  type Financing,
   type Stress,
 } from "@/lib/engine";
 import { money, pct, ratio } from "@/lib/format";
@@ -72,6 +75,21 @@ export default function Analyzer() {
       setSaved(false);
       setInputs((s) => ({ ...s, [key]: v }));
     };
+
+  // Picking a financing method seeds the editable rate/points/LTC fields with
+  // that method's typical terms (and whether it funds rehab).
+  function selectFinancing(key: Financing) {
+    const m = FINANCING_BY_KEY[key];
+    setSaved(false);
+    setInputs((s) => ({
+      ...s,
+      financing: key,
+      acqLtcPct: m.ltcPct,
+      acqRatePct: m.ratePct,
+      acqPointsPct: m.pointsPct,
+      acqCoversRehab: m.coversRehab,
+    }));
+  }
 
   function onSave() {
     const deal = saveDeal(inputs, dealId);
@@ -163,26 +181,36 @@ export default function Analyzer() {
               </div>
             </Card>
 
-            <Card title={<Term k="hardmoney">Financing</Term>} collapsible>
-              <div className="mb-3 flex gap-1 rounded-lg bg-surface p-1 text-sm font-semibold">
-                {(["hardMoney", "cash"] as const).map((f) => (
-                  <button
-                    key={f}
-                    type="button"
-                    onClick={() => set("financing")(f)}
-                    className={`flex-1 rounded-md px-3 py-1.5 transition ${
-                      inputs.financing === f ? "bg-white text-foreground shadow-sm" : "text-muted hover:text-foreground"
-                    }`}
-                  >
-                    {f === "hardMoney" ? "Hard money" : "All cash"}
-                  </button>
-                ))}
-              </div>
-              {inputs.financing === "hardMoney" && (
-                <div className="grid grid-cols-3 gap-3">
-                  <PctField label="Loan-to-cost" value={inputs.hardMoneyLtcPct} onChange={set("hardMoneyLtcPct")} />
-                  <PctField label="Rate (yr)" value={inputs.hardMoneyRatePct} onChange={set("hardMoneyRatePct")} step={0.25} />
-                  <PctField label="Points" value={inputs.hardMoneyPointsPct} onChange={set("hardMoneyPointsPct")} step={0.5} />
+            <Card title="Financing the purchase &amp; rehab" collapsible>
+              <p className="-mt-1 mb-3 text-xs text-muted">
+                How you fund the <em>short-term</em> buy &amp; rehab of a flip or BRRRR. Your long-term
+                rental mortgage and the BRRRR cash-out refi are set in “Rental assumptions.”
+              </p>
+              <label className="block">
+                <span className="mb-1 block text-xs font-semibold text-muted">Method</span>
+                <select
+                  value={inputs.financing}
+                  onChange={(e) => selectFinancing(e.target.value as Financing)}
+                  className="w-full rounded-lg border border-hairline bg-white px-3 py-2 text-sm font-semibold text-foreground focus:border-accent-500 focus:outline-none focus:ring-2 focus:ring-accent-500/20"
+                >
+                  {FINANCING_METHODS.map((m) => (
+                    <option key={m.key} value={m.key}>
+                      {m.label}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <p className="mt-2 text-xs text-faint">{FINANCING_BY_KEY[inputs.financing].blurb}</p>
+
+              {inputs.financing !== "cash" && (
+                <div className="mt-3 grid grid-cols-3 gap-3">
+                  <PctField
+                    label={inputs.acqCoversRehab ? "Loan-to-cost" : "Loan-to-price"}
+                    value={inputs.acqLtcPct}
+                    onChange={set("acqLtcPct")}
+                  />
+                  <PctField label="Rate (yr)" value={inputs.acqRatePct} onChange={set("acqRatePct")} step={0.25} />
+                  <PctField label="Points" value={inputs.acqPointsPct} onChange={set("acqPointsPct")} step={0.5} />
                 </div>
               )}
               <div className="mt-3 grid grid-cols-2 gap-3">

@@ -63,6 +63,21 @@ export const GLOSSARY: Record<string, { term: string; short: string; long: strin
     short: "Short-term, asset-based loan for flips — fast but expensive.",
     long: "A short-term loan (6–18 months) from a private lender, secured by the property rather than your income. Typical terms: 80–90% of purchase-plus-rehab cost, 10–13% interest-only, plus 1–3 \"points\" up front (each point is 1% of the loan). Expensive, but it lets you buy and renovate houses banks won't touch — the cost is priced into the deal, which is exactly what this analyzer does.",
   },
+  private: {
+    term: "Private / gap lending",
+    short: "An individual's capital, on whatever terms you negotiate.",
+    long: "Money from a private individual — often another investor, a self-directed retirement account, or a \"gap\" lender who covers the slice hard money won't. There's no rate sheet: the LTC, rate, and points are whatever the two of you agree to, which is why DealLens lets you edit them. Frequently cheaper than hard money and, like it, usually funds the rehab too. The relationship and a clear written note matter as much as the numbers.",
+  },
+  seller: {
+    term: "Seller financing",
+    short: "The seller becomes your lender instead of getting cashed out.",
+    long: "Rather than a bank funding the purchase, the seller carries a note and you pay them over time — often with a down payment, a softer rate, and no points. It shines when a seller owns free-and-clear and wants steady income (or to spread their tax hit). Note the loan is against the purchase price only, so you still fund the rehab in cash — DealLens accounts for that, which is why cash-needed jumps versus hard money.",
+  },
+  conventional: {
+    term: "Bank / conventional (DSCR) loan",
+    short: "A traditional or investor mortgage — cheap, but it won't fund a gut rehab.",
+    long: "A bank loan on the purchase: either a conforming mortgage or, for investors, a DSCR loan that qualifies on the property's rent rather than your W-2. Rates are the lowest of any method, but banks lend on the as-is purchase and won't finance a heavy rehab, so you cover that in cash. It fits light-rehab buy-and-holds better than distressed flips. Your long-term rental mortgage and the BRRRR cash-out refi are modeled separately in Rental assumptions.",
+  },
   holding: {
     term: "Holding costs",
     short: "What the house costs you every month you own it.",

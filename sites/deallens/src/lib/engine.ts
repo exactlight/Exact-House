@@ -7,7 +7,82 @@
  * them at once and translating the results into plain English.
  */
 
-export type Financing = "cash" | "hardMoney";
+export type Financing = "hardMoney" | "private" | "seller" | "conventional" | "cash";
+
+/**
+ * Preset terms for how the *acquisition + rehab* of a flip/BRRRR is funded.
+ * These are short-term / interest-only holds — a 30-yr bank mortgage does not
+ * belong here (it lives in the rental + BRRRR-refi assumptions). Picking a
+ * method just seeds the editable ltc/rate/points below, so any real lender's
+ * terms can be dialed in. `coversRehab` distinguishes lenders that fund the
+ * rehab (hard money, most private notes) from those that lend on the purchase
+ * only and leave you to pay for rehab in cash (banks, seller carrybacks).
+ */
+export type FinancingMethod = {
+  key: Financing;
+  label: string;
+  ltcPct: number;
+  ratePct: number;
+  pointsPct: number;
+  coversRehab: boolean;
+  blurb: string;
+};
+
+export const FINANCING_METHODS: FinancingMethod[] = [
+  {
+    key: "hardMoney",
+    label: "Hard money",
+    ltcPct: 85,
+    ratePct: 11,
+    pointsPct: 2,
+    coversRehab: true,
+    blurb:
+      "Short-term, asset-based loan. Funds purchase + rehab, closes fast, but is the most expensive option.",
+  },
+  {
+    key: "private",
+    label: "Private / gap lender",
+    ltcPct: 90,
+    ratePct: 10,
+    pointsPct: 1,
+    coversRehab: true,
+    blurb:
+      "An individual investor's capital. Terms are whatever you negotiate — edit the numbers to match your lender.",
+  },
+  {
+    key: "seller",
+    label: "Seller financing",
+    ltcPct: 80,
+    ratePct: 7,
+    pointsPct: 0,
+    coversRehab: false,
+    blurb:
+      "The seller carries the note. Usually no points and a softer rate; you put money down and fund the rehab in cash.",
+  },
+  {
+    key: "conventional",
+    label: "Bank / conventional",
+    ltcPct: 80,
+    ratePct: 8.5,
+    pointsPct: 1,
+    coversRehab: false,
+    blurb:
+      "A portfolio or DSCR loan on the purchase. Banks rarely fund a heavy rehab — you cover that in cash. (Your long-term rental mortgage is set in Rental assumptions.)",
+  },
+  {
+    key: "cash",
+    label: "All cash",
+    ltcPct: 0,
+    ratePct: 0,
+    pointsPct: 0,
+    coversRehab: false,
+    blurb: "No acquisition loan — most cash out of pocket, no interest or points, simplest close.",
+  },
+];
+
+export const FINANCING_BY_KEY: Record<Financing, FinancingMethod> = Object.fromEntries(
+  FINANCING_METHODS.map((m) => [m.key, m]),
+) as Record<Financing, FinancingMethod>;
 
 export type DealInputs = {
   address: string;
@@ -27,11 +102,12 @@ export type DealInputs = {
   buyClosingPct: number; // % of purchase price
   sellCostPct: number; // % of ARV (agent commission + seller closing)
 
-  // acquisition financing
+  // acquisition financing (short-term loan for the flip/BRRRR purchase + rehab)
   financing: Financing;
-  hardMoneyLtcPct: number; // loan as % of (purchase + rehab)
-  hardMoneyRatePct: number; // annual, interest-only
-  hardMoneyPointsPct: number; // % of loan, paid up front
+  acqLtcPct: number; // loan as % of the financed base
+  acqRatePct: number; // annual, interest-only during the hold
+  acqPointsPct: number; // % of loan, paid up front
+  acqCoversRehab: boolean; // does the loan fund rehab too, or purchase only?
 
   // rental assumptions
   vacancyPct: number; // % of gross rent
@@ -66,9 +142,10 @@ export const DEFAULT_INPUTS: DealInputs = {
   sellCostPct: 8,
 
   financing: "hardMoney",
-  hardMoneyLtcPct: 85,
-  hardMoneyRatePct: 11,
-  hardMoneyPointsPct: 2,
+  acqLtcPct: 85,
+  acqRatePct: 11,
+  acqPointsPct: 2,
+  acqCoversRehab: true,
 
   vacancyPct: 8,
   maintenancePct: 8,
@@ -134,11 +211,22 @@ export function holdingMonthly(i: DealInputs): number {
 
 /**
  * Per-dollar-of-loan financing cost over the hold:
- * up-front points plus interest-only payments.
+ * up-front points plus interest-only payments. Zero for an all-cash purchase.
  */
-function hardMoneyCostFactor(i: DealInputs): number {
-  if (i.financing !== "hardMoney") return 0;
-  return i.hardMoneyPointsPct / 100 + (i.hardMoneyRatePct / 100) * (i.monthsHeld / 12);
+function acqCostFactor(i: DealInputs): number {
+  if (i.financing === "cash") return 0;
+  return i.acqPointsPct / 100 + (i.acqRatePct / 100) * (i.monthsHeld / 12);
+}
+
+/** Loan-to-cost fraction actually applied (0 for cash). */
+function acqLtc(i: DealInputs): number {
+  return i.financing === "cash" ? 0 : i.acqLtcPct / 100;
+}
+
+/** The acquisition loan principal, honoring whether the loan funds rehab. */
+function acqLoanAmount(i: DealInputs): number {
+  const base = i.acqCoversRehab ? i.purchasePrice + i.rehabCost : i.purchasePrice;
+  return acqLtc(i) * base;
 }
 
 export function analyzeFlip(i: DealInputs): FlipResult {
@@ -146,10 +234,9 @@ export function analyzeFlip(i: DealInputs): FlipResult {
   const holding = holdingMonthly(i) * i.monthsHeld;
   const sellCosts = i.arv * (i.sellCostPct / 100);
 
-  const loanAmount =
-    i.financing === "hardMoney" ? (i.hardMoneyLtcPct / 100) * (i.purchasePrice + i.rehabCost) : 0;
-  const points = loanAmount * (i.hardMoneyPointsPct / 100);
-  const interest = loanAmount * (i.hardMoneyRatePct / 100) * (i.monthsHeld / 12);
+  const loanAmount = acqLoanAmount(i);
+  const points = loanAmount * (i.acqPointsPct / 100);
+  const interest = loanAmount * (i.acqRatePct / 100) * (i.monthsHeld / 12);
 
   const totalCost = i.purchasePrice + i.rehabCost + buyClosing + holding + points + interest + sellCosts;
   const profit = i.arv - totalCost;
@@ -161,15 +248,17 @@ export function analyzeFlip(i: DealInputs): FlipResult {
   const annualizedRoiPct = roiPct * (12 / Math.max(1, i.monthsHeld));
 
   // Solve purchase price P so profit === target:
-  //   profit = ARV·(1 − s) − P·(1 + c) − rehab − holding − ltc·(P + rehab)·k
-  // where k = points% + rate%·months/12 and ltc applies only for hard money.
-  const k = hardMoneyCostFactor(i);
-  const ltc = i.financing === "hardMoney" ? i.hardMoneyLtcPct / 100 : 0;
+  //   profit = ARV·(1 − s) − P·(1 + c) − rehab − holding − ltc·(P + rehab·g)·k
+  // where k = points% + rate%·months/12, ltc is the loan-to-cost fraction, and
+  // g = 1 when the loan also funds rehab (else 0, so only P is financed).
+  const k = acqCostFactor(i);
+  const ltc = acqLtc(i);
+  const g = i.acqCoversRehab ? 1 : 0;
   const numerator =
     i.arv * (1 - i.sellCostPct / 100) -
     i.rehabCost -
     holding -
-    ltc * i.rehabCost * k -
+    ltc * i.rehabCost * k * g -
     i.targetFlipProfit;
   const denominator = 1 + i.buyClosingPct / 100 + ltc * k;
   const maxOfferForTarget = Math.max(0, numerator / denominator);
@@ -297,10 +386,9 @@ export type BrrrrResult = {
 export function analyzeBrrrr(i: DealInputs): BrrrrResult {
   const buyClosing = i.purchasePrice * (i.buyClosingPct / 100);
   const holding = holdingMonthly(i) * i.monthsHeld;
-  const loanAmount =
-    i.financing === "hardMoney" ? (i.hardMoneyLtcPct / 100) * (i.purchasePrice + i.rehabCost) : 0;
-  const points = loanAmount * (i.hardMoneyPointsPct / 100);
-  const interest = loanAmount * (i.hardMoneyRatePct / 100) * (i.monthsHeld / 12);
+  const loanAmount = acqLoanAmount(i);
+  const points = loanAmount * (i.acqPointsPct / 100);
+  const interest = loanAmount * (i.acqRatePct / 100) * (i.monthsHeld / 12);
 
   const phaseCashIn = Math.max(
     1,

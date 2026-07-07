@@ -1,4 +1,4 @@
-import type { DealInputs } from "./engine";
+import { DEFAULT_INPUTS, type DealInputs } from "./engine";
 
 /**
  * Saved-deal persistence — localStorage only, by design. No account, no
@@ -36,11 +36,32 @@ export function subscribeDeals(cb: () => void): () => void {
 // reference — useSyncExternalStore requires that.
 let snapshot: { raw: string | null; deals: SavedDeal[] } = { raw: null, deals: EMPTY };
 
+/**
+ * Bring a stored deal's inputs up to the current shape: fill any missing
+ * field from defaults, and map the legacy `hardMoney*` acquisition-financing
+ * keys (pre-multi-method) onto the current `acq*` ones so old saves still
+ * compute instead of reading as NaN.
+ */
+function normalizeInputs(raw: Record<string, unknown>): DealInputs {
+  const legacy = raw as Record<string, unknown>;
+  const mapped: Record<string, unknown> = { ...raw };
+  if (legacy.acqLtcPct === undefined && legacy.hardMoneyLtcPct !== undefined) {
+    mapped.acqLtcPct = legacy.hardMoneyLtcPct;
+    mapped.acqRatePct = legacy.hardMoneyRatePct;
+    mapped.acqPointsPct = legacy.hardMoneyPointsPct;
+    mapped.acqCoversRehab = true; // legacy model always financed rehab
+  }
+  return { ...DEFAULT_INPUTS, ...mapped } as DealInputs;
+}
+
 function parse(raw: string | null): SavedDeal[] {
   if (!raw) return EMPTY;
   try {
-    const parsed = JSON.parse(raw) as SavedDeal[];
-    return Array.isArray(parsed) ? parsed : EMPTY;
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return EMPTY;
+    return parsed
+      .filter((d) => d && typeof d === "object" && d.inputs)
+      .map((d) => ({ ...d, inputs: normalizeInputs(d.inputs) }) as SavedDeal);
   } catch {
     return EMPTY;
   }
