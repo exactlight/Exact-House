@@ -28,9 +28,23 @@ statically prerendered; all interactivity is client-side.
 ```bash
 npm install
 npm run dev     # local dev at localhost:3000
-npm run build   # production build (10 static routes)
+npm run build   # static export -> self-contained out/ folder
 npm run lint
 ```
+
+## Privacy & self-containment
+
+Everything runs in the browser. There is **no server, no database, and no
+external network request** — student rosters, scores, and speaking recordings
+are stored only on the device (`localStorage` / `IndexedDB`) and are never
+uploaded. The build is a fully static export (`output: "export"`), and a
+Content Security Policy (`connect-src 'self'`, no external origins) enforces
+that no data can be sent off the device.
+
+**For school IT review, see [`PRIVACY-AND-IT.md`](./PRIVACY-AND-IT.md)** — a
+one-page fact sheet covering data flow, hosting options (district intranet /
+IIS / Apache / Nginx / offline), the FERPA / COPPA / Wisconsin framing, and an
+IT review checklist.
 
 ## Where things live
 
@@ -43,6 +57,13 @@ npm run lint
 
 ## Deploying
 
-Standalone Netlify site: point a Netlify project at this repo with the
-**base directory** set to `sites/lingolaunch` (build command and plugin are
-in `netlify.toml`). No environment variables needed.
+`npm run build` produces a static `out/` folder that can be hosted on **any**
+static web server — a district intranet, IIS, Apache, Nginx, or a
+district-managed static host — with no Node.js server, database, or
+environment variables. Serve it over **HTTPS** (or `localhost`) so the
+browser allows camera access for Speaking Studio.
+
+The included `netlify.toml` (base directory `sites/lingolaunch`, publish
+`out`) also deploys it to a Netlify preview and sends the security headers as
+real HTTP response headers. See [`PRIVACY-AND-IT.md`](./PRIVACY-AND-IT.md) for
+per-host CSP header snippets.

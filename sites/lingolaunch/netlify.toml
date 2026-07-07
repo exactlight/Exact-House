@@ -1,9 +1,23 @@
-# Deploys to a *.netlify.app preview URL. No custom domain wired up.
-# Base directory on the Netlify site should be set to sites/lingolaunch.
+# LingoLaunch builds to a fully static site (see next.config.ts: output:"export").
+# `npm run build` writes the self-contained `out/` folder — no Node server runs
+# in production. The same `out/` folder can be hosted on any static web server
+# (district intranet, IIS, Apache, Nginx). See PRIVACY-AND-IT.md.
+#
+# On the Netlify site, set base directory to sites/lingolaunch.
 
 [build]
   command = "npm run build"
-  publish = ".next"
+  publish = "out"
 
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
+# Defense-in-depth: send the same lockdown as real HTTP response headers.
+# The load-bearing line is connect-src 'self' — no student data can be sent
+# to any external origin.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; base-uri 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self' blob:; font-src 'self'; connect-src 'self'; object-src 'none'; frame-src 'none'; form-action 'self'; frame-ancestors 'none'"
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "no-referrer"
+    Permissions-Policy = "camera=(self), microphone=(self), geolocation=(), interest-cohort=()"
+    Cross-Origin-Opener-Policy = "same-origin"
