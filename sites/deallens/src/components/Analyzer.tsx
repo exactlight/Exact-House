@@ -150,12 +150,12 @@ export default function Analyzer() {
                 />
                 <MoneyField label="Rehab budget" value={inputs.rehabCost} onChange={set("rehabCost")} />
                 <MoneyField label="Market rent (monthly)" value={inputs.monthlyRent} onChange={set("monthlyRent")} step={50} />
+                <MoneyField label="Property taxes / yr" value={inputs.taxesYearly} onChange={set("taxesYearly")} step={100} />
               </div>
             </Card>
 
             <Card title={<Term k="holding">Carrying costs</Term>} collapsible>
               <div className="grid grid-cols-2 gap-3">
-                <MoneyField label="Property taxes / yr" value={inputs.taxesYearly} onChange={set("taxesYearly")} step={100} />
                 <MoneyField label="Insurance / yr" value={inputs.insuranceYearly} onChange={set("insuranceYearly")} step={100} />
                 <MoneyField label="Utilities / mo" value={inputs.utilitiesMonthly} onChange={set("utilitiesMonthly")} step={25} />
                 <MoneyField label="HOA / mo" value={inputs.hoaMonthly} onChange={set("hoaMonthly")} step={25} />
