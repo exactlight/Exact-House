@@ -153,9 +153,10 @@ export default function LeadForm({ formName, hidden = {} }: Props) {
           {submitting ? "Sending…" : "Get Me An Offer"}
         </button>
 
-        {/* Optional SMS opt-in (unchecked by default) + disclosure — carriers
-            require text-message consent to be optional, not a condition of
-            submitting the form. */}
+        {/* Optional, branded SMS opt-in with full CTIA disclosures in one
+            block (use case, rates, frequency, STOP/HELP, privacy) — required
+            for toll-free verification. Unchecked by default; not a condition
+            of submitting the form. */}
         <label className="flex items-start gap-2 text-xs leading-relaxed text-[#888]">
           <input
             type="checkbox"
@@ -164,19 +165,24 @@ export default function LeadForm({ formName, hidden = {} }: Props) {
             className="mt-0.5 h-4 w-4 shrink-0 accent-accent-600"
           />
           <span>
-            Yes, it&apos;s OK to text me about my inquiry (optional). Message and
-            data rates may apply. Message frequency varies. Reply STOP to opt
-            out or HELP for help.
+            <span className="font-semibold text-brand-800">
+              Text me my cash offer (optional).
+            </span>{" "}
+            By checking this box, you agree to receive text messages from Exact
+            House about your property inquiry and cash offer at the number
+            provided (customer care / conversational). Msg &amp; data rates may
+            apply. Msg frequency varies. Reply STOP to opt out, HELP for help.
+            See our{" "}
+            <Link href="/privacy" className="underline hover:text-accent-600">
+              Privacy Policy
+            </Link>
+            .
           </span>
         </label>
         <p className="text-xs leading-relaxed text-[#888]">
           By submitting, you agree that Exact House may contact you by phone or
-          email about your property inquiry. Consent is not a condition of any
-          purchase. See our{" "}
-          <Link href="/privacy" className="underline hover:text-accent-600">
-            Privacy Policy
-          </Link>
-          .
+          email about your property inquiry. Consent to texts is not a condition
+          of any purchase.
         </p>
       </form>
     </div>
