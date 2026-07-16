@@ -104,6 +104,13 @@ function CityPage({ city }: { city: City }) {
         </p>
       </section>
 
+      {/* City photo banner — Ken on location, same as the live site */}
+      <section
+        className="relative h-[300px] w-full overflow-hidden bg-cover bg-center sm:h-[500px] after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[100px] after:bg-gradient-to-t after:from-white after:to-transparent after:content-['']"
+        style={{ backgroundImage: `url('/${city.slug.replace(/-/g, "_")}-photo.jpg')` }}
+        aria-label={`${city.name}, Wisconsin`}
+      />
+
       <CtaBanner heading={`Ready to Sell Your ${city.name} House?`} />
     </>
   );
