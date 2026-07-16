@@ -1,25 +1,12 @@
 import type { Metadata } from "next";
 import { site } from "@/lib/site";
 import CtaBanner from "@/components/CtaBanner";
+import { testimonials } from "@/data/testimonials";
 
 export const metadata: Metadata = {
   title: "Reviews & Testimonials",
   description: `What Wisconsin homeowners say about selling their house to ${site.name}.`,
 };
-
-/*
- * NOTE FOR KEN: real testimonials only — nothing here is invented.
- * Add entries as { quote, name, location, videoId? } and they'll render below.
- * videoId is a YouTube video ID for embedded video testimonials.
- */
-type Testimonial = {
-  quote: string;
-  name: string;
-  location: string;
-  videoId?: string;
-};
-
-const testimonials: Testimonial[] = [];
 
 export default function TestimonialsPage() {
   return (

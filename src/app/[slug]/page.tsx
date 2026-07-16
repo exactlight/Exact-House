@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { cities, getCity, type City } from "@/data/cities";
 import { situations, getSituation, type Situation } from "@/data/situations";
+import { testimonialsForCity } from "@/data/testimonials";
 import LeadForm from "@/components/LeadForm";
 import HeroBenefits from "@/components/HeroBenefits";
 import CtaBanner from "@/components/CtaBanner";
@@ -41,6 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 function CityPage({ city }: { city: City }) {
+  const quotes = testimonialsForCity(city.slug);
   return (
     <>
       <section className="hero-stripes relative bg-gradient-to-br from-brand-800 to-brand-500 text-white">
@@ -96,6 +98,31 @@ function CityPage({ city }: { city: City }) {
           </div>
         </div>
       </section>
+
+      {/* Real customer quotes from this city or nearby */}
+      {quotes.length > 0 ? (
+        <section className="bg-white px-4 py-20">
+          <div className="mx-auto max-w-[1200px]">
+            <h2 className="heading-display text-center text-5xl text-brand-800">
+              What Your Neighbors Say
+            </h2>
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {quotes.map((t) => (
+                <figure
+                  key={`${t.name}-${t.location}`}
+                  className="rounded-[15px] bg-brand-50 p-8 shadow-[0_10px_30px_rgba(0,0,0,0.08)]"
+                >
+                  <blockquote className="text-[#333]">&ldquo;{t.quote}&rdquo;</blockquote>
+                  <figcaption className="mt-4 font-semibold text-brand-800">
+                    {t.name}
+                    <span className="block text-sm font-normal text-[#666]">{t.location}</span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {/* Signature strip */}
       <section className="bg-brand-800 px-4 py-10 text-center text-white">
