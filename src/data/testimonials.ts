@@ -39,7 +39,7 @@ export const testimonials: Testimonial[] = [
       "Selling my rental with repairs and tenant issues hanging over me felt impossible. Exact House helped me make a clean, easy exit.",
     name: "Dan K.",
     location: "Sun Prairie, WI",
-    citySlugs: ["sun-prairie", "deforest"],
+    citySlugs: ["sun-prairie", "deforest", "lake-mills"],
   },
   {
     quote:
@@ -74,7 +74,7 @@ export const testimonials: Testimonial[] = [
       "They let me choose the closing date and worked around my moving plans. That flexibility made a difficult situation so much easier.",
     name: "Melissa J.",
     location: "Fort Atkinson, WI",
-    citySlugs: ["fort-atkinson"],
+    citySlugs: ["fort-atkinson", "lake-mills"],
   },
   {
     quote:
@@ -95,7 +95,7 @@ export const testimonials: Testimonial[] = [
       "My rental had become a constant source of calls, repairs, and stress. Selling it to Exact House gave me my time and peace of mind back.",
     name: "Jason L.",
     location: "Watertown, WI",
-    citySlugs: ["watertown", "beaver-dam"],
+    citySlugs: ["watertown", "beaver-dam", "lake-mills"],
   },
   {
     quote:
