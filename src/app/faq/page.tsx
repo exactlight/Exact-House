@@ -15,27 +15,27 @@ const faqs = [
   },
   {
     q: "How fast can you actually close?",
-    a: "In as little as 7 days when the title is clean, because there's no lender involved. But fast is optional — if you need 60 or 90 days to line up your next move, we close on your date.",
+    a: "In as little as 7 days when the title is clean, because there's no lender involved. But fast is optional. If you need 60 or 90 days to line up your next move, we close on your date.",
   },
   {
     q: "Do I need to make repairs or clean the house?",
-    a: "No. We buy houses completely as-is — including houses that need major repairs. Take the belongings you want and leave the rest; we handle cleanouts all the time.",
+    a: "No. We buy houses completely as-is, including houses that need major repairs. Take the belongings you want and leave the rest; we handle cleanouts all the time.",
   },
   {
     q: "Will your offer be lowball?",
-    a: "Our offer reflects the house's fixed-up value minus real repair costs and our margin — and we're happy to show you the math. It will be less than a perfect retail sale, but with no commissions, no repairs, no carrying costs, and no risk of the deal falling through, many sellers net a comparable amount with none of the hassle.",
+    a: "Our offer reflects the house's fixed-up value minus real repair costs and our margin, and we're happy to show you the math. It will be less than a perfect retail sale, but with no commissions, no repairs, no carrying costs, and no risk of the deal falling through, many sellers net a comparable amount with none of the hassle.",
   },
   {
     q: "Am I obligated to accept your offer?",
-    a: "Never. The offer is free and there's no pressure. Plenty of homeowners take our number, compare their options, and decide later — some list with an agent instead, and that's genuinely fine with us.",
+    a: "Never. The offer is free and there's no pressure. Plenty of homeowners take our number, compare their options, and decide later. Some list with an agent instead, and that's genuinely fine with us.",
   },
   {
     q: "What kinds of properties do you buy?",
-    a: "Single-family houses, duplexes, and small multifamily rentals throughout South-Central Wisconsin — in any condition, occupied or vacant, including inherited properties and rentals with tenants in place.",
+    a: "Single-family houses, duplexes, and small multifamily rentals throughout South-Central Wisconsin, in any condition, occupied or vacant, including inherited properties and rentals with tenants in place.",
   },
   {
     q: "How do I know you're legitimate?",
-    a: `We're a local company based in ${site.address.locality}, WI — not an out-of-state call center. We close through local title companies, you can meet us in person, and we're glad to provide references before you sign anything.`,
+    a: `We're a local company based in ${site.address.locality}, WI, not an out-of-state call center. We close through local title companies, you can meet us in person, and we're glad to provide references before you sign anything.`,
   },
 ];
 

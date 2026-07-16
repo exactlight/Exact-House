@@ -3,7 +3,7 @@ import { site } from "@/lib/site";
 
 export default function CtaBanner({
   heading = "Ready for a Fair Cash Offer?",
-  body = "Tell us about the property, or just call or text. You'll talk directly with Ken — no call centers, no pressure, no obligation.",
+  body = "Tell us about the property, or just call or text. You'll talk directly with Ken. No call centers, no pressure, no obligation.",
 }: {
   heading?: string;
   body?: string;

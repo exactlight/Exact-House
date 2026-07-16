@@ -71,7 +71,7 @@ export default function PropertyDetailsForm() {
       router.push("/thank-you");
     } catch {
       setError(
-        `Something went wrong. Your first submission was received — you can also just call us at ${site.phone}.`
+        `Something went wrong. Your first submission was received. You can also just call us at ${site.phone}.`
       );
       setSubmitting(false);
     }

@@ -19,7 +19,7 @@ export default function BlogIndexPage() {
             Seller Resources
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-center text-[#666]">
-            Straight answers for Wisconsin homeowners — no fluff, no pressure,
+            Straight answers for Wisconsin homeowners. No fluff, no pressure,
             written by the people who actually buy the houses.
           </p>
           <div className="mt-12 space-y-6">

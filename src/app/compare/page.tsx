@@ -4,16 +4,16 @@ import CtaBanner from "@/components/CtaBanner";
 export const metadata: Metadata = {
   title: "Cash Offer vs. Listing With an Agent",
   description:
-    "An honest side-by-side comparison of selling your Wisconsin house for cash versus listing with a real estate agent — costs, timelines, and trade-offs.",
+    "An honest side-by-side comparison of selling your Wisconsin house for cash versus listing with a real estate agent: costs, timelines, and trade-offs.",
 };
 
 const rows: [string, string, string][] = [
   ["Commissions & fees", "None", "Typically 5-6% + seller fees"],
   ["Closing costs", "We pay standard costs", "Usually 1-2% paid by you"],
-  ["Repairs & updates", "None — sell as-is", "Often required before or after inspection"],
+  ["Repairs & updates", "None. Sell as-is", "Often required before or after inspection"],
   ["Showings & open houses", "None", "Ongoing until offer accepted"],
   ["Time to close", "7-30 days, your choice", "Commonly 60-90+ days total"],
-  ["Financing fall-through risk", "None — cash", "Deals can collapse at the bank"],
+  ["Financing fall-through risk", "None. It's cash", "Deals can collapse at the bank"],
   ["Sale price", "Below full retail (repairs priced in)", "Highest potential price"],
   ["Certainty", "Firm offer, firm date", "Depends on market and buyer"],
 ];
@@ -27,7 +27,7 @@ export default function ComparePage() {
             Cash Offer vs. Listing With an Agent
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-center text-brand-700/80">
-            A cash sale isn&apos;t right for everyone — here&apos;s the honest
+            A cash sale isn&apos;t right for everyone. Here&apos;s the honest
             comparison so you can decide what fits your situation.
           </p>
 
@@ -54,7 +54,7 @@ export default function ComparePage() {
 
           <p className="mx-auto mt-8 max-w-2xl text-center text-sm text-brand-700/70">
             If your house is in great shape and you have time to wait, listing may
-            net you more — and we&apos;ll tell you so. Cash makes sense when speed,
+            net you more, and we&apos;ll tell you so. Cash makes sense when speed,
             condition, or certainty matter most.
           </p>
         </div>

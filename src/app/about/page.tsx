@@ -3,7 +3,7 @@ import { site } from "@/lib/site";
 import CtaBanner from "@/components/CtaBanner";
 
 export const metadata: Metadata = {
-  title: "About Us — A Local Lake Mills Home Buyer",
+  title: "About Us: A Local Lake Mills Home Buyer",
   description: `${site.name} is a local, family-run home buying company based in ${site.address.locality}, Wisconsin, led by ${site.owner}. We buy houses across South-Central Wisconsin.`,
 };
 
@@ -24,8 +24,8 @@ export default function AboutPage() {
             <p>
               {site.name} is a local home-buying company based in{" "}
               {site.address.locality}, Wisconsin, led by {site.owner}. We buy houses
-              across South-Central Wisconsin — single-family homes and small
-              multifamily rentals — in any condition.
+              across South-Central Wisconsin: single-family homes and small
+              multifamily rentals, in any condition.
             </p>
             <p>
               When we buy a house, we rehab it where it makes sense and return it to

@@ -14,15 +14,15 @@ export default function GetOfferPage() {
         <div className="anim-in-left">
           <h1 className="heading-display mb-6 text-6xl">Get Your Fair Cash Offer</h1>
           <p className="mb-6 text-xl opacity-95">
-            Tell us where the property is and how to reach you — that&apos;s it.
+            Tell us where the property is and how to reach you. That&apos;s it.
             We&apos;ll text or email your offer the same day. No pressure, no
             obligation.
           </p>
           <ul className="space-y-3">
             {[
-              "No fees, no commissions — we pay all closing costs",
+              "No fees, no commissions, and we pay all closing costs",
               "Sell completely as-is, any condition",
-              "You choose the closing date — as quick as 3 days",
+              "You choose the closing date, as quick as 3 days",
               "The offer is free. Deciding is up to you.",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3">

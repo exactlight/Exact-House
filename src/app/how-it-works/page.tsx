@@ -4,7 +4,7 @@ import HowItWorksSteps from "@/components/HowItWorksSteps";
 import CtaBanner from "@/components/CtaBanner";
 
 export const metadata: Metadata = {
-  title: "How It Works — Selling Your House for Cash",
+  title: "How It Works: Selling Your House for Cash",
   description: `How ${site.name} buys houses: a simple 3-step process, how our cash offers are calculated, and what to expect from first call to closing day.`,
 };
 
@@ -35,7 +35,7 @@ export default function HowItWorksPage() {
               start with what your house would be worth fully fixed up (based on real
               sales of similar homes nearby), then subtract what it will cost us to
               get it there and the margin we need to keep the lights on. What&apos;s
-              left is your offer — and we&apos;ll walk you through the math on the
+              left is your offer, and we&apos;ll walk you through the math on the
               phone if you want to see it.
             </p>
           </div>
@@ -46,11 +46,11 @@ export default function HowItWorksPage() {
             </h2>
             <ul className="mt-4 space-y-3 text-brand-800">
               {[
-                "No financing contingency — the #1 reason traditional sales fall through doesn't exist here",
-                "No inspection negotiation — we buy as-is and price the work in up front",
+                "No financing contingency, which is the #1 reason traditional sales fall through",
+                "No inspection negotiation. We buy as-is and price the work in up front",
                 "No showings, open houses, or strangers walking through your home",
                 "No agent commissions, and we cover standard closing costs",
-                "A closing date you pick — fast if you need speed, later if you need time",
+                "A closing date you pick: fast if you need speed, later if you need time",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2">
                   <span className="mt-0.5 text-accent-600">✓</span>
@@ -70,7 +70,7 @@ export default function HowItWorksPage() {
               photos if you prefer). You&apos;ll get a written cash offer with no
               expiration pressure. If you accept, we open escrow with a local title
               company, you pick the closing date, and you get paid at closing. If our
-              offer isn&apos;t right for you, no hard feelings — we&apos;re happy to
+              offer isn&apos;t right for you, no hard feelings. We&apos;re happy to
               point you toward whatever option actually fits, even if it&apos;s
               listing with an agent.
             </p>

@@ -35,7 +35,7 @@ export default function TestimonialsPage() {
               <p className="text-brand-700/90">
                 We&apos;re gathering written and video reviews from the homeowners
                 we&apos;ve worked with, and they&apos;ll appear here shortly. In the
-                meantime, we&apos;re glad to provide references — just ask.
+                meantime, we&apos;re glad to provide references. Just ask.
               </p>
               <p className="mt-4 text-brand-700/90">
                 You can also find us on{" "}
@@ -70,7 +70,7 @@ export default function TestimonialsPage() {
                   ) : null}
                   <blockquote className="text-brand-800">“{t.quote}”</blockquote>
                   <figcaption className="mt-3 text-sm font-semibold text-brand-700/80">
-                    {t.name} — {t.location}
+                    {t.name}, {t.location}
                   </figcaption>
                 </figure>
               ))}

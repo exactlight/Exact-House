@@ -18,8 +18,8 @@ export default function PrivacyPage() {
           </p>
           <h2 className="pt-2 text-xl font-semibold text-brand-800">What we collect</h2>
           <p>
-            When you submit a form, we collect the information you provide — such as
-            your name, phone number, email address, and property details — so we can
+            When you submit a form, we collect the information you provide, such as
+            your name, phone number, email address, and property details, so we can
             evaluate the property and contact you about your request.
           </p>
           <h2 className="pt-2 text-xl font-semibold text-brand-800">How we use it</h2>
