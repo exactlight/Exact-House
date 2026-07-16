@@ -67,7 +67,7 @@ export const testimonials: Testimonial[] = [
       "I had been putting off the sale for months because the whole situation felt overwhelming. After one conversation, it finally felt manageable.",
     name: "Brian P.",
     location: "Monroe, WI",
-    citySlugs: [],
+    citySlugs: ["stoughton"],
   },
   {
     quote:
