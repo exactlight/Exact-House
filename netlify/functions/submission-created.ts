@@ -44,6 +44,10 @@ function pick(data: Record<string, string>, keys: string[]) {
     .filter(([, v]) => v !== "");
 }
 
+/** Which website this lead came from — shown in every notification so
+ * leads from exacthouse.com are distinguishable from the other site. */
+const SITE_NAME = "Exact House";
+
 function summarize(formName: string, data: Record<string, string>) {
   const isDetails = formName === "property-details";
   const lines = pick(data, isDetails ? DETAILS_FIELDS : STEP1_FIELDS).map(
@@ -53,8 +57,8 @@ function summarize(formName: string, data: Record<string, string>) {
   const who = isDetails ? data["lead-name"] || "lead" : data["name"] || "lead";
   const where = isDetails ? data["lead-address"] || "" : data["address"] || "";
   const headline = isDetails
-    ? `Property details from ${who}${where ? ` — ${where}` : ""}`
-    : `NEW LEAD: ${who}${where ? ` — ${where}` : ""}`;
+    ? `Property details (${SITE_NAME}) from ${who}${where ? ` — ${where}` : ""}`
+    : `NEW LEAD (${SITE_NAME}): ${who}${where ? ` — ${where}` : ""}`;
 
   return { headline, lines };
 }
