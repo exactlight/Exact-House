@@ -16,12 +16,10 @@ const inputCls =
   "w-full rounded-lg border-2 border-[#E5E7EB] px-4 py-3.5 text-base text-foreground transition-all focus:border-brand-500 focus:outline-none focus:ring-[3px] focus:ring-brand-500/15";
 
 /**
- * Step 1 of the two-step lead flow. Dual-writes the lead:
- *  1. Netlify Forms (drives SMS notification + /admin dashboard)
- *  2. The existing Supabase notify-web-lead pipeline (unchanged from the
- *     current live site, so nothing downstream breaks)
- * Then forwards to /details for step 2. Lead is safe even if step 2 is
- * abandoned or one of the two writes fails.
+ * Step 1 of the two-step lead flow. Writes the lead to Netlify Forms, which
+ * drives the SMS + email notification (submission-created function) and the
+ * /admin dashboard. Then forwards to /details for step 2. The lead is safe
+ * even if step 2 is abandoned.
  */
 export default function LeadForm({ formName, hidden = {} }: Props) {
   const router = useRouter();
@@ -47,46 +45,28 @@ export default function LeadForm({ formName, hidden = {} }: Props) {
     }
 
     const name = String(data.get("name") ?? "").trim();
-    const nameParts = name.split(/\s+/);
-    const supabasePayload = {
-      first_name: nameParts[0] || "",
-      last_name: nameParts.slice(1).join(" ") || nameParts[0] || "",
-      phone: String(data.get("phone") ?? "").trim(),
-      email: String(data.get("email") ?? "").trim(),
-      property_address: String(data.get("address") ?? "").trim(),
-      notes: `Submitted via website form (${window.location.pathname})`,
-    };
+    const phone = String(data.get("phone") ?? "").trim();
+    const address = String(data.get("address") ?? "").trim();
 
-    const results = await Promise.allSettled([
-      fetch("/__forms.html", {
+    try {
+      const res = await fetch("/__forms.html", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: body.toString(),
-      }).then((r) => {
-        if (!r.ok) throw new Error(`netlify ${r.status}`);
-      }),
-      fetch(site.supabaseLeadEndpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(supabasePayload),
-      }).then((r) => {
-        if (!r.ok) throw new Error(`supabase ${r.status}`);
-      }),
-    ]);
+      });
+      if (!res.ok) throw new Error(`netlify ${res.status}`);
 
-    // Proceed if EITHER pipeline captured the lead
-    if (results.some((r) => r.status === "fulfilled")) {
       sessionStorage.setItem(
         "fhb-lead",
         JSON.stringify({
           name,
-          address: supabasePayload.property_address,
-          phone: supabasePayload.phone,
+          address,
+          phone,
           sourcePage: window.location.pathname,
         })
       );
       router.push("/details");
-    } else {
+    } catch {
       setError(
         `Something went wrong sending your info. Please try again, or call/text us at ${site.phone}.`
       );

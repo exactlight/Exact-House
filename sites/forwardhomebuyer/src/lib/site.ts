@@ -27,10 +27,6 @@ export const site = {
   counties:
     "Serving Milwaukee, Waukesha, Racine, Rock, Walworth, Dane, Jefferson, and Dodge Counties",
 
-  /** Existing lead pipeline — step-1 submissions also post here. */
-  supabaseLeadEndpoint:
-    "https://dqrqbrvkgayhtcxhpczt.supabase.co/functions/v1/notify-web-lead",
-
   /** Real claims carried over from the current site. */
   trustBar: [
     ["100+", "Homes Purchased"],
