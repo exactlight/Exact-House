@@ -29,11 +29,13 @@ function LeadCard({
   statuses,
   token,
   onUpdated,
+  onDeleted,
 }: {
   lead: Lead;
   statuses: string[];
   token: string;
   onUpdated: (l: Lead) => void;
+  onDeleted: (key: string) => void;
 }) {
   const [note, setNote] = useState(lead.note);
   const [saving, setSaving] = useState(false);
@@ -56,6 +58,29 @@ function LeadCard({
       });
       const json = await res.json();
       if (json.lead) onUpdated(json.lead as Lead);
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  async function remove() {
+    if (
+      !confirm(
+        `Delete the lead from ${name}? This permanently removes it from the dashboard and cannot be undone.`
+      )
+    )
+      return;
+    setSaving(true);
+    try {
+      const res = await fetch(API, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ key: lead.key }),
+      });
+      if (res.ok) onDeleted(lead.key);
     } finally {
       setSaving(false);
     }
@@ -137,6 +162,16 @@ function LeadCard({
           className="rounded-full bg-brand-800 px-5 py-2 text-sm font-semibold text-white disabled:opacity-40"
         >
           {saving ? "…" : "Save"}
+        </button>
+      </div>
+
+      <div className="mt-3 text-right">
+        <button
+          onClick={remove}
+          disabled={saving}
+          className="text-xs font-semibold text-red-600 hover:text-red-700 hover:underline disabled:opacity-40"
+        >
+          Delete lead
         </button>
       </div>
     </div>
@@ -260,6 +295,9 @@ export default function AdminDashboard() {
                 token={token}
                 onUpdated={(nl) =>
                   setLeads((cur) => cur?.map((x) => (x.key === nl.key ? nl : x)) ?? null)
+                }
+                onDeleted={(key) =>
+                  setLeads((cur) => cur?.filter((x) => x.key !== key) ?? null)
                 }
               />
             ))

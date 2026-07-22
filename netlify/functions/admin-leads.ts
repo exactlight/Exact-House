@@ -3,8 +3,9 @@ import { getStore } from "@netlify/blobs";
 /**
  * Backend for the /admin lead dashboard (Netlify Functions 2.0 API, which
  * is required for automatic Netlify Blobs configuration).
- *   GET  -> list all leads (newest first)
- *   POST { key, status?, note? } -> update a lead
+ *   GET    -> list all leads (newest first)
+ *   POST   { key, status?, note? } -> update a lead
+ *   DELETE { key } -> permanently remove a lead (e.g. test submissions)
  * Auth: "Authorization: Bearer <LEADS_ADMIN_PASSWORD>" (set in Netlify env).
  */
 
@@ -65,6 +66,18 @@ export default async (req: Request) => {
     lead.updatedAt = new Date().toISOString();
     await store.setJSON(update.key, lead);
     return json({ ok: true, lead });
+  }
+
+  if (req.method === "DELETE") {
+    let body: { key?: string };
+    try {
+      body = await req.json();
+    } catch {
+      return json({ error: "bad json" }, 400);
+    }
+    if (!body.key) return json({ error: "key required" }, 400);
+    await store.delete(body.key);
+    return json({ ok: true, deleted: body.key });
   }
 
   return json({ error: "method not allowed" }, 405);
